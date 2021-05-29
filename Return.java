@@ -14,6 +14,7 @@ public class Return extends Button
     private GreenfootImage state1 = new GreenfootImage("images/menu_help/menu_help_03.png");
     private boolean mouseClicked = false;
     private int menuChange;
+    GreenfootSound button_click = new GreenfootSound("sounds/button_click.mp3");
     public Return(int menuChange){
         this.menuChange = menuChange;
         state1.drawImage(blink, 0, 0);
@@ -25,6 +26,7 @@ public class Return extends Button
         mouseClicked = checkMouse(state0, state1, 62,613,155,75);
 
         if(Greenfoot.mousePressed(this) && mouseClicked == true){
+            button_click.play();
             if(menuChange == 0)
                 Greenfoot.setWorld(new MainMenu());
             else

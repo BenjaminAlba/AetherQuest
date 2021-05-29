@@ -11,6 +11,7 @@ public class MainMenu extends World
 {
     private GreenfootSound menuMusic = new GreenfootSound("sounds/menu.mp3");
     private Image[] cogs = new Image[8];
+    private GreenfootSound cogTurn = new GreenfootSound("sounds/ticking_clock.mp3");
     private int counter = 0;
     /**
      * Constructor for objects of class MyWorld.
@@ -57,11 +58,12 @@ public class MainMenu extends World
 
     public void rotateCogs(){
         if(counter == 0){
+            cogTurn.play();
             for(int i=0;i<8;i++){
                 cogs[i].rotate(120);
             }
         }
-        counter = (counter + 1)%21;
+        counter = (counter + 1)%60;
     }
 
     public void act(){

@@ -9,7 +9,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Button extends Actor
 {
     private Image image;
-    GreenfootImage buttons = new GreenfootImage("images/menu/menu_02.png");;
+    GreenfootImage buttons = new GreenfootImage("images/menu/menu_02.png");
+    GreenfootSound button_click = new GreenfootSound("sounds/button_click.mp3");
     public Button(){
         setImage(buttons);
     }
@@ -30,9 +31,11 @@ public class Button extends Actor
             setImage(state0);
         return false;
     }
-    
+
     protected void checkClick(World world, boolean buttonState){
-        if(buttonState == true)
+        if(buttonState == true){
+            button_click.play();
             Greenfoot.setWorld(world);
+        }
     }
 }
