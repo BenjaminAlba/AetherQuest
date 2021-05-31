@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Prologue extends World
 {
-    private MovingCharacter unknown = new MovingCharacter();
+    private MovingCharacter unknown = new MovingCharacter("00");
     private ShortWall sh1 = new ShortWall(0);
     private ShortWall sh2 = new ShortWall(1);
     private LongWall lh1 = new LongWall(0);

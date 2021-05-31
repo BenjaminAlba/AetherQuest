@@ -25,29 +25,29 @@ public class MovingCharacter extends Actor
     private GreenfootImage leftIdle;
     private ArrayList<GreenfootImage> leftWalk;
 
-    public MovingCharacter(){
+    public MovingCharacter(String id){
         GreenfootImage walkInstance;
 
         downWalk = new ArrayList<>();
 
-        downIdle = new GreenfootImage("images/character_sprites/00/00_downidle.png");
+        downIdle = new GreenfootImage("images/character_sprites/"+id+"/"+id+"_downidle.png");
         downIdle.scale(downIdle.getWidth()+100,downIdle.getHeight()+100);
 
-        walkInstance = new GreenfootImage("images/character_sprites/00/00_downwalk1.png");
+        walkInstance = new GreenfootImage("images/character_sprites/"+id+"/"+id+"_downwalk1.png");
         walkInstance.scale(walkInstance.getWidth()+100,walkInstance.getHeight()+100);
         downWalk.add(walkInstance);
 
-        walkInstance = new GreenfootImage("images/character_sprites/00/00_downwalk2.png");
+        walkInstance = new GreenfootImage("images/character_sprites/"+id+"/"+id+"_downwalk2.png");
         walkInstance.scale(walkInstance.getWidth()+100,walkInstance.getHeight()+100);
         downWalk.add(walkInstance);
 
         downWalk.add(downIdle);
 
-        walkInstance = new GreenfootImage("images/character_sprites/00/00_downwalk3.png");
+        walkInstance = new GreenfootImage("images/character_sprites/"+id+"/"+id+"_downwalk3.png");
         walkInstance.scale(walkInstance.getWidth()+100,walkInstance.getHeight()+100);
         downWalk.add(walkInstance);
 
-        walkInstance = new GreenfootImage("images/character_sprites/00/00_downwalk4.png");
+        walkInstance = new GreenfootImage("images/character_sprites/"+id+"/"+id+"_downwalk4.png");
         walkInstance.scale(walkInstance.getWidth()+100,walkInstance.getHeight()+100);
         downWalk.add(walkInstance);
 
@@ -55,24 +55,24 @@ public class MovingCharacter extends Actor
 
         upWalk = new ArrayList<>();
 
-        upIdle = new GreenfootImage("images/character_sprites/00/00_upidle.png");
+        upIdle = new GreenfootImage("images/character_sprites/"+id+"/"+id+"_upidle.png");
         upIdle.scale(upIdle.getWidth()+100,upIdle.getHeight()+100);
 
-        walkInstance = new GreenfootImage("images/character_sprites/00/00_upwalk1.png");
+        walkInstance = new GreenfootImage("images/character_sprites/"+id+"/"+id+"_upwalk1.png");
         walkInstance.scale(walkInstance.getWidth()+100,walkInstance.getHeight()+100);
         upWalk.add(walkInstance);
 
-        walkInstance = new GreenfootImage("images/character_sprites/00/00_upwalk2.png");
+        walkInstance = new GreenfootImage("images/character_sprites/"+id+"/"+id+"_upwalk2.png");
         walkInstance.scale(walkInstance.getWidth()+100,walkInstance.getHeight()+100);
         upWalk.add(walkInstance);
 
         upWalk.add(upIdle);
 
-        walkInstance = new GreenfootImage("images/character_sprites/00/00_upwalk3.png");
+        walkInstance = new GreenfootImage("images/character_sprites/"+id+"/"+id+"_upwalk3.png");
         walkInstance.scale(walkInstance.getWidth()+100,walkInstance.getHeight()+100);
         upWalk.add(walkInstance);
 
-        walkInstance = new GreenfootImage("images/character_sprites/00/00_upwalk4.png");
+        walkInstance = new GreenfootImage("images/character_sprites/"+id+"/"+id+"_upwalk4.png");
         walkInstance.scale(walkInstance.getWidth()+100,walkInstance.getHeight()+100);
         upWalk.add(walkInstance);
 
@@ -80,92 +80,92 @@ public class MovingCharacter extends Actor
 
         rightWalk = new ArrayList<>();
 
-        rightIdle = new GreenfootImage("images/character_sprites/00/00_sideidle.png");
+        rightIdle = new GreenfootImage("images/character_sprites/"+id+"/"+id+"_sideidle.png");
         rightIdle.scale(rightIdle.getWidth()+100,rightIdle.getHeight()+100);
 
-        walkInstance = new GreenfootImage("images/character_sprites/00/00_sidewalk1.png");
+        walkInstance = new GreenfootImage("images/character_sprites/"+id+"/"+id+"_sidewalk1.png");
         walkInstance.scale(walkInstance.getWidth()+100,walkInstance.getHeight()+100);
         rightWalk.add(walkInstance);
 
-        walkInstance = new GreenfootImage("images/character_sprites/00/00_sidewalk2.png");
+        walkInstance = new GreenfootImage("images/character_sprites/"+id+"/"+id+"_sidewalk2.png");
         walkInstance.scale(walkInstance.getWidth()+100,walkInstance.getHeight()+100);
         rightWalk.add(walkInstance);
 
-        walkInstance = new GreenfootImage("images/character_sprites/00/00_sidewalk3.png");
+        walkInstance = new GreenfootImage("images/character_sprites/"+id+"/"+id+"_sidewalk3.png");
         walkInstance.scale(walkInstance.getWidth()+100,walkInstance.getHeight()+100);
         rightWalk.add(walkInstance);
 
-        walkInstance = new GreenfootImage("images/character_sprites/00/00_sidewalk4.png");
+        walkInstance = new GreenfootImage("images/character_sprites/"+id+"/"+id+"_sidewalk4.png");
         walkInstance.scale(walkInstance.getWidth()+100,walkInstance.getHeight()+100);
         rightWalk.add(walkInstance);
 
-        walkInstance = new GreenfootImage("images/character_sprites/00/00_sidewalk5.png");
+        walkInstance = new GreenfootImage("images/character_sprites/"+id+"/"+id+"_sidewalk5.png");
         walkInstance.scale(walkInstance.getWidth()+100,walkInstance.getHeight()+100);
         rightWalk.add(walkInstance);
 
-        walkInstance = new GreenfootImage("images/character_sprites/00/00_sidewalk6.png");
+        walkInstance = new GreenfootImage("images/character_sprites/"+id+"/"+id+"_sidewalk6.png");
         walkInstance.scale(walkInstance.getWidth()+100,walkInstance.getHeight()+100);
         rightWalk.add(walkInstance);
 
-        walkInstance = new GreenfootImage("images/character_sprites/00/00_sidewalk7.png");
+        walkInstance = new GreenfootImage("images/character_sprites/"+id+"/"+id+"_sidewalk7.png");
         walkInstance.scale(walkInstance.getWidth()+100,walkInstance.getHeight()+100);
         rightWalk.add(walkInstance);
 
-        walkInstance = new GreenfootImage("images/character_sprites/00/00_sidewalk8.png");
+        walkInstance = new GreenfootImage("images/character_sprites/"+id+"/"+id+"_sidewalk8.png");
         walkInstance.scale(walkInstance.getWidth()+100,walkInstance.getHeight()+100);
         rightWalk.add(walkInstance);
 
-        walkInstance = new GreenfootImage("images/character_sprites/00/00_sidewalk9.png");
+        walkInstance = new GreenfootImage("images/character_sprites/"+id+"/"+id+"_sidewalk9.png");
         walkInstance.scale(walkInstance.getWidth()+100,walkInstance.getHeight()+100);
         rightWalk.add(walkInstance);
 
         leftWalk = new ArrayList<>();
 
-        leftIdle = new GreenfootImage("images/character_sprites/00/00_sideidle.png");
+        leftIdle = new GreenfootImage("images/character_sprites/"+id+"/"+id+"_sideidle.png");
         leftIdle.scale(leftIdle.getWidth()+100,leftIdle.getHeight()+100);
         leftIdle.mirrorHorizontally();
 
-        walkInstance = new GreenfootImage("images/character_sprites/00/00_sidewalk1.png");
+        walkInstance = new GreenfootImage("images/character_sprites/"+id+"/"+id+"_sidewalk1.png");
         walkInstance.scale(walkInstance.getWidth()+100,walkInstance.getHeight()+100);
         walkInstance.mirrorHorizontally();
         leftWalk.add(walkInstance);
 
-        walkInstance = new GreenfootImage("images/character_sprites/00/00_sidewalk2.png");
+        walkInstance = new GreenfootImage("images/character_sprites/"+id+"/"+id+"_sidewalk2.png");
         walkInstance.scale(walkInstance.getWidth()+100,walkInstance.getHeight()+100);
         walkInstance.mirrorHorizontally();
         leftWalk.add(walkInstance);
 
-        walkInstance = new GreenfootImage("images/character_sprites/00/00_sidewalk3.png");
+        walkInstance = new GreenfootImage("images/character_sprites/"+id+"/"+id+"_sidewalk3.png");
         walkInstance.scale(walkInstance.getWidth()+100,walkInstance.getHeight()+100);
         walkInstance.mirrorHorizontally();
         leftWalk.add(walkInstance);
 
-        walkInstance = new GreenfootImage("images/character_sprites/00/00_sidewalk4.png");
+        walkInstance = new GreenfootImage("images/character_sprites/"+id+"/"+id+"_sidewalk4.png");
         walkInstance.scale(walkInstance.getWidth()+100,walkInstance.getHeight()+100);
         walkInstance.mirrorHorizontally();
         leftWalk.add(walkInstance);
 
-        walkInstance = new GreenfootImage("images/character_sprites/00/00_sidewalk5.png");
+        walkInstance = new GreenfootImage("images/character_sprites/"+id+"/"+id+"_sidewalk5.png");
         walkInstance.scale(walkInstance.getWidth()+100,walkInstance.getHeight()+100);
         walkInstance.mirrorHorizontally();
         leftWalk.add(walkInstance);
 
-        walkInstance = new GreenfootImage("images/character_sprites/00/00_sidewalk6.png");
+        walkInstance = new GreenfootImage("images/character_sprites/"+id+"/"+id+"_sidewalk6.png");
         walkInstance.scale(walkInstance.getWidth()+100,walkInstance.getHeight()+100);
         walkInstance.mirrorHorizontally();
         leftWalk.add(walkInstance);
 
-        walkInstance = new GreenfootImage("images/character_sprites/00/00_sidewalk7.png");
+        walkInstance = new GreenfootImage("images/character_sprites/"+id+"/"+id+"_sidewalk7.png");
         walkInstance.scale(walkInstance.getWidth()+100,walkInstance.getHeight()+100);
         walkInstance.mirrorHorizontally();
         leftWalk.add(walkInstance);
 
-        walkInstance = new GreenfootImage("images/character_sprites/00/00_sidewalk8.png");
+        walkInstance = new GreenfootImage("images/character_sprites/"+id+"/"+id+"_sidewalk8.png");
         walkInstance.scale(walkInstance.getWidth()+100,walkInstance.getHeight()+100);
         walkInstance.mirrorHorizontally();
         leftWalk.add(walkInstance);
 
-        walkInstance = new GreenfootImage("images/character_sprites/00/00_sidewalk9.png");
+        walkInstance = new GreenfootImage("images/character_sprites/"+id+"/"+id+"_sidewalk9.png");
         walkInstance.scale(walkInstance.getWidth()+100,walkInstance.getHeight()+100);
         walkInstance.mirrorHorizontally();
         leftWalk.add(walkInstance);
