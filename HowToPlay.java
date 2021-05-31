@@ -20,7 +20,8 @@ public class HowToPlay extends Button
     public void act() 
     {
         mouseClicked = checkMouse(state0, state1, 480, 75, 430, 210);
-        
-        checkClick(new HTPMenu(), mouseClicked);
+        if(mouseClicked==true){
+            checkClick(new HTPMenu());
+        }
     }    
 }

@@ -12,7 +12,7 @@ public class LilReturn extends Button
     private GreenfootImage state0 = new GreenfootImage("images/menu_help_characters/return_small_01.png");
     private GreenfootImage state1 = new GreenfootImage("images/menu_help_characters/return_small_01.png");
     private boolean mouseClicked = false;
-    GreenfootSound button_click = new GreenfootSound("sounds/button_click.mp3");
+    private GreenfootSound buttonClick = new GreenfootSound("sounds/button_click.mp3");
     private int menuChange;
     public LilReturn(int menuChange){
         this.menuChange = menuChange;
@@ -25,7 +25,7 @@ public class LilReturn extends Button
         mouseClicked = checkMouse(state0, state1, 62,613,155,75);
 
         if(Greenfoot.mousePressed(this) && mouseClicked == true){
-            button_click.play();
+            buttonClick.play();
             if(menuChange == 0)
                 Greenfoot.setWorld(new HelpMenu());
             else
