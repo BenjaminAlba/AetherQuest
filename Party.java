@@ -8,12 +8,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Party extends Actor
 {
-    Character member1 =  new Character(0);
-    Character member2 =  new Character(0);
-    Character member3 =  new Character(0);
-    Character member4 =  new Character(0);
-    int money;
-    int inventory[] = new int[12];
+    private Character member1 =  new Character(0);
+    private Character member2 =  new Character(0);
+    private Character member3 =  new Character(0);
+    private Character member4 =  new Character(0);
+    private int money;
+    private int inventory[] = new int[12];
     
     /**
      * Act - do whatever the Party wants to do. This method is called whenever
