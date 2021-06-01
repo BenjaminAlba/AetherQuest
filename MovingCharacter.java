@@ -178,6 +178,13 @@ public class MovingCharacter extends Actor
         handleDirection();
     }
 
+    public void checkDoorCollision(int x, int y){
+        if(getOneObjectAtOffset(x,y,Door.class) != null){
+            Door door = (Door)getOneObjectAtOffset(x,y,Door.class);
+            door.changeRoom();
+        }
+    }
+
     public void handleDirection(){
         int speed = 3;
         int x = getX();
@@ -190,6 +197,7 @@ public class MovingCharacter extends Actor
             setLocation(x, y - speed);
             upWalk();
             direccion = 1;
+            checkDoorCollision(0,12);
         }
         else if(!Greenfoot.isKeyDown("w") && direccion == 1){
             counter = 0;
@@ -204,6 +212,7 @@ public class MovingCharacter extends Actor
             setLocation(x, y + speed);
             downWalk();
             direccion = 2;
+            checkDoorCollision(0,51);
         }
         else if(!Greenfoot.isKeyDown("s") && direccion == 2){
             counter = 0;
@@ -218,6 +227,7 @@ public class MovingCharacter extends Actor
             setLocation(x - speed, y);
             leftWalk();
             direccion = 3;
+            checkDoorCollision(-18,20);
         }
         else if(!Greenfoot.isKeyDown("a") && direccion == 3){
             counter = 0;
@@ -232,6 +242,7 @@ public class MovingCharacter extends Actor
             setLocation(x + speed, y);
             rightWalk();
             direccion = 4;
+            checkDoorCollision(18,20);
         }
         else if(!Greenfoot.isKeyDown("d") && direccion == 4){
             counter = 0;

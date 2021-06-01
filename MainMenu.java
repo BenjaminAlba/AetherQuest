@@ -7,7 +7,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class MainMenu extends World
+public class MainMenu extends World implements Observer
 {
     private GreenfootSound menuMusic = new GreenfootSound("sounds/menu.mp3");
     private Image[] cogs = new Image[8];
@@ -21,15 +21,23 @@ public class MainMenu extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1280, 720, 1);
+        NewGame newGameButton = new NewGame();
+        
         setBackground("images/menu/background.png");
         addCogs();
         addObject(new Image("images/menu/menu_01.png"),640,360);
         addObject(new Button(),640,360);
         addObject(new Continue(),640,360);
-        addObject(new NewGame(),640,360);
+        addObject(newGameButton,640,360);
         addObject(new Help(),640,360);
+        
+        newGameButton.addObserver(this);
     }
-
+    
+    public void eventOcurred(){
+        menuMusic.stop();
+    }
+    
     public void addCogs(){
         cogs[0] = new Image("images/menu/menu_cog.png");
         cogs[1] = new Image("images/menu/menu_cog.png");

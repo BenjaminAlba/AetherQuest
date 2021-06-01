@@ -13,6 +13,10 @@ public class Prologue extends World
     private ShortWall sh2 = new ShortWall(1);
     private LongWall lh1 = new LongWall(0);
     private LongWall lh2 = new LongWall(1);
+    private HorizontalDoor rightDoor = new HorizontalDoor(0,1);
+    private HorizontalDoor leftDoor = new HorizontalDoor(1,1);
+    private VerticalDoor upDoor = new VerticalDoor(0,1);
+    private VerticalDoor downDoor = new VerticalDoor(1,1);
     
     public Prologue()
     {    
@@ -23,6 +27,10 @@ public class Prologue extends World
         addObject(lh2, 640, 660);
         addObject(sh1, 70, 360);
         addObject(sh2, 1210, 360);
-        addObject(unknown, 640, 360);
+        addObject(rightDoor,1190,360);
+        addObject(leftDoor,90,360);
+        addObject(upDoor, 640, 70);
+        addObject(downDoor,640,650);
+        addObject(unknown, 640, 540);
     }
 }
