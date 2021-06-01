@@ -5,17 +5,11 @@ comment1.params=
 comment1.target=MainMenu()
 comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ MyWorld.\r\n\ \r\n
 comment2.params=
-<<<<<<< HEAD
 comment2.target=void\ eventOcurred()
 comment3.params=
-comment3.target=void\ addCogs()
-=======
-comment2.target=void\ addGears()
-comment3.params=
-comment3.target=void\ rotateGears()
->>>>>>> master
+comment3.target=void\ addGears()
 comment4.params=
-comment4.target=void\ rotateCogs()
+comment4.target=void\ rotateGears()
 comment5.params=
 comment5.target=void\ act()
 comment6.params=

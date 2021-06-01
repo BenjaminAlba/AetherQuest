@@ -18,6 +18,7 @@ public class NewGame extends Button
     public void act() 
     {
         mouseClicked = checkMouse(state0,state1,955,340,325,120);
-        checkClick(new Room(1,640,360), mouseClicked);
+        if(mouseClicked == true)
+            checkClick(new Room(1,640,360));
     }    
 }

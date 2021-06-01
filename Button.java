@@ -12,15 +12,15 @@ public class Button extends Actor
     GreenfootImage buttons = new GreenfootImage("images/menu/menu_02.png");
     GreenfootSound button_click = new GreenfootSound("sounds/button_click.mp3");
     private List<Observer> observers = new LinkedList();
-    
+
     public Button(){
         setImage(buttons);
     }
-    
+
     public void addObserver(Observer observer){
         observers.add(observer);
     }
-    
+
     protected boolean checkMouse(GreenfootImage state0, GreenfootImage state1, int x1, int y1, int width, int height){
         MouseInfo mouse = Greenfoot.getMouseInfo();
         int x=0, y=0;
@@ -38,8 +38,7 @@ public class Button extends Actor
         return false;
     }
 
-    protected void checkClick(World world, boolean buttonState){
-        if(buttonState == true){
+    protected void checkClick(World world){
             for(Observer observer: observers){
                 observer.eventOcurred();
             }
