@@ -45,6 +45,5 @@ public class Button extends Actor
             }
             button_click.play();
             Greenfoot.setWorld(world);
-        }
     }
 }

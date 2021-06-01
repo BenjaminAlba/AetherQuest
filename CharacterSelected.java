@@ -13,7 +13,7 @@ public class CharacterSelected extends Button
     private GreenfootImage state0;
     private GreenfootImage state1;
     private boolean mouseClicked = false;
-    GreenfootSound button_click = new GreenfootSound("sounds/button_click.mp3");
+    private GreenfootSound buttonClick = new GreenfootSound("sounds/button_click.mp3");
     public CharacterSelected(String name, int x, int y, int id){
        this.x = x;
        this.y = y;
@@ -28,7 +28,7 @@ public class CharacterSelected extends Button
         mouseClicked = checkMouse(state0, state1, x, y, length, length);
         if(mouseClicked == true)
         {
-            button_click.play();
+            buttonClick.play();
             mouseClicked = false;
             Greenfoot.setWorld(new CharacterInfoMenu(id));
         }
