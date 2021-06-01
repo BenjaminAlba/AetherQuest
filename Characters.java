@@ -20,7 +20,8 @@ public class Characters extends Button
     public void act() 
     {
         mouseClicked = checkMouse(state0, state1, 480, 435, 430, 210);
-        
-        checkClick(new CharacterSelectMenu(), mouseClicked);
-    }    
+        if(mouseClicked==true){
+            checkClick(new CharacterSelectMenu());
+        }    
+    }
 }

@@ -18,7 +18,9 @@ public class Help extends Button
     public void act() 
     {
         mouseClicked = checkMouse(state0,state1,955,462,325,120);
-        
-        checkClick(new HelpMenu(), mouseClicked);
+        if(mouseClicked==true)
+        {
+            checkClick(new HelpMenu());
+        }
     }    
 }
