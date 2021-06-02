@@ -15,6 +15,9 @@ public class EscMenu extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1280, 720, 1);
+        setBackground("images/ESC_menu/esc_menu_background.png");
+        addObject(new EscShopButton(),341,360);
+        addObject(new EscCharacterButton(),940, 360);
         this.currentRoom = currentRoom;
         this.characterX = characterX;
         this.characterY = characterY;

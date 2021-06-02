@@ -9,12 +9,18 @@ import java.util.*;
 public class Button extends Actor
 {
     private Image image;
-    GreenfootImage buttons = new GreenfootImage("images/menu/menu_02.png");
-    GreenfootSound button_click = new GreenfootSound("sounds/button_click.mp3");
+    private GreenfootImage buttons = new GreenfootImage("images/menu/menu_02.png");
+    private GreenfootSound buttonClick = new GreenfootSound("sounds/button_click.mp3");
     private List<Observer> observers = new LinkedList();
 
     public Button(){
         setImage(buttons);
+    }
+
+    protected Button(Observer ... observers){
+        for(Observer observer: observers){
+            this.observers.add(observer);
+        }
     }
 
     public void addObserver(Observer observer){
@@ -35,14 +41,15 @@ public class Button extends Actor
         }
         else
             setImage(state0);
+
         return false;
     }
 
     protected void checkClick(World world){
-            for(Observer observer: observers){
-                observer.eventOcurred();
-            }
-            button_click.play();
-            Greenfoot.setWorld(world);
+        buttonClick.play();
+        for(Observer observer: observers){
+            observer.eventOcurred();
+        }
+        Greenfoot.setWorld(world);
     }
 }

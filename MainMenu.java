@@ -21,17 +21,13 @@ public class MainMenu extends World implements Observer
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1280, 720, 1);
-        NewGame newGameButton = new NewGame();
-        
         setBackground("images/menu/background.png");
         addGears();
         addObject(new Image("images/menu/menu_01.png"),640,360);
         addObject(new Button(),640,360);
         addObject(new Continue(),640,360);
-        addObject(newGameButton,640,360);
+        addObject(new NewGame(this),640,360);
         addObject(new Help(),640,360);
-        
-        newGameButton.addObserver(this);
     }
     
     public void eventOcurred(){
