@@ -9,12 +9,10 @@ import java.util.*;
 public abstract class Button extends Actor
 {
     private Image image;
-    private GreenfootImage buttons; //= new GreenfootImage("images/menu/menu_02.png");
     private GreenfootSound buttonClick = new GreenfootSound("sounds/button_click.mp3");
     private List<Observer> observers = new LinkedList();
 
     public Button(){
-        setImage(buttons);
     }
 
     protected Button(Observer ... observers){
