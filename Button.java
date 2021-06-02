@@ -6,10 +6,10 @@ import java.util.*;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Button extends Actor
+public abstract class Button extends Actor
 {
     private Image image;
-    private GreenfootImage buttons = new GreenfootImage("images/menu/menu_02.png");
+    private GreenfootImage buttons; //= new GreenfootImage("images/menu/menu_02.png");
     private GreenfootSound buttonClick = new GreenfootSound("sounds/button_click.mp3");
     private List<Observer> observers = new LinkedList();
 
