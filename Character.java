@@ -30,7 +30,7 @@ public class Character extends Actor
     protected int ultQuantity;
     protected int maxSP;
     protected int sp;
-    protected int baseSpeed;
+    protected double baseSpeed;
     protected int speed;
     protected int skill1;
     protected int skill2;

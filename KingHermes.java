@@ -8,15 +8,15 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class KingHermes extends Character
 {
-    private float acquiredExpMultiplier;
+    private double acquiredExpMultiplier;
     
     private final String skill1Name="Royal Bloodline";
     private final int skill1Type=1;
-    private float skill1acquiredExpMultiplierIncrease;
+    private double skill1acquiredExpMultiplierIncrease;
     
     private final String skill2Name="UXIONO";
     private final int skill2Type=2;
-    private float skill2AllySpRecoveryPercent;
+    private double skill2AllySpRecoveryPercent;
     private int skill2SpCost;
     
     private final String skill3Name="PERMATRAGO";
@@ -58,6 +58,160 @@ public class KingHermes extends Character
                 
         acquiredExpMultiplier=0;
     }    
+    
+    public void upgradeS1()
+    {
+        if(skillPoints>0)
+        {
+            skill1++;
+            switch(skill1)
+            {
+                case 1:
+                    skill1acquiredExpMultiplierIncrease=0.1;
+                    break;
+                case 2:
+                    skill1acquiredExpMultiplierIncrease=0.1;
+                    break;
+                case 3:
+                    skill1acquiredExpMultiplierIncrease=0.1;
+                    break;
+                case 4:
+                    skill1acquiredExpMultiplierIncrease=0.05;
+                    break;
+                case 5:
+                    skill1acquiredExpMultiplierIncrease=0.05;
+                    break;
+                case 6:
+                    skill1acquiredExpMultiplierIncrease=0.05;
+                    break;
+                case 7:
+                    skill1acquiredExpMultiplierIncrease=0.05;
+                    break;
+            }
+            acquiredExpMultiplier+=skill1acquiredExpMultiplierIncrease;
+            skillPoints-=1;
+        }
+    }
+
+    public void upgradeS2()
+    {
+        if(skillPoints>0)
+        {
+            skill2++;
+            switch(skill2)
+            {
+                case 1:
+                    skill2AllySpRecoveryPercent=0.15;
+                    skill2SpCost=4;
+                    break;
+                case 2:
+                    skill2AllySpRecoveryPercent=0.16;
+                    skill2SpCost=5;
+                    break;
+                case 3:
+                    skill2AllySpRecoveryPercent=0.18;
+                    skill2SpCost=7;
+                    break;
+                case 4:
+                    skill2AllySpRecoveryPercent=0.22;
+                    skill2SpCost=7;
+                    break;
+                case 5:
+                    skill2AllySpRecoveryPercent=0.26;
+                    skill2SpCost=7;
+                    break;
+                case 6:
+                    skill2AllySpRecoveryPercent=0.3;
+                    skill2SpCost=10;
+                    break;
+                case 7:
+                    skill2AllySpRecoveryPercent=0.35;
+                    skill2SpCost=10;
+                    break;
+            }
+            skillPoints-=1;
+        }
+    }
+
+    public void upgradeS3()
+    {
+        if(skillPoints>0)
+        {
+            skill3++;
+            switch(skill3)
+            {
+                case 1:
+                    skill3RunRate=30;
+                    skill3SpCost=0;
+                    break;
+                case 2:
+                skill3RunRate=33;
+                    skill3SpCost=0;
+                    break;
+                case 3:
+                skill3RunRate=36;
+                    skill3SpCost=0;
+                    break;
+                case 4:
+                    skill3RunRate=40;
+                    skill3SpCost=0;
+                    break;
+                case 5:
+                    skill3RunRate=43;
+                    skill3SpCost=0;
+                    break;
+                case 6:
+                    skill3RunRate=46;
+                    skill3SpCost=0;
+                    break;
+                case 7:
+                    skill3RunRate=50;
+                    skill3SpCost=0;
+                    break;
+            }
+            skillPoints-=1;
+        }
+    }
+
+    public void upgradeS4()
+    {
+        if(skillPoints>0)
+        {
+            skill4++;
+            switch(skill4)
+            {
+                case 1:
+                    skill4ActivationRate=20;
+                    skill4SpCost=4;
+                    break;
+                case 2:
+                    skill4ActivationRate=30;
+                    skill4SpCost=5;
+                    break;
+                case 3:
+                    skill4ActivationRate=40;
+                    skill4SpCost=7;
+                    break;
+                case 4:
+                    skill4ActivationRate=50;
+                    skill4SpCost=7;
+                    break;
+                case 5:
+                    skill4ActivationRate=60;
+                    skill4SpCost=7;
+                    break;
+                case 6:
+                    skill4ActivationRate=80;
+                    skill4SpCost=10;
+                    break;
+                case 7:
+                    skill4ActivationRate=100;
+                    skill4SpCost=10;
+                    break;
+            }
+            skillPoints-=1;
+        }
+    }
     
     public void act() 
     {

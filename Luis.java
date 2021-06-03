@@ -8,17 +8,17 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Luis extends Character
 {
-    private float acquiredMoneyMultiplier;
-    private float itemDamageMultiplier;
+    private double acquiredMoneyMultiplier;
+    private double itemDamageMultiplier;
     private int negateItemConsumptionRate;
     
     private final String skill1Name="Keen eye";
     private final int skill1Type=1;
-    private float skill1AcquiredMoneyMultiplierIncrease;
+    private double skill1AcquiredMoneyMultiplierIncrease;
     
     private final String skill2Name="Business Experience";
     private final int skill2Type=2;
-    private float skill2ItemDamageMultiplierIncrease;
+    private double skill2ItemDamageMultiplierIncrease;
     
     private final String skill3Name="Crunching Numbers";
     private final int skill3Type=2;
@@ -26,8 +26,8 @@ public class Luis extends Character
     
     private final String skill4Name="Final Gamble";
     private final int skill4Type=2;
-    private float skill4SelfHpDamagePercent;
-    private float skill4HpDamagePercent;
+    private double skill4SelfHpDamagePercent;
+    private double skill4HpDamagePercent;
     private int skill4SpCost;
     
     public Luis()
@@ -60,6 +60,155 @@ public class Luis extends Character
         acquiredMoneyMultiplier=0;
         itemDamageMultiplier=0;
         negateItemConsumptionRate=0;
+    }
+    
+    public void upgradeS1()
+    {
+        if(skillPoints>0)
+        {
+            skill1++;
+            switch(skill1)
+            {
+                case 1:
+                    skill1AcquiredMoneyMultiplierIncrease=0.1;
+                    break;
+                case 2:
+                    skill1AcquiredMoneyMultiplierIncrease=0.1;
+                    break;
+                case 3:
+                    skill1AcquiredMoneyMultiplierIncrease=0.1;
+                    break;
+                case 4:
+                    skill1AcquiredMoneyMultiplierIncrease=0.05;
+                    break;
+                case 5:
+                    skill1AcquiredMoneyMultiplierIncrease=0.05;
+                    break;
+                case 6:
+                    skill1AcquiredMoneyMultiplierIncrease=0.05;
+                    break;
+                case 7:
+                    skill1AcquiredMoneyMultiplierIncrease=0.05;
+                    break;
+            }
+            acquiredMoneyMultiplier+=skill1AcquiredMoneyMultiplierIncrease;
+            skillPoints-=1;
+        }
+    }
+
+    public void upgradeS2()
+    {
+        if(skillPoints>0)
+        {
+            skill2++;
+            switch(skill2)
+            {
+                case 1:
+                    skill2ItemDamageMultiplierIncrease=0.3;
+                    break;
+                case 2:
+                    skill2ItemDamageMultiplierIncrease=0.3;
+                    break;
+                case 3:
+                    skill2ItemDamageMultiplierIncrease=0.2;
+                    break;
+                case 4:
+                    skill2ItemDamageMultiplierIncrease=0.2;
+                    break;
+                case 5:
+                    skill2ItemDamageMultiplierIncrease=0.5;
+                    break;
+                case 6:
+                    skill2ItemDamageMultiplierIncrease=0.3;
+                    break;
+                case 7:
+                    skill2ItemDamageMultiplierIncrease=0.2;
+                    break;
+            }
+            itemDamageMultiplier+=skill2ItemDamageMultiplierIncrease;
+            skillPoints-=1;
+        }
+    }
+
+    public void upgradeS3()
+    {
+        if(skillPoints>0)
+        {
+            skill3++;
+            switch(skill3)
+            {
+                case 1:
+                    skill3NegateItemConsumptionRateIncrease=10;
+                    break;
+                case 2:
+                    skill3NegateItemConsumptionRateIncrease=10;
+                    break;
+                case 3:
+                    skill3NegateItemConsumptionRateIncrease=10;
+                    break;
+                case 4:
+                    skill3NegateItemConsumptionRateIncrease=5;
+                    break;
+                case 5:
+                    skill3NegateItemConsumptionRateIncrease=5;
+                    break;
+                case 6:
+                    skill3NegateItemConsumptionRateIncrease=5;
+                    break;
+                case 7:
+                    skill3NegateItemConsumptionRateIncrease=5;
+                    break;
+            }
+            negateItemConsumptionRate+=skill3NegateItemConsumptionRateIncrease;
+            skillPoints-=1;
+        }
+    }
+
+    public void upgradeS4()
+    {
+        if(skillPoints>0)
+        {
+            skill4++;
+            switch(skill4)
+            {
+                case 1:
+                    skill4SelfHpDamagePercent=0.3;
+                    skill4HpDamagePercent=0.3;
+                    skill4SpCost=50;
+                    break;
+                case 2:
+                    skill4SelfHpDamagePercent=0.35;
+                    skill4HpDamagePercent=0.35;
+                    skill4SpCost=45;
+                    break;
+                case 3:
+                    skill4SelfHpDamagePercent=0.4;
+                    skill4HpDamagePercent=0.4;
+                    skill4SpCost=40;
+                    break;
+                case 4:
+                    skill4SelfHpDamagePercent=0.5;
+                    skill4HpDamagePercent=0.5;
+                    skill4SpCost=35;
+                    break;
+                case 5:
+                    skill4SelfHpDamagePercent=0.6;
+                    skill4HpDamagePercent=0.6;
+                    skill4SpCost=30;
+                    break;
+                case 6:
+                    skill4SelfHpDamagePercent=0.8;
+                    skill4HpDamagePercent=0.8;
+                    skill4SpCost=25;
+                    break;
+                case 7:
+                    skill4SelfHpDamagePercent=1;
+                    skill4HpDamagePercent=1;
+                    skill4SpCost=20;
+                    break;
+            }
+            skillPoints-=1;
+        }
     }
     
     public void act() 

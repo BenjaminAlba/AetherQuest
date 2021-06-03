@@ -8,25 +8,25 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Rengoku extends Character
 {
-    private float holyFlameHpDamagePercent;
+    private double holyFlameHpDamagePercent;
     
     private final String skill1Name="Holy Flame";
     private final int skill1Type=1;
-    private float skill1HolyFlameHpDamagePercentIncrease;
+    private double skill1HolyFlameHpDamagePercentIncrease;
     
     private final String skill2Name="Prayer";
     private final int skill2Type=2;
-    private float skill2AllyHpRecoveryPercent;
+    private double skill2AllyHpRecoveryPercent;
     private int skill2SpCost;
     
     private final String skill3Name="Entreat";
     private final int skill3Type=2;
-    private float skill3AtkMultiplier;
+    private double skill3AtkMultiplier;
     private int skill3SpCost;
     
     private final String skill4Name="Cheer";
     private final int skill4Type=2;
-    private float skill4DefMultiplier;
+    private double skill4DefMultiplier;
     private int skill4SpCost;
     
     public Rengoku()
@@ -57,6 +57,160 @@ public class Rengoku extends Character
         speed=8;
         
         holyFlameHpDamagePercent=0;
+    }
+    
+    public void upgradeS1()
+    {
+        if(skillPoints>0)
+        {
+            skill1++;
+            switch(skill1)
+            {
+                case 1:
+                    skill1HolyFlameHpDamagePercentIncrease=0.02;
+                    break;
+                case 2:
+                    skill1HolyFlameHpDamagePercentIncrease=0.01;
+                    break;
+                case 3:
+                    skill1HolyFlameHpDamagePercentIncrease=0.01;
+                    break;
+                case 4:
+                    skill1HolyFlameHpDamagePercentIncrease=0.01;
+                    break;
+                case 5:
+                    skill1HolyFlameHpDamagePercentIncrease=0.02;
+                    break;
+                case 6:
+                    skill1HolyFlameHpDamagePercentIncrease=0.01;
+                    break;
+                case 7:
+                    skill1HolyFlameHpDamagePercentIncrease=0.02;
+                    break;
+            }
+            holyFlameHpDamagePercent+=skill1HolyFlameHpDamagePercentIncrease;
+            skillPoints-=1;
+        }
+    }
+
+    public void upgradeS2()
+    {
+        if(skillPoints>0)
+        {
+            skill2++;
+            switch(skill2)
+            {
+                case 1:
+                    skill2AllyHpRecoveryPercent=0.1;
+                    skill2SpCost=4;
+                    break;
+                case 2:
+                    skill2AllyHpRecoveryPercent=0.04;
+                    skill2SpCost=6;
+                    break;
+                case 3:
+                    skill2AllyHpRecoveryPercent=0.04;
+                    skill2SpCost=8;
+                    break;
+                case 4:
+                    skill2AllyHpRecoveryPercent=0.07;
+                    skill2SpCost=10;
+                    break;
+                case 5:
+                    skill2AllyHpRecoveryPercent=0.05;
+                    skill2SpCost=14;
+                    break;
+                case 6:
+                    skill2AllyHpRecoveryPercent=0.05;
+                    skill2SpCost=16;
+                    break;
+                case 7:
+                    skill2AllyHpRecoveryPercent=0.05;
+                    skill2SpCost=20;
+                    break;
+            }
+            skillPoints-=1;
+        }
+    }
+
+    public void upgradeS3()
+    {
+        if(skillPoints>0)
+        {
+            skill3++;
+            switch(skill3)
+            {
+                case 1:
+                    skill3AtkMultiplier=0.1;
+                    skill3SpCost=4;
+                    break;
+                case 2:
+                    skill3AtkMultiplier=0.12;
+                    skill3SpCost=6;
+                    break;
+                case 3:
+                    skill3AtkMultiplier=0.14;
+                    skill3SpCost=8;
+                    break;
+                case 4:
+                    skill3AtkMultiplier=0.16;
+                    skill3SpCost=10;
+                    break;
+                case 5:
+                    skill3AtkMultiplier=0.2;
+                    skill3SpCost=12;
+                    break;
+                case 6:
+                    skill3AtkMultiplier=0.25;
+                    skill3SpCost=12;
+                    break;
+                case 7:
+                    skill3AtkMultiplier=0.3;
+                    skill3SpCost=15;
+                    break;
+            }
+            skillPoints-=1;
+        }
+    }
+
+    public void upgradeS4()
+    {
+        if(skillPoints>0)
+        {
+            skill4++;
+            switch(skill4)
+            {
+                case 1:
+                    skill4DefMultiplier=0.1;
+                    skill4SpCost=4;
+                    break;
+                case 2:
+                    skill4DefMultiplier=0.12;
+                    skill4SpCost=6;
+                    break;
+                case 3:
+                    skill4DefMultiplier=0.14;
+                    skill4SpCost=8;
+                    break;
+                case 4:
+                    skill4DefMultiplier=0.16;
+                    skill4SpCost=10;
+                    break;
+                case 5:
+                    skill4DefMultiplier=0.2;
+                    skill4SpCost=12;
+                    break;
+                case 6:
+                    skill4DefMultiplier=0.25;
+                    skill4SpCost=12;
+                    break;
+                case 7:
+                    skill4DefMultiplier=0.3;
+                    skill4SpCost=15;
+                    break;
+            }
+            skillPoints-=1;
+        }
     }
     
     public void act() 

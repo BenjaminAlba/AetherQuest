@@ -11,7 +11,7 @@ public class Nagito extends Character
     private int furyStack;
     private int cooldownTurns;
     private int gutsActivationRate;
-    private float markedEnemyDamageMultiplier;
+    private double markedEnemyDamageMultiplier;
     
     private final String skill1Name="Fleeting Moments";
     private final int skill1Type=1;
@@ -21,12 +21,12 @@ public class Nagito extends Character
     
     private final String skill3Name="Boiling Blood";
     private final int skill3Type=2;
-    private float skill3StackReleaseMultiplier;
+    private double skill3StackReleaseMultiplier;
     private int skill3SpCost;
     
     private final String skill4Name="Deep Breath";
     private final int skill4Type=2;
-    private float skill4HpRecoveryMultiplier;
+    private double skill4HpRecoveryMultiplier;
     private int skill4SpCost;
     
     public Nagito()
@@ -59,7 +59,12 @@ public class Nagito extends Character
         furyStack=0;
         cooldownTurns=0;
         gutsActivationRate=0;
-        markedEnemyDamageMultiplier=0;
+        markedEnemyDamageMultiplier=0.6;
+        
+        skill3StackReleaseMultiplier=0.2;
+        skill3SpCost=0;
+        skill4HpRecoveryMultiplier=0.1;
+        skill4SpCost=0;
     }
     
     public void act() 
