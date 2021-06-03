@@ -14,7 +14,7 @@ public class Character extends Actor
      */
     
     protected int id;
-    protected static final int requiredExp = 20;
+    protected static final int REQUIRED_EXP = 20;
     protected int currentExp;
     protected int lvl;
     protected int skillPoints;
