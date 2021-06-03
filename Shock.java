@@ -1,0 +1,242 @@
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+
+/**
+ * Write a description of class Shock here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+public class Shock extends Character
+{
+    private int gutsActivationRate;
+    private int evadeRate;
+    private double counterHpDamageScalingPercent;
+    
+    private final String skill1Name="OK";
+    private final int skill1Type=1;
+    private int skill1GutsActivationRateIncrease;
+    
+    private final String skill2Name="Vile Feast";
+    private final int skill2Type=2;
+    private double skill2HpRecoveryPercent;
+    private int skill2ActiveTurns;
+    private int skill2SpCost;
+    
+    private final String skill3Name="Sheer Luck";
+    private final int skill3Type=1;
+    private int skill3EvadeRateIncrease;
+    private double skill3CounterHpDamageScalingPercentIncrease;
+    
+    private final String skill4Name="Decoy Tactics";
+    private final int skill4Type=2;
+    private double skill4DamageMitigationPercent;
+    private int skill4ActiveTurns;
+    private int skill4SpCost;
+    
+    public Shock()
+    {
+        id=3;
+        lvl=1;
+        currentExp=0;
+        skillPoints=1;
+        ultCharges=0;
+        skill1=0;
+        skill2=0;
+        skill3=0;
+        skill4=0;
+        healFlag=true;
+        
+        baseHp=18;
+        hp=18;
+        maxHP=18;
+        baseAtk=3;
+        atk=3;
+        hitCount=1;
+        baseDef=3;
+        def=3;
+        ultQuantity=5;
+        maxSP=70;
+        sp=70;
+        baseSpeed=7;
+        speed=7;
+        
+        gutsActivationRate=0;
+        evadeRate=0;
+        counterHpDamageScalingPercent=0;
+    }
+    
+    public void upgradeS1()
+    {
+        if(skillPoints>0)
+        {
+            skill1++;
+            switch(skill1)
+            {
+                case 1:
+                    skill1GutsActivationRateIncrease=3;
+                    break;
+                case 2:
+                    skill1GutsActivationRateIncrease=3;
+                    break;
+                case 3:
+                    skill1GutsActivationRateIncrease=3;
+                    break;
+                case 4:
+                    skill1GutsActivationRateIncrease=3;
+                    break;
+                case 5:
+                    skill1GutsActivationRateIncrease=3;
+                    break;
+                case 6:
+                    skill1GutsActivationRateIncrease=3;
+                    break;
+                case 7:
+                    skill1GutsActivationRateIncrease=3;
+                    break;
+            }
+            gutsActivationRate+=skill1GutsActivationRateIncrease=3;;
+            skillPoints-=1;
+        }
+    }
+
+    public void upgradeS2()
+    {
+        if(skillPoints>0)
+        {
+            skill2++;
+            switch(skill2)
+            {
+                case 1:
+                    skill2HpRecoveryPercent=0.1;
+                    skill2ActiveTurns=2;
+                    skill2SpCost=15;
+                    break;
+                case 2:
+                    skill2HpRecoveryPercent=0.15;
+                    skill2ActiveTurns=2;
+                    skill2SpCost=15;
+                    break;
+                case 3:
+                    skill2HpRecoveryPercent=0.18;
+                    skill2ActiveTurns=2;
+                    skill2SpCost=15;
+                    break;
+                case 4:
+                    skill2HpRecoveryPercent=0.25;
+                    skill2ActiveTurns=2;
+                    skill2SpCost=20;
+                    break;
+                case 5:
+                    skill2HpRecoveryPercent=0.3;
+                    skill2ActiveTurns=2;
+                    skill2SpCost=20;
+                    break;
+                case 6:
+                    skill2HpRecoveryPercent=0.35;
+                    skill2ActiveTurns=2;
+                    skill2SpCost=25;
+                    break;
+                case 7:
+                    skill2HpRecoveryPercent=0.4;
+                    skill2ActiveTurns=3;
+                    skill2SpCost=25;
+                    break;
+            }
+            skillPoints-=1;
+        }
+    }
+
+    public void upgradeS3()
+    {
+        if(skillPoints>0)
+        {
+            skill3++;
+            switch(skill3)
+            {
+                case 1:
+                    skill3EvadeRateIncrease=5;
+                    skill3CounterHpDamageScalingPercentIncrease=0.1;
+                    break;
+                case 2:
+                    skill3EvadeRateIncrease=2;
+                    skill3CounterHpDamageScalingPercentIncrease=0.02;
+                    break;
+                case 3:
+                    skill3EvadeRateIncrease=3;
+                    skill3CounterHpDamageScalingPercentIncrease=0.04;
+                    break;
+                case 4:
+                    skill3EvadeRateIncrease=5;
+                    skill3CounterHpDamageScalingPercentIncrease=0.06;
+                    break;
+                case 5:
+                    skill3EvadeRateIncrease=3;
+                    skill3CounterHpDamageScalingPercentIncrease=0.03;
+                    break;
+                case 6:
+                    skill3EvadeRateIncrease=4;
+                    skill3CounterHpDamageScalingPercentIncrease=0.03;
+                    break;
+                case 7:
+                    skill3EvadeRateIncrease=3;
+                    skill3CounterHpDamageScalingPercentIncrease=0.04;
+                    break;
+            }
+            evadeRate+=skill3EvadeRateIncrease;
+            counterHpDamageScalingPercent+=skill3CounterHpDamageScalingPercentIncrease;
+            skillPoints-=1;
+        }
+    }
+
+    public void upgradeS4()
+    {
+        if(skillPoints>0)
+        {
+            skill4++;
+            switch(skill4)
+            {
+                case 1:
+                    skill4DamageMitigationPercent=0.03;
+                    skill4ActiveTurns=1;
+                    skill4SpCost=10;
+                    break;
+                case 2:
+                    skill4DamageMitigationPercent=0.05;
+                    skill4ActiveTurns=1;
+                    skill4SpCost=10;
+                    break;
+                case 3:
+                    skill4DamageMitigationPercent=0.08;
+                    skill4ActiveTurns=1;
+                    skill4SpCost=10;
+                    break;
+                case 4:
+                    skill4DamageMitigationPercent=0.11;
+                    skill4ActiveTurns=1;
+                    skill4SpCost=10;
+                    break;
+                case 5:
+                    skill4DamageMitigationPercent=0.14;
+                    skill4ActiveTurns=2;
+                    skill4SpCost=14;
+                    break;
+                case 6:
+                    skill4DamageMitigationPercent=0.17;
+                    skill4ActiveTurns=2;
+                    skill4SpCost=14;
+                    break;
+                case 7:
+                    skill4DamageMitigationPercent=0.2;
+                    skill4ActiveTurns=2;
+                    skill4SpCost=14;
+                    break;
+            }
+            skillPoints-=1;
+        }
+    }
+    
+    public void act() 
+    {
+        // Add your action code here.
+    }    
+}
