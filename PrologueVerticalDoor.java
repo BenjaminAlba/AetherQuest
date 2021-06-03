@@ -6,11 +6,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class VerticalDoor extends Door
+public class PrologueVerticalDoor extends Door
 {
     private GreenfootImage verticalDoor = new GreenfootImage("images/prologue_rf/vertical_door.png");
-    private int destiny;
-    public VerticalDoor(int orientation, int destiny){
+    private String destiny;
+    public PrologueVerticalDoor(int orientation, String destiny){
         this.destiny = destiny;
         if(orientation == 1)
             verticalDoor.mirrorVertically();
@@ -19,9 +19,9 @@ public class VerticalDoor extends Door
     
     public void changeRoom(){
         if(getY()<360)
-            Greenfoot.setWorld(new Room(destiny,640,540));
+            Greenfoot.setWorld(new PrologueRoom(destiny,640,540));
         else
-            Greenfoot.setWorld(new Room(destiny,640,90));
+            Greenfoot.setWorld(new PrologueRoom(destiny,640,90));
     }
     
     public void act() 

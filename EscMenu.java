@@ -8,10 +8,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class EscMenu extends World
 {
-    private int currentRoom;
+    private String currentRoom;
     private int characterX;
     private int characterY;
-    public EscMenu(int currentRoom, int characterX, int characterY)
+    public EscMenu(String currentRoom, int characterX, int characterY)
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1280, 720, 1);
@@ -26,7 +26,7 @@ public class EscMenu extends World
     public void act(){
         if(Greenfoot.isKeyDown("escape")){
             Greenfoot.delay(20);
-            Greenfoot.setWorld(new Room(currentRoom,characterX, characterY));
+            Greenfoot.setWorld(new PrologueRoom(currentRoom,characterX, characterY));
         }
     }
 }
