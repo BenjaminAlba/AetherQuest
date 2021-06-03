@@ -1,0 +1,236 @@
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+
+/**
+ * Write a description of class Sokudo here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+public class Sokudo extends Character
+{
+    private double defIgnorePercent;
+
+    private final String skill1Name="Temporal Void";
+    private final int skill1Type=1;
+    private int skill1StacksRequired;
+    private double skill1defIgnorePercentIncrease;
+
+    private final String skill2Name="Chaos Overlimit";
+    private final int skill2Type=2;
+    private int skill2HitCount;
+    private double skill2AtkUsedPercent;
+    private int skill2SpCost;
+
+    private final String skill3Name="Warp Strike";
+    private final int skill3Type=1;
+    private int skill3HitCount;
+    private double skill3AtkUsedPercent;
+
+    private final String skill4Name="Static Charge";
+    private final int skill4Type=2;
+    private double skill4DamageMultiplier;
+    private int skill4SpCost;
+
+    public Sokudo()
+    {
+        id=1;
+        lvl=1;
+        currentExp=0;
+        skillPoints=1;
+        ultCharges=0;
+        skill1=0;
+        skill2=0;
+        skill3=0;
+        skill4=0;
+        healFlag=true;
+
+        baseHp=10;
+        hp=10;
+        maxHP=10;
+        baseAtk=4;
+        atk=4;
+        hitCount=2;
+        baseDef=2;
+        def=2;
+        ultQuantity=5;
+        maxSP=90;
+        sp=90;
+        baseSpeed=10;
+        speed=10;
+
+        defIgnorePercent=0;
+    }
+
+    public void upgradeS1()
+    {
+        if(skillPoints>0)
+        {
+            skill1++;
+            switch(skill1)
+            {
+                case 1:
+                skill1StacksRequired=8;
+                skill1defIgnorePercentIncrease=0.05;
+                break;
+                case 2:
+                skill1StacksRequired=7;
+                skill1defIgnorePercentIncrease=0;
+                break;
+                case 3:
+                skill1StacksRequired=7;
+                skill1defIgnorePercentIncrease=0.05;
+                break;
+                case 4:
+                skill1StacksRequired=6;
+                skill1defIgnorePercentIncrease=0.05;
+                break;
+                case 5:
+                skill1StacksRequired=6;
+                skill1defIgnorePercentIncrease=0;
+                break;
+                case 6:
+                skill1StacksRequired=6;
+                skill1defIgnorePercentIncrease=0.05;
+                break;
+                case 7:
+                skill1StacksRequired=5;
+                skill1defIgnorePercentIncrease=0;
+                break;
+            }
+            defIgnorePercent+=skill1defIgnorePercentIncrease;
+            skillPoints-=1;
+        }
+    }
+
+    public void upgradeS2()
+    {
+        if(skillPoints>0)
+        {
+            skill2++;
+            switch(skill2)
+            {
+                case 1:
+                skill2HitCount=1;
+                skill2AtkUsedPercent=0.8;
+                skill2SpCost=35;
+                break;
+                case 2:
+                skill2HitCount=1;
+                skill2AtkUsedPercent=1;
+                skill2SpCost=35;
+                break;
+                case 3:
+                skill2HitCount=1;
+                skill2AtkUsedPercent=1.1;
+                skill2SpCost=35;
+                break;
+                case 4:
+                skill2HitCount=1;
+                skill2AtkUsedPercent=1.2;
+                skill2SpCost=35;
+                break;
+                case 5:
+                skill2HitCount=2;
+                skill2AtkUsedPercent=1.3;
+                skill2SpCost=30;
+                break;
+                case 6:
+                skill2HitCount=2;
+                skill2AtkUsedPercent=1.4;
+                skill2SpCost=30;
+                break;
+                case 7:
+                skill2HitCount=2;
+                skill2AtkUsedPercent=1.5;
+                skill2SpCost=30;
+                break;
+            }
+            skillPoints-=1;
+        }
+    }
+
+    public void upgradeS3()
+    {
+        if(skillPoints>0)
+        {
+            skill3++;
+            switch(skill3)
+            {
+                case 1:
+                skill3HitCount=1;
+                skill3AtkUsedPercent=0.4;
+                break;
+                case 2:
+                skill3HitCount=1;
+                skill3AtkUsedPercent=0.42;
+                break;
+                case 3:
+                skill3HitCount=1;
+                skill3AtkUsedPercent=0.43;
+                break;
+                case 4:
+                skill3HitCount=1;
+                skill3AtkUsedPercent=0.44;
+                break;
+                case 5:
+                skill3HitCount=1;
+                skill3AtkUsedPercent=0.46;
+                break;
+                case 6:
+                skill3HitCount=1;
+                skill3AtkUsedPercent=0.48;
+                break;
+                case 7:
+                skill3HitCount=2;
+                skill3AtkUsedPercent=0.5;
+                break;
+            }
+            skillPoints-=1;
+        }
+    }
+
+    public void upgradeS4()
+    {
+        if(skillPoints>0)
+        {
+            skill4++;
+            switch(skill4)
+            {
+                case 1:
+                skill4DamageMultiplier=0.2;
+                skill4SpCost=5;
+                break;
+                case 2:
+                skill4DamageMultiplier=0.3;
+                skill4SpCost=5;
+                break;
+                case 3:
+                skill4DamageMultiplier=0.4;
+                skill4SpCost=5;
+                break;
+                case 4:
+                skill4DamageMultiplier=0.5;
+                skill4SpCost=10;
+                break;
+                case 5:
+                skill4DamageMultiplier=1;
+                skill4SpCost=10;
+                break;
+                case 6:
+                skill4DamageMultiplier=1.5;
+                skill4SpCost=10;
+                break;
+                case 7:
+                skill4DamageMultiplier=2;
+                skill4SpCost=10;
+                break;
+            }
+            skillPoints-=1;
+        }
+    }
+
+    public void act() 
+    {
+        // Add your action code here.
+    }    
+}

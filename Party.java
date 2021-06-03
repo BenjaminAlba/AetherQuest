@@ -15,7 +15,7 @@ public class Party extends Actor
     private Character member3;
     private Character member4;
     private int money;
-    private int inventory[] = new int[12];
+    private int[] inventory = new int[12];
     
     private Party(){   
     }

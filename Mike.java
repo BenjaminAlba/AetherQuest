@@ -1,0 +1,221 @@
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+
+/**
+ * Write a description of class M1K3 here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+public class Mike extends Character
+{
+    private double defScalingPercent;
+    
+    private final String skill1Name="King's Shield";
+    private final int skill1Type=2;
+    private double skill1DamageTakenMultiplier;
+    private int skill1ActiveTurns;
+    private int skill1SpCost;
+    
+    private final String skill2Name="All Eyez On Me";
+    private final int skill2Type=2;
+    private int skill2ActiveTurns;
+    private int skill2SpCost;
+    
+    private final String skill3Name="Shield Bash";
+    private final int skill3Type=1;
+    private double skill3DefScalingPercentIncrease;
+    
+    private final String skill4Name="Fighters Physique";
+    private final int skill4Type=1;
+    private double skill4BaseSpdIncrease;
+    
+    public Mike()
+    {
+        id=4;
+        lvl=1;
+        currentExp=0;
+        skillPoints=1;
+        ultCharges=0;
+        skill1=0;
+        skill2=0;
+        skill3=0;
+        skill4=0;
+        healFlag=true;
+        
+        baseHp=16;
+        hp=16;
+        maxHP=16;
+        baseAtk=3;
+        atk=3;
+        hitCount=1;
+        baseDef=4;
+        def=4;
+        ultQuantity=5;
+        maxSP=70;
+        sp=70;
+        baseSpeed=3;
+        speed=3;
+        
+        defScalingPercent=0;
+    }
+    
+    public void upgradeS1()
+    {
+        if(skillPoints>0)
+        {
+            skill1++;
+            switch(skill1)
+            {
+                case 1:
+                    skill1DamageTakenMultiplier=0.5;
+                    skill1ActiveTurns=1;
+                    skill1SpCost=10;
+                    break;
+                case 2:
+                    skill1DamageTakenMultiplier=0.45;
+                    skill1ActiveTurns=1;
+                    skill1SpCost=10;
+                    break;
+                case 3:
+                    skill1DamageTakenMultiplier=0.4;
+                    skill1ActiveTurns=1;
+                    skill1SpCost=10;
+                    break;
+                case 4:
+                    skill1DamageTakenMultiplier=0.35;
+                    skill1ActiveTurns=1;
+                    skill1SpCost=15;
+                    break;
+                case 5:
+                    skill1DamageTakenMultiplier=0.3;
+                    skill1ActiveTurns=1;
+                    skill1SpCost=15;
+                    break;
+                case 6:
+                    skill1DamageTakenMultiplier=0.25;
+                    skill1ActiveTurns=1;
+                    skill1SpCost=20;
+                    break;
+                case 7:
+                    skill1DamageTakenMultiplier=0.2;
+                    skill1ActiveTurns=1;
+                    skill1SpCost=20;
+                    break;
+            }
+            skillPoints-=1;
+        }
+    }
+
+    public void upgradeS2()
+    {
+        if(skillPoints>0)
+        {
+            skill2++;
+            switch(skill2)
+            {
+                case 1:
+                    skill2ActiveTurns=1;
+                    skill2SpCost=7;
+                    break;
+                case 2:
+                    skill2ActiveTurns=1;
+                    skill2SpCost=7;
+                    break;
+                case 3:
+                    skill2ActiveTurns=1;
+                    skill2SpCost=7;
+                    break;
+                case 4:
+                    skill2ActiveTurns=2;
+                    skill2SpCost=10;
+                    break;
+                case 5:
+                    skill2ActiveTurns=2;
+                    skill2SpCost=10;
+                    break;
+                case 6:
+                    skill2ActiveTurns=2;
+                    skill2SpCost=10;
+                    break;
+                case 7:
+                    skill2ActiveTurns=3;
+                    skill2SpCost=14;
+                    break;
+            }
+            skillPoints-=1;
+        }
+    }
+
+    public void upgradeS3()
+    {
+        if(skillPoints>0)
+        {
+            skill3++;
+            switch(skill3)
+            {
+                case 1:
+                    skill3DefScalingPercentIncrease=0.1;
+                    break;
+                case 2:
+                    skill3DefScalingPercentIncrease=0.15;
+                    break;
+                case 3:
+                    skill3DefScalingPercentIncrease=0.15;
+                    break;
+                case 4:
+                    skill3DefScalingPercentIncrease=0.15;
+                    break;
+                case 5:
+                    skill3DefScalingPercentIncrease=0.15;
+                    break;
+                case 6:
+                    skill3DefScalingPercentIncrease=0.15;
+                    break;
+                case 7:
+                    skill3DefScalingPercentIncrease=0.15;
+                    break;
+            }
+            defScalingPercent+=skill3DefScalingPercentIncrease;
+            skillPoints-=1;
+        }
+    }
+
+    public void upgradeS4()
+    {
+        if(skillPoints>0)
+        {
+            skill4++;
+            switch(skill4)
+            {
+                case 1:
+                    skill4BaseSpdIncrease=0.2;
+                    break;
+                case 2:
+                    skill4BaseSpdIncrease=0.1;
+                    break;
+                case 3:
+                    skill4BaseSpdIncrease=0.1;
+                    break;
+                case 4:
+                    skill4BaseSpdIncrease=0.2;
+                    break;
+                case 5:
+                    skill4BaseSpdIncrease=0.2;
+                    break;
+                case 6:
+                    skill4BaseSpdIncrease=0.2;
+                    break;
+                case 7:
+                    skill4BaseSpdIncrease=0.2;
+                    break;
+            }
+            baseSpeed+=skill4BaseSpdIncrease;
+            skillPoints-=1;
+        }
+    }
+    
+    public void act() 
+    {
+        // Add your action code here.
+    }    
+}
