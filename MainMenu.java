@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MainMenu extends World implements Observer
 {
-    private GreenfootSound menuMusic = new GreenfootSound("sounds/menu.mp3");
+    private static GreenfootSound menuMusic = new GreenfootSound("sounds/menu.mp3");
     private Image[] gears = new Image[8];
     private GreenfootSound gearTurn = new GreenfootSound("sounds/ticking_clock.mp3");
     private int counter = 0;
@@ -31,7 +31,7 @@ public class MainMenu extends World implements Observer
     }
     
     public void eventOcurred(){
-        menuMusic.stop();
+        MainMenu.menuMusic.stop();
     }
 
     public void addGears(){
