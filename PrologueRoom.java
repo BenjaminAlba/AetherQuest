@@ -90,17 +90,45 @@ public class PrologueRoom extends World
                     linea = bufferedRoomReader.readLine();
                     addObject(new PrologueHorizontalDoor(RIGHT,linea),rightDoorX,horizontalDoorY);
                     break;
-                    case "characterUp":
+                    case "Sokudo":
+                    CharacterImage sokudo = new SokudoImage();
+                    addObject(sokudo,640,360);
                     linea = bufferedRoomReader.readLine();
-                    Image characterUp = new Image("images/character_sprites/"+linea+"/"+linea+"_downidle.png");
-                    characterUp.scale(100,100);
-                    addObject(characterUp,640,360);
                     break;
-                    case "characterDown":
+                    case "Light":
+                    CharacterImage light = new LightImage();
+                    addObject(light,640,360);
                     linea = bufferedRoomReader.readLine();
-                    Image characterDown = new Image("images/character_sprites/"+linea+"/"+linea+"_upidle.png");
-                    characterDown.scale(100,100);
-                    addObject(characterDown,640,360);
+                    break;
+                    case "Shock":
+                    CharacterImage shock = new ShockImage();
+                    addObject(shock,640,360);
+                    linea = bufferedRoomReader.readLine();
+                    break;
+                    case "Mike":
+                    CharacterImage mike = new MikeImage();
+                    addObject(mike,640,360);
+                    linea = bufferedRoomReader.readLine();
+                    break;
+                    case "Rengoku":
+                    CharacterImage rengoku = new RengokuImage();
+                    addObject(rengoku,640,360);
+                    linea = bufferedRoomReader.readLine();
+                    break;
+                    case "KingHermes":
+                    CharacterImage kingHermes = new KingHermesImage();
+                    addObject(kingHermes,640,360);
+                    linea = bufferedRoomReader.readLine();
+                    break;
+                    case "Luis":
+                    CharacterImage luis = new LuisImage();
+                    addObject(luis,640,360);
+                    linea = bufferedRoomReader.readLine();
+                    break;
+                    case "Nagito":
+                    CharacterImage nagito = new NagitoImage();
+                    addObject(nagito,640,360);
+                    linea = bufferedRoomReader.readLine();
                     break;
                     default:
                     linea = bufferedRoomReader.readLine();

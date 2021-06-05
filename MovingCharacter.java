@@ -182,10 +182,9 @@ public class MovingCharacter extends Actor
     }
     
     void characterInteract(){
-        if(Greenfoot.isKeyDown("enter") && isTouching(Image.class)){
-            World room = getWorld();
-            PrologueRoom actualRoom = (PrologueRoom)room;
-            actualRoom.sokudoRecruitScene();
+        if(Greenfoot.isKeyDown("enter") && isTouching(CharacterImage.class)){
+            CharacterImage character = (CharacterImage)getOneIntersectingObject(CharacterImage.class);
+            character.recruitScene();
         }
     }
     
@@ -194,7 +193,7 @@ public class MovingCharacter extends Actor
             Door door = (Door)getOneObjectAtOffset(x,y,Door.class);
             door.changeRoom();
         }
-        if(getOneObjectAtOffset(x,y,Image.class) != null){
+        if(getOneObjectAtOffset(x,y,CharacterImage.class) != null){
             speed = 0;
         }
     }
