@@ -9,6 +9,12 @@ import java.io.*;
  */
 public class PrologueRoom extends World 
 {
+    public static final int LEFT = 1;
+    public static final int RIGHT = 0;
+    public static final int UP = 0;
+    public static final int DOWN = 1;
+    private static int mapIconX = 0;
+    private static int mapIconY = 0;
     private String id;
     private int upDoorY = 70;
     private int downDoorY = 650;
@@ -18,10 +24,26 @@ public class PrologueRoom extends World
     private int horizontalDoorY = 360;
     private String characterId = "00";
     private MovingCharacter unknown;
-    private ShortWall sh1 = new ShortWall(0);
-    private ShortWall sh2 = new ShortWall(1);
-    private LongWall lh1 = new LongWall(0);
-    private LongWall lh2 = new LongWall(1);
+    private ShortWall sh1 = new ShortWall(LEFT);
+    private ShortWall sh2 = new ShortWall(RIGHT);
+    private LongWall lh1 = new LongWall(UP);
+    private LongWall lh2 = new LongWall(DOWN);
+    private Image map = new Image("images/maps/map_prologue.png");
+    private Image mapIcon = new Image("images/maps/map_icon.png");
+    private Image textBox;
+    private GreenfootSound prologueIntro;
+    private GreenfootSound openSfx;
+    private GreenfootSound staticSfx;
+    private GreenfootSound buttonPress;
+    private DialogPortrait portrait;
+    private DialogHeader header;
+    private DialogLine line1;
+    private DialogLine line2;
+    private DialogLine line3;
+    private DialogIcon icon;
+    private DialogLocation locationDisplay;
+    private Party party = Party.getInstance();
+    
     public PrologueRoom(String id, int characterX, int characterY)
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
@@ -33,7 +55,17 @@ public class PrologueRoom extends World
         addObject(lh2, 640, 660);
         addObject(sh1, 70, 360);
         addObject(sh2, 1210, 360);
+        textBox = new Image("images/dialog/dialog_box.png");
+        icon = new DialogIcon();
+        prologueIntro = new GreenfootSound("sounds/chapterStart.mp3");
+        buttonPress = new GreenfootSound("sounds/button_click.mp3");
+        openSfx = new GreenfootSound("sounds/open_sfx.mp3");
+        staticSfx = new GreenfootSound("sounds/static_sfx.mp3");
         this.id = id;
+        if(id.equals("01")){
+            PrologueRoom.mapIconX = 0;
+            PrologueRoom.mapIconY = 0;
+        }
         try{
             FileReader roomReader = new FileReader(room);
             BufferedReader bufferedRoomReader= new BufferedReader(roomReader);
@@ -44,19 +76,31 @@ public class PrologueRoom extends World
                 switch(linea){
                     case "upDoor":
                     linea = bufferedRoomReader.readLine();
-                    addObject(new PrologueVerticalDoor(0,linea),verticalDoorX,upDoorY);
+                    addObject(new PrologueVerticalDoor(UP,linea),verticalDoorX,upDoorY);
                     break;
                     case "downDoor":
                     linea = bufferedRoomReader.readLine();
-                    addObject(new PrologueVerticalDoor(1,linea),verticalDoorX,downDoorY);
+                    addObject(new PrologueVerticalDoor(DOWN,linea),verticalDoorX,downDoorY);
                     break;
                     case "leftDoor":
                     linea = bufferedRoomReader.readLine();
-                    addObject(new PrologueHorizontalDoor(1,linea),leftDoorX,horizontalDoorY);
+                    addObject(new PrologueHorizontalDoor(LEFT,linea),leftDoorX,horizontalDoorY);
                     break;
                     case "rightDoor":
                     linea = bufferedRoomReader.readLine();
-                    addObject(new PrologueHorizontalDoor(0,linea),rightDoorX,horizontalDoorY);
+                    addObject(new PrologueHorizontalDoor(RIGHT,linea),rightDoorX,horizontalDoorY);
+                    break;
+                    case "characterUp":
+                    linea = bufferedRoomReader.readLine();
+                    Image characterUp = new Image("images/character_sprites/"+linea+"/"+linea+"_downidle.png");
+                    characterUp.scale(100,100);
+                    addObject(characterUp,640,360);
+                    break;
+                    case "characterDown":
+                    linea = bufferedRoomReader.readLine();
+                    Image characterDown = new Image("images/character_sprites/"+linea+"/"+linea+"_upidle.png");
+                    characterDown.scale(100,100);
+                    addObject(characterDown,640,360);
                     break;
                     default:
                     linea = bufferedRoomReader.readLine();
@@ -68,188 +112,110 @@ public class PrologueRoom extends World
         catch(IOException exception){
             exception.printStackTrace();
         }
-
-        /*switch(id){
-        case 1:
-        addObject(new HorizontalDoor(0,2),rightDoorX,horizontalDoorY);
-        break;
-        case 2:
-        addObject(new HorizontalDoor(0,3),rightDoorX,horizontalDoorY);
-        addObject(new HorizontalDoor(1,1),leftDoorX,horizontalDoorY);
-        break;
-        case 3:
-        addObject(new HorizontalDoor(1,2),leftDoorX,horizontalDoorY);
-        addObject(new VerticalDoor(0,9),verticalDoorX,upDoorY);
-        addObject(new VerticalDoor(1,18),verticalDoorX,downDoorY);
-        break;
-        case 4:
-        addObject(new VerticalDoor(0,12),verticalDoorX,upDoorY);
-        addObject(new VerticalDoor(1,21),verticalDoorX,downDoorY);
-        break;
-        case 5:
-        addObject(new VerticalDoor(0,14),verticalDoorX,upDoorY);
-        addObject(new VerticalDoor(1,23),verticalDoorX,downDoorY);
-        break;
-        case 6:
-        addObject(new VerticalDoor(0,17),verticalDoorX,upDoorY);
-        addObject(new VerticalDoor(1,26),verticalDoorX,downDoorY);
-        addObject(new HorizontalDoor(0,7),rightDoorX,horizontalDoorY);
-        break;
-        case 7:
-        addObject(new HorizontalDoor(1,6),leftDoorX,horizontalDoorY);
-        addObject(new HorizontalDoor(0,8),rightDoorX,horizontalDoorY);
-        break;
-        case 8:
-        addObject(new HorizontalDoor(1,7),leftDoorX,horizontalDoorY);
-        break;
-        case 9:
-        addObject(new HorizontalDoor(0,10),rightDoorX,horizontalDoorY);
-        addObject(new VerticalDoor(1,3),verticalDoorX,downDoorY);
-        break;
-        case 10:
-        addObject(new VerticalDoor(0,27),verticalDoorX,upDoorY);
-        addObject(new HorizontalDoor(1,9),leftDoorX,horizontalDoorY);
-        addObject(new HorizontalDoor(0,11),rightDoorX,horizontalDoorY);
-        break;
-        case 11:
-        addObject(new HorizontalDoor(1,10),leftDoorX,horizontalDoorY);
-        addObject(new HorizontalDoor(0,12),rightDoorX,horizontalDoorY);
-        break;
-        case 12:
-        addObject(new HorizontalDoor(1,11),leftDoorX,horizontalDoorY);
-        addObject(new HorizontalDoor(0,13),rightDoorX,horizontalDoorY);
-        addObject(new VerticalDoor(0,28),verticalDoorX,upDoorY);
-        addObject(new VerticalDoor(1,4),verticalDoorX,downDoorY);
-        break;
-        case 13:
-        addObject(new HorizontalDoor(1,12),leftDoorX,horizontalDoorY);
-        addObject(new HorizontalDoor(0,14),rightDoorX,horizontalDoorY);
-        break;
-        case 14:
-        addObject(new HorizontalDoor(1,13),leftDoorX,horizontalDoorY);
-        addObject(new HorizontalDoor(0,15),rightDoorX,horizontalDoorY);
-        addObject(new VerticalDoor(0,29),verticalDoorX,upDoorY);
-        addObject(new VerticalDoor(1,5),verticalDoorX,downDoorY);
-        break;
-        case 15:
-        addObject(new HorizontalDoor(1,14),leftDoorX,horizontalDoorY);
-        addObject(new HorizontalDoor(0,16),rightDoorX,horizontalDoorY);
-        break;
-        case 16:
-        addObject(new HorizontalDoor(1,15),leftDoorX,horizontalDoorY);
-        addObject(new HorizontalDoor(0,17),rightDoorX,horizontalDoorY);
-        addObject(new VerticalDoor(0,30),verticalDoorX,upDoorY);
-        break;
-        case 17:
-        addObject(new HorizontalDoor(1,16),leftDoorX,horizontalDoorY);
-        addObject(new VerticalDoor(1,6),verticalDoorX,downDoorY);
-        break;
-        case 18:
-        addObject(new HorizontalDoor(0,19),rightDoorX,horizontalDoorY);
-        addObject(new VerticalDoor(0,3),verticalDoorX,upDoorY);
-        break;
-        case 19:
-        addObject(new HorizontalDoor(1,18),leftDoorX,horizontalDoorY);
-        addObject(new HorizontalDoor(0,20),rightDoorX,horizontalDoorY);
-        addObject(new VerticalDoor(1,31),verticalDoorX,downDoorY);
-        break;
-        case 20:
-        addObject(new HorizontalDoor(1,19),leftDoorX,horizontalDoorY);
-        addObject(new HorizontalDoor(0,21),rightDoorX,horizontalDoorY);
-        break;
-        case 21:
-        addObject(new HorizontalDoor(1,22),leftDoorX,horizontalDoorY);
-        addObject(new HorizontalDoor(0,20),rightDoorX,horizontalDoorY);
-        addObject(new VerticalDoor(1,32),verticalDoorX,downDoorY);
-        addObject(new VerticalDoor(0,4),verticalDoorX,upDoorY);
-        break;
-        case 22:
-        addObject(new HorizontalDoor(1,23),leftDoorX,horizontalDoorY);
-        addObject(new HorizontalDoor(0,21),rightDoorX,horizontalDoorY);
-        break;
-        case 23:
-        addObject(new HorizontalDoor(1,24),leftDoorX,horizontalDoorY);
-        addObject(new HorizontalDoor(0,22),rightDoorX,horizontalDoorY);
-        addObject(new VerticalDoor(1,33),verticalDoorX,downDoorY);
-        addObject(new VerticalDoor(0,5),verticalDoorX,upDoorY);
-        break;
-        case 24:
-        addObject(new HorizontalDoor(1,25),leftDoorX,horizontalDoorY);
-        addObject(new HorizontalDoor(0,23),rightDoorX,horizontalDoorY);
-        break;
-        case 25:
-        addObject(new HorizontalDoor(1,26),leftDoorX,horizontalDoorY);
-        addObject(new HorizontalDoor(0,24),rightDoorX,horizontalDoorY);
-        break;
-        case 26:
-        addObject(new HorizontalDoor(1,25),leftDoorX,horizontalDoorY);
-        addObject(new VerticalDoor(0,6),verticalDoorX,upDoorY);
-        break;
-        case 27:
-        addObject(new VerticalDoor(0,35),verticalDoorX,upDoorY);
-        addObject(new VerticalDoor(1,10),verticalDoorX,downDoorY);
-        break;
-        case 28:
-        addObject(new VerticalDoor(0,36),verticalDoorX,upDoorY);
-        addObject(new VerticalDoor(1,12),verticalDoorX,downDoorY);
-        break;
-        case 29:
-        addObject(new VerticalDoor(0,37),verticalDoorX,upDoorY);
-        addObject(new VerticalDoor(1,14),verticalDoorX,downDoorY);
-        break;
-        case 30:
-        addObject(new VerticalDoor(0,38),verticalDoorX,upDoorY);
-        addObject(new VerticalDoor(1,16),verticalDoorX,downDoorY);
-        break;
-        case 31:
-        addObject(new VerticalDoor(0,19),verticalDoorX,upDoorY);
-        addObject(new VerticalDoor(1,39),verticalDoorX,downDoorY);
-        break;
-        case 32:
-        addObject(new VerticalDoor(0,21),verticalDoorX,upDoorY);
-        addObject(new VerticalDoor(1,40),verticalDoorX,downDoorY);
-        break;
-        case 33:
-        addObject(new VerticalDoor(0,23),verticalDoorX,upDoorY);
-        addObject(new VerticalDoor(1,41),verticalDoorX,downDoorY);
-        break;
-        case 34:
-        addObject(new VerticalDoor(0,25),verticalDoorX,upDoorY);
-        addObject(new VerticalDoor(1,42),verticalDoorX,downDoorY);
-        break;
-        case 35:
-        addObject(new VerticalDoor(1,27),verticalDoorX,downDoorY);
-        break;
-        case 36:
-        addObject(new VerticalDoor(1,28),verticalDoorX,downDoorY);
-        break;
-        case 37:
-        addObject(new VerticalDoor(1,29),verticalDoorX,downDoorY);
-        break;
-        case 38:
-        addObject(new VerticalDoor(1,30),verticalDoorX,downDoorY);
-        break;
-        case 39:
-        addObject(new VerticalDoor(0,31),verticalDoorX,upDoorY);
-        break;
-        case 40:
-        addObject(new VerticalDoor(0,32),verticalDoorX,upDoorY);
-        break;
-        case 41:
-        addObject(new VerticalDoor(0,33),verticalDoorX,upDoorY);
-        break;
-        case 42:
-        addObject(new VerticalDoor(0,34),verticalDoorX,upDoorY);
-        break;
-        }*/
-
         addObject(unknown, characterX, characterY);
+        map.setTransparency(100);
+        addObject(map,145,135);
+        mapIcon.setTransparency(200);
+        addObject(mapIcon,85 + 10 * mapIconX,135 + 10 * mapIconY);
     }
 
+    public static void addMapIconX(int number){
+        mapIconX+=number;
+    }
+
+    public static void addMapIconY(int number){
+        mapIconY+=number;
+    }
+    
     public void act(){
         if(Greenfoot.isKeyDown("escape")){
             Greenfoot.delay(20);
             Greenfoot.setWorld(new EscMenu(id,unknown.getX(),unknown.getY()));
+        }
+    }
+    
+    public void sokudoRecruitScene()
+    {
+        //if(!party.getPartyFlags(1))
+       // {
+            dialogChunk("¿Quién se acerca?","Déjame verte.","Qué extraño...",0);
+            dialogChunk("Dime qué quieres.","[..]","[..]",0);
+            dialogChunk("Entiendo.","No queda más remedio que ayudarte.","Sólo prométeme qué no cambiarás mis recuerdos.",0);
+            dialogChunk("¡Mi magia nos sacará de aquí!","[..]","[..]",0);
+
+            //boton de si o no
+        //}
+        //else
+        //{
+
+        //}
+        //party.setPartyFlags(1);
+    }
+    
+    public void waitForInput()
+    {
+        Greenfoot.delay(20);
+        while(!Greenfoot.isKeyDown("enter"));
+        buttonPress.play(); 
+        Greenfoot.delay(20);
+    }
+
+    public void dialogChunk(String line1, String line2, String line3, int character)
+    {
+        addObject(textBox,644,549);
+        addObject(portrait = new DialogPortrait(character),380,558);
+        addObject(header = new DialogHeader(character),350,460);
+
+        addObject(this.line1 = new DialogLine(line1,1),350,460);
+        if(line2=="")
+        {
+            addObject(icon,973,634);
+            waitForInput();
+        }
+        else if(line2!="")
+        {
+            waitForInput();
+            addObject(this.line2 = new DialogLine(line2,2),350,460);
+            if(line3=="")
+            {
+                addObject(icon,973,634);
+                waitForInput();
+            }else
+            {
+                waitForInput();
+            }
+        }
+        if(line3!="")
+        {
+            addObject(this.line3 = new DialogLine(line3,3),350,460);
+            addObject(icon,973,634);
+            waitForInput();
+        }
+
+        removeObject(this.line1);
+
+        if(line2!="")
+        {
+            removeObject(this.line2);
+        }
+        if(line3!="")
+        {
+            removeObject(this.line3);
+        }
+        removeObject(textBox);
+        removeObject(portrait);
+        removeObject(header);
+        removeObject(icon);
+    }
+
+    public void showLocation(String location, boolean displayStatus)
+    {
+        if(displayStatus==true)
+        {
+            addObject(locationDisplay = new DialogLocation(location),350,460);
+        }else
+        {
+            removeObject(locationDisplay);
         }
     }
 }

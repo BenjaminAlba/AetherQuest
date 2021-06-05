@@ -25,9 +25,9 @@ public class MainMenu extends World implements Observer
         addGears();
         addObject(new Image("images/menu/menu_01.png"),640,360);
         addObject(new Image("images/menu/menu_02.png"),640,360);
-        addObject(new Continue(),640,360);
-        addObject(new NewGame(this),640,360);
-        addObject(new Help(),640,360);
+        addObject(new ContinueButton(),640,360);
+        addObject(new NewGameButton(this),640,360);
+        addObject(new HelpButton(),640,360);
     }
     
     public void eventOcurred(){

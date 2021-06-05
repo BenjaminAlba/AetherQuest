@@ -213,6 +213,19 @@ public class Rengoku extends Character
         }
     }
     
+    public String getSkill1Name(){
+        return skill1Name;
+    }
+    public String getSkill2Name(){
+        return skill2Name;
+    }
+    public String getSkill3Name(){
+        return skill3Name;
+    }
+    public String getSkill4Name(){
+        return skill4Name;
+    }
+    
     public void act() 
     {
         // Add your action code here.

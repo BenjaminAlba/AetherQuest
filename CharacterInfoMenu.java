@@ -18,6 +18,6 @@ public class CharacterInfoMenu extends World
         super(1280, 720, 1); 
         setBackground("images/menu/background.png");
         addObject(new Image("images/menu_help_characters_info/menu_help_characters_info_0" + id + ".png"),640,360);
-        addObject(new LilReturn(1),640,360);
+        addObject(new LilReturnButton(1),640,360);
     }
 }

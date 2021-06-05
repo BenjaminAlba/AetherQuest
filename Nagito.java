@@ -31,7 +31,7 @@ public class Nagito extends Character
     
     public Nagito()
     {
-        id=7;
+        id=8;
         lvl=1;
         currentExp=0;
         skillPoints=0;
@@ -65,6 +65,19 @@ public class Nagito extends Character
         skill3SpCost=0;
         skill4HpRecoveryMultiplier=0.1;
         skill4SpCost=0;
+    }
+    
+    public String getSkill1Name(){
+        return skill1Name;
+    }
+    public String getSkill2Name(){
+        return skill2Name;
+    }
+    public String getSkill3Name(){
+        return skill3Name;
+    }
+    public String getSkill4Name(){
+        return skill4Name;
     }
     
     public void act() 

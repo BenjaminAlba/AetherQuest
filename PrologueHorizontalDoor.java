@@ -8,21 +8,25 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class PrologueHorizontalDoor extends Door
 {
+    public static final int LEFT = 1;
     private GreenfootImage horizontalDoor = new GreenfootImage("images/prologue_rf/horizontal_door.png");
-    private String destiny;
-    public PrologueHorizontalDoor(int orientation, String destiny){
-        this.destiny = destiny;
-        if(orientation == 1)
+    private String destination;
+    public PrologueHorizontalDoor(int orientation, String destination){
+        this.destination = destination;
+        if(orientation == LEFT)
             horizontalDoor.mirrorHorizontally();
         setImage(horizontalDoor);
     }
 
     public void changeRoom(){
-        if(getX()>640)
-            Greenfoot.setWorld(new PrologueRoom(destiny,165,360));
-        else
-            Greenfoot.setWorld(new PrologueRoom(destiny,1115,360));
-
+        if(getX()>640){
+            PrologueRoom.addMapIconX(1);
+            Greenfoot.setWorld(new PrologueRoom(destination,165,360));
+        }
+        else{
+            PrologueRoom.addMapIconX(-1);
+            Greenfoot.setWorld(new PrologueRoom(destination,1115,360));
+        }
     }
 
     public void act() 

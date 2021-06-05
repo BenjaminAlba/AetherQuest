@@ -18,9 +18,9 @@ public class HelpMenu extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1280, 720, 1);
         setBackground("images/menu/background.png");
-        addObject(new HowToPlay(),640,360);
-        addObject(new Characters(), 640, 360);
-        addObject(new Return(0), 640, 360);
+        addObject(new HowToPlayButton(),640,360);
+        addObject(new CharactersButton(), 640, 360);
+        addObject(new ReturnButton(0), 640, 360);
         
     }
 }

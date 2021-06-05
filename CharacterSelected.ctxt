@@ -1,8 +1,0 @@
-#BlueJ class context
-comment0.target=CharacterSelected
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ CharacterSelected\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=name\ x\ y\ id
-comment1.target=CharacterSelected(java.lang.String,\ int,\ int,\ int)
-comment2.params=
-comment2.target=void\ act()
-numComments=3

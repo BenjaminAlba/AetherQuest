@@ -12,6 +12,16 @@ public class EscShopButton extends Button
     private GreenfootImage state0 = new GreenfootImage("images/ESC_menu/button_esc_menu_itemshop01.png");
     private GreenfootImage state1 = new GreenfootImage("images/ESC_menu/button_esc_menu_itemshop02.png");
     private GreenfootSound buttonClick = new GreenfootSound("sounds/button_click.mp3");
+    private String currentRoom;
+    private int characterX;
+    private int characterY;
+    
+    public EscShopButton(String currentRoom, int characterX,int characterY){
+        this.currentRoom = currentRoom;
+        this.characterX = characterX;
+        this.characterY = characterY;
+    }
+    
     public void act() 
     {
         changeState();   

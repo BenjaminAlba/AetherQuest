@@ -8,12 +8,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class LongWall extends Wall
 {
+    public static final int DOWN = 1;
     private GreenfootImage longWall;
-    
     public LongWall(int orientation)
     {
         longWall = new GreenfootImage("images/prologue_rf/longwall.png");
-        if(orientation==1)
+        if(orientation==DOWN)
         {
             longWall.mirrorVertically();
         }

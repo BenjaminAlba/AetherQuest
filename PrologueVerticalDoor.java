@@ -8,22 +8,27 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class PrologueVerticalDoor extends Door
 {
+    public static final int DOWN = 1;
     private GreenfootImage verticalDoor = new GreenfootImage("images/prologue_rf/vertical_door.png");
-    private String destiny;
-    public PrologueVerticalDoor(int orientation, String destiny){
-        this.destiny = destiny;
-        if(orientation == 1)
+    private String destination;
+    public PrologueVerticalDoor(int orientation, String destination){
+        this.destination = destination;
+        if(orientation == DOWN)
             verticalDoor.mirrorVertically();
         setImage(verticalDoor);
     }
-    
+
     public void changeRoom(){
-        if(getY()<360)
-            Greenfoot.setWorld(new PrologueRoom(destiny,640,540));
-        else
-            Greenfoot.setWorld(new PrologueRoom(destiny,640,90));
+        if(getY()<360){
+            PrologueRoom.addMapIconY(-1);
+            Greenfoot.setWorld(new PrologueRoom(destination,640,540));
+        }
+        else{
+            PrologueRoom.addMapIconY(1);
+            Greenfoot.setWorld(new PrologueRoom(destination,640,110));
+        }
     }
-    
+
     public void act() 
     {
         // Add your action code here.

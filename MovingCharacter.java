@@ -12,6 +12,7 @@ public class MovingCharacter extends Actor
      * Act - do whatever the Sokudo wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    private int speed = 5;
     private int verticalCurrentImage;
     private int horizontalCurrentImage;
     private int counter;
@@ -24,7 +25,8 @@ public class MovingCharacter extends Actor
     private ArrayList<GreenfootImage> rightWalk;
     private GreenfootImage leftIdle;
     private ArrayList<GreenfootImage> leftWalk;
-
+    private List<Observer> observers = new LinkedList();
+    
     public MovingCharacter(String id){
         GreenfootImage walkInstance;
 
@@ -176,17 +178,29 @@ public class MovingCharacter extends Actor
     public void act() 
     {
         handleDirection();
+        characterInteract();
     }
-
-    public void checkDoorCollision(int x, int y){
+    
+    void characterInteract(){
+        if(Greenfoot.isKeyDown("enter") && isTouching(Image.class)){
+            World room = getWorld();
+            PrologueRoom actualRoom = (PrologueRoom)room;
+            actualRoom.sokudoRecruitScene();
+        }
+    }
+    
+    public void checkCollision(int x, int y){
         if(getOneObjectAtOffset(x,y,Door.class) != null){
             Door door = (Door)getOneObjectAtOffset(x,y,Door.class);
             door.changeRoom();
         }
+        if(getOneObjectAtOffset(x,y,Image.class) != null){
+            speed = 0;
+        }
     }
 
     public void handleDirection(){
-        int speed = 3;
+        speed = 5;
         int x = getX();
         int y = getY();
 
@@ -194,10 +208,10 @@ public class MovingCharacter extends Actor
             Actor collide=getOneObjectAtOffset(0,12,Wall.class);
             if(collide!=null)
                 speed=0;
+            checkCollision(0,12);
             setLocation(x, y - speed);
             upWalk();
             direccion = 1;
-            checkDoorCollision(0,12);
         }
         else if(!Greenfoot.isKeyDown("w") && direccion == 1){
             counter = 0;
@@ -209,10 +223,10 @@ public class MovingCharacter extends Actor
             Actor collide=getOneObjectAtOffset(0,51,Wall.class);
             if(collide!=null)
                 speed=0;
+            checkCollision(0,51);
             setLocation(x, y + speed);
             downWalk();
             direccion = 2;
-            checkDoorCollision(0,51);
         }
         else if(!Greenfoot.isKeyDown("s") && direccion == 2){
             counter = 0;
@@ -224,10 +238,10 @@ public class MovingCharacter extends Actor
             Actor collide=getOneObjectAtOffset(-18,20,Wall.class);
             if(collide!=null)
                 speed=0;
+            checkCollision(-18,20);
             setLocation(x - speed, y);
             leftWalk();
             direccion = 3;
-            checkDoorCollision(-18,20);
         }
         else if(!Greenfoot.isKeyDown("a") && direccion == 3){
             counter = 0;
@@ -239,10 +253,10 @@ public class MovingCharacter extends Actor
             Actor collide=getOneObjectAtOffset(18,20,Wall.class);
             if(collide!=null)
                 speed=0;
+            checkCollision(18,20);
             setLocation(x + speed, y);
             rightWalk();
             direccion = 4;
-            checkDoorCollision(18,20);
         }
         else if(!Greenfoot.isKeyDown("d") && direccion == 4){
             counter = 0;

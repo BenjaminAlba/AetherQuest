@@ -11,7 +11,7 @@ public class Image extends Actor
     private GreenfootImage image;
     public Image(String image){
         this.image = new GreenfootImage(image);
-        setImage(this.image);   
+        setImage(this.image);
     }
     
     public void scale(int width, int height){
@@ -20,6 +20,10 @@ public class Image extends Actor
     
     public void rotate(int degrees){
         image.rotate(degrees);
+    }
+    
+    public void setTransparency(int transparency){
+        image.setTransparency(transparency);
     }
     
     public void act() 

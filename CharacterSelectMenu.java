@@ -20,14 +20,14 @@ public class CharacterSelectMenu extends World
         Greenfoot.delay(5);
         setBackground("images/menu/background.png");
         addObject(new Image("images/menu_help_characters/menu_help_characters_01.png"),640,360);
-        addObject(new CharacterSelected("images/menu_help_characters/button_menu_help_characters_01.png",127, 21,1),640,360);
-        addObject(new CharacterSelected("images/menu_help_characters/button_menu_help_characters_02.png",416, 21,2),640,360);
-        addObject(new CharacterSelected("images/menu_help_characters/button_menu_help_characters_03.png",706, 21,3),640,360);
-        addObject(new CharacterSelected("images/menu_help_characters/button_menu_help_characters_04.png",996, 21,4),640,360);
-        addObject(new CharacterSelected("images/menu_help_characters/button_menu_help_characters_05.png",127, 365,5),640,360);
-        addObject(new CharacterSelected("images/menu_help_characters/button_menu_help_characters_06.png",416, 365,6),640,360);
-        addObject(new CharacterSelected("images/menu_help_characters/button_menu_help_characters_07.png",706, 365,7),640,360);
-        addObject(new CharacterSelected("images/menu_help_characters/button_menu_help_characters_08.png",996, 365,8),640,360);
-        addObject(new LilReturn(0),640,360);
+        addObject(new CharacterSelectedButton("images/menu_help_characters/button_menu_help_characters_01.png",127, 21,1),640,360);
+        addObject(new CharacterSelectedButton("images/menu_help_characters/button_menu_help_characters_02.png",416, 21,2),640,360);
+        addObject(new CharacterSelectedButton("images/menu_help_characters/button_menu_help_characters_03.png",706, 21,3),640,360);
+        addObject(new CharacterSelectedButton("images/menu_help_characters/button_menu_help_characters_04.png",996, 21,4),640,360);
+        addObject(new CharacterSelectedButton("images/menu_help_characters/button_menu_help_characters_05.png",127, 365,5),640,360);
+        addObject(new CharacterSelectedButton("images/menu_help_characters/button_menu_help_characters_06.png",416, 365,6),640,360);
+        addObject(new CharacterSelectedButton("images/menu_help_characters/button_menu_help_characters_07.png",706, 365,7),640,360);
+        addObject(new CharacterSelectedButton("images/menu_help_characters/button_menu_help_characters_08.png",996, 365,8),640,360);
+        addObject(new LilReturnButton(0),640,360);
     }
 }
