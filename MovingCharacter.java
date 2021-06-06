@@ -199,7 +199,7 @@ public class MovingCharacter extends Actor
     }
 
     public void handleDirection(){
-        speed = 5;
+        speed = 10;
         int x = getX();
         int y = getY();
 

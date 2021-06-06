@@ -10,10 +10,10 @@ public class Party extends Actor
 {
     private static Party uniqueInstance;
     
-    private Character member1 = new Sokudo();
-    private Character member2 = new Light();
-    private Character member3 = new KingHermes();
-    private Character member4 = new Nagito();
+    private Character member1;
+    private Character member2;
+    private Character member3;
+    private Character member4;
     private int money;
     private int[] inventory = new int[12];
     private int [] flags = new int[250];
@@ -60,5 +60,17 @@ public class Party extends Actor
     public void setMember1(Character character)
     {
         member1=character;
+    }
+    public void setMember2(Character character)
+    {
+        member2=character;
+    }
+    public void setMember3(Character character)
+    {
+        member3=character;
+    }
+    public void setMember4(Character character)
+    {
+        member4=character;
     }
 }

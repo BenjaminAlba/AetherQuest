@@ -17,7 +17,9 @@ public class RengokuImage extends CharacterImage
     }
     
     public void recruitScene(){
-        
+        World room = getWorld();
+        PrologueRoom actualRoom = (PrologueRoom)room;
+        actualRoom.rengokuRecruitScene();
     }
     
     public void act() 

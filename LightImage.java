@@ -17,7 +17,9 @@ public class LightImage extends CharacterImage
     }
     
     public void recruitScene(){
-        
+        World room = getWorld();
+        PrologueRoom actualRoom = (PrologueRoom)room;
+        actualRoom.lightRecruitScene();
     }
     
     public void act() 

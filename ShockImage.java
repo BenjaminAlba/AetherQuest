@@ -17,7 +17,9 @@ public class ShockImage extends CharacterImage
     }
     
     public void recruitScene(){
-        
+        World room = getWorld();
+        PrologueRoom actualRoom = (PrologueRoom)room;
+        actualRoom.shockRecruitScene();
     }
     
     public void act() 

@@ -47,6 +47,38 @@ public abstract class Character extends Actor
         return id;
     }
     
+    public int getLvl(){
+        return lvl;
+    }
+    
+    public int getAtk(){
+        return atk;
+    }
+    
+    public int getHp(){
+        return hp;
+    }
+    
+    public int getMaxHp(){
+        return maxHP;
+    }
+    
+    public int getSp(){
+        return sp;
+    }
+    
+    public int getMaxSp(){
+        return maxSP;
+    }
+    
+    public int getDefense(){
+        return def;
+    }
+    
+    public int getSpeed(){
+        return speed;
+    }
+    
     public abstract String getSkill1Name();
     public abstract String getSkill2Name();
     public abstract String getSkill3Name();

@@ -20,10 +20,11 @@ public class CharacterSkillMenu extends World
         this.currentRoom = currentRoom;
         this.characterX = characterX;
         this.characterY = characterY;
-        addObject(new Image("images/ESC_menu_characters/0"+party.getMember1().getId()+".png"),640,128);
-        addObject(new Image("images/ESC_menu_characters/0"+party.getMember2().getId()+".png"),640,282);
-        addObject(new Image("images/ESC_menu_characters/0"+party.getMember3().getId()+".png"),640,436);
-        addObject(new Image("images/ESC_menu_characters/0"+party.getMember4().getId()+".png"),640,590);
+        addObject(new CharacterSkillButton(party.getMember1(),currentRoom,characterX,characterY),640,128);
+        addObject(new CharacterSkillButton(party.getMember2(),currentRoom,characterX,characterY),640,282);
+        addObject(new CharacterSkillButton(party.getMember3(),currentRoom,characterX,characterY),640,436);
+        addObject(new CharacterSkillButton(party.getMember4(),currentRoom,characterX,characterY),640,590);
+        
     }
     
     public void act(){

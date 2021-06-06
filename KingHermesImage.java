@@ -17,7 +17,9 @@ public class KingHermesImage extends CharacterImage
     }
     
     public void recruitScene(){
-        
+        World room = getWorld();
+        PrologueRoom actualRoom = (PrologueRoom)room;
+        actualRoom.kingHermesRecruitScene();
     }
     
     public void act() 

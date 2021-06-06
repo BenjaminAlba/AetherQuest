@@ -15,19 +15,19 @@ public class EscShopButton extends Button
     private String currentRoom;
     private int characterX;
     private int characterY;
-    
+
     public EscShopButton(String currentRoom, int characterX,int characterY){
         this.currentRoom = currentRoom;
         this.characterX = characterX;
         this.characterY = characterY;
     }
-    
+
     public void act() 
     {
         changeState();   
         if(Greenfoot.mousePressed(this)){
-            Greenfoot.setWorld(new ShopMenu());
             buttonClick.play();
+            Greenfoot.setWorld(new ShopMenu());
         }
     }
 

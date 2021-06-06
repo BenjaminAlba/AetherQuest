@@ -17,7 +17,9 @@ public class MikeImage extends CharacterImage
     }
 
     public void recruitScene(){
-        
+        World room = getWorld();
+        PrologueRoom actualRoom = (PrologueRoom)room;
+        actualRoom.mikeRecruitScene();
     }
     
     public void act() 

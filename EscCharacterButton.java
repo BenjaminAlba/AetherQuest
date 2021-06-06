@@ -25,8 +25,8 @@ public class EscCharacterButton extends Button
     {
         changeState();   
         if(Greenfoot.mousePressed(this)){
-            Greenfoot.setWorld(new CharacterSkillMenu(currentRoom,characterX,characterY));
             buttonClick.play();
+            Greenfoot.setWorld(new CharacterSkillMenu(currentRoom,characterX,characterY));
         }
     }
 

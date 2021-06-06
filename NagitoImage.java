@@ -17,7 +17,9 @@ public class NagitoImage extends CharacterImage
     }
     
     public void recruitScene(){
-        
+        World room = getWorld();
+        PrologueRoom actualRoom = (PrologueRoom)room;
+        actualRoom.nagitoRecruitScene();
     }
     
     public void act() 
