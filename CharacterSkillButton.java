@@ -32,6 +32,13 @@ public class CharacterSkillButton extends Button
         characterSkillButton.drawString(String.valueOf(character.getSp()+"/"+character.getMaxSp()),533,47);
         characterSkillButton.setFont(new Font("Helvetica", false, false, 29));
         characterSkillButton.drawString(String.valueOf(character.getSpeed()),560,120);
+        if(character.getId() != 8){
+            characterSkillButton.setFont(new Font("Helvetica", false, false, 35));
+            characterSkillButton.drawString(String.valueOf(character.getSkill1Lvl()),685,120);
+            characterSkillButton.drawString(String.valueOf(character.getSkill2Lvl()),780,120);
+            characterSkillButton.drawString(String.valueOf(character.getSkill3Lvl()),880,120);
+            characterSkillButton.drawString(String.valueOf(character.getSkill4Lvl()),980,120);
+        }
         setImage(characterSkillButton);
     }
 

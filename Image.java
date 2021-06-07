@@ -14,6 +14,11 @@ public class Image extends Actor
         
     }
     
+    public Image(GreenfootImage image){
+        this.image = image;
+        setImage(this.image);
+    }
+    
     public Image(String image){
         this.image = new GreenfootImage(image);
         setImage(this.image);
