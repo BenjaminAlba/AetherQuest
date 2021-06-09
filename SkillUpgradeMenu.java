@@ -8,7 +8,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class SkillUpgradeMenu extends World
 {
-    Party party = Party.getInstance();
+    public static final int NAGITO = 8;
+    private Party party = Party.getInstance();
     private String currentRoom;
     private int characterX;
     private int characterY;
@@ -30,7 +31,7 @@ public class SkillUpgradeMenu extends World
     public void updateText(){
         skillsInfo = new GreenfootImage("images/ESC_menu_characters_skills/0"+character.getId()+".png");
         removeObjects(getObjects(null));
-        if(character.getId() != 8){
+        if(character.getId() != NAGITO){
             skillsInfo.setColor(Color.WHITE);
             skillsInfo.setFont(new Font("Helvetica", false, false, 25));
             skillsInfo.drawString("Skill Points: "+character.getSkillPoints(),580,370);

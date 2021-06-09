@@ -9,6 +9,7 @@ import java.io.*;
  */
 public class PrologueRoom extends World 
 {
+    private CharacterNameProvider unknownName = new UnknownNameProvider();
     public static final int LEFT = 1;
     public static final int RIGHT = 0;
     public static final int UP = 0;
@@ -196,17 +197,18 @@ public class PrologueRoom extends World
 
     public void sokudoRecruitScene()
     {
+        CharacterNameProvider sokudoName = new Sokudo();
         addObject(darkenScreen,640,360);
         showLocation("Primera celda",true);
 
         if(!party.getPartyFlags(0))
         {
-            dialogChunk("¿Quién se acerca?","Déjame verte.","Qué extraño...",0);
-            dialogChunk("Dime qué quieres.","[..]","[..]",0);
-            dialogChunk("Entiendo.","No queda más remedio que ayudarte.","Sólo prométeme qué no cambiarás",0);
-            dialogChunk("mis recuerdos.","[..]","[..]",0);
-            dialogChunk("¡Mi magia nos sacará de aquí!","","",1);
-            dialogChunk("Esta voz...","¿Acaso es mía?","",0);
+            dialogChunk("¿Quién se acerca?","Déjame verte.","Qué extraño...",unknownName);
+            dialogChunk("Dime qué quieres.","[..]","[..]",unknownName);
+            dialogChunk("Entiendo.","No queda más remedio que ayudarte.","Sólo prométeme qué no cambiarás",unknownName);
+            dialogChunk("mis recuerdos.","[..]","[..]",unknownName);
+            dialogChunk("¡Mi magia nos sacará de aquí!","","",sokudoName);
+            dialogChunk("Esta voz...","¿Acaso es mía?","",unknownName);
 
             addObject(noButton = new NoPromptButton(unknown.getX(),unknown.getY()),264,287);
             addObject(yesButtonSelect = new YesButtonSelect(1),1021,287);
@@ -214,10 +216,10 @@ public class PrologueRoom extends World
         }
         else if(!party.getPartyFlags(5) && !party.getPartyFlags(3))
         {
-            dialogChunk("¿Hay alguien ahí?","","",party.getMember1().getId());
-            dialogChunk("Sólo yo,","el mejor mago del reino.","Si eres sensato,",1);
-            dialogChunk("te darás cuenta que soy","tu mejor opción.","",1);
-            dialogChunk("¿Y bien?","¿Qué harás?","",1);
+            dialogChunk("¿Hay alguien ahí?","","",party.getMember1());
+            dialogChunk("Sólo yo,","el mejor mago del reino.","Si eres sensato,",sokudoName);
+            dialogChunk("te darás cuenta que soy","tu mejor opción.","",sokudoName);
+            dialogChunk("¿Y bien?","¿Qué harás?","",sokudoName);
 
             addObject(noButton = new NoPromptButton(unknown.getX(),unknown.getY()),264,287);
             addObject(yesButton = new YesPromptButton(5),1021,287);
@@ -229,18 +231,19 @@ public class PrologueRoom extends World
 
     public void lightRecruitScene()
     {
+        CharacterNameProvider lightName = new Light();
         addObject(darkenScreen,640,360);
         showLocation("Segunda celda",true);
 
         if(!party.getPartyFlags(0))
         {
-            dialogChunk("Ya me cansé de estar encerrado.","[...]","¿Eh...?",0);
-            dialogChunk("¿Quién anda ahí?","[..]","[..]",0);
-            dialogChunk("Ah, ya veo.","Dime qué buscas, y veré","qué haré contigo.",0);
-            dialogChunk("[...]","[..]","[..]",0);
-            dialogChunk("Vaya.","Es natural que requieras mi ayuda.","Después de todo,",0);
-            dialogChunk("he sobrevivido cosas peores.","Y he estado esperando","una buena pelea.",2);
-            dialogChunk("Esta voz...","¿Acaso es mía?","",0);
+            dialogChunk("Ya me cansé de estar encerrado.","[...]","¿Eh...?",unknownName);
+            dialogChunk("¿Quién anda ahí?","[..]","[..]",unknownName);
+            dialogChunk("Ah, ya veo.","Dime qué buscas, y veré","qué haré contigo.",unknownName);
+            dialogChunk("[...]","[..]","[..]",unknownName);
+            dialogChunk("Vaya.","Es natural que requieras mi ayuda.","Después de todo,",unknownName);
+            dialogChunk("he sobrevivido cosas peores.","Y he estado esperando","una buena pelea.",lightName);
+            dialogChunk("Esta voz...","¿Acaso es mía?","",unknownName);
 
             addObject(noButton = new NoPromptButton(unknown.getX(),unknown.getY()),264,287);
             addObject(yesButtonSelect = new YesButtonSelect(2),1021,287);
@@ -248,12 +251,12 @@ public class PrologueRoom extends World
         }
         else if(!party.getPartyFlags(7) && !party.getPartyFlags(3))
         {
-            dialogChunk("¿Hay alguien ahí?","","",party.getMember1().getId());
-            dialogChunk("Así que fuiste tú quién","salió de su celda.","",2);
-            dialogChunk("Estás de suerte.","Sólo por hoy te ofrezco","mi espada.",2);
-            dialogChunk("Ya discutiremos después","los detalles del pago.","",2);
-            dialogChunk("¿Y bien?","¿Qué harás?","",2);
-            dialogChunk("¿Aceptarás mi oferta?","","",2);
+            dialogChunk("¿Hay alguien ahí?","","",party.getMember1());
+            dialogChunk("Así que fuiste tú quién","salió de su celda.","",lightName);
+            dialogChunk("Estás de suerte.","Sólo por hoy te ofrezco","mi espada.",lightName);
+            dialogChunk("Ya discutiremos después","los detalles del pago.","",lightName);
+            dialogChunk("¿Y bien?","¿Qué harás?","",lightName);
+            dialogChunk("¿Aceptarás mi oferta?","","",lightName);
 
             addObject(noButton = new NoPromptButton(unknown.getX(),unknown.getY()),264,287);
             addObject(yesButton = new YesPromptButton(7),1021,287);
@@ -266,17 +269,18 @@ public class PrologueRoom extends World
 
     public void shockRecruitScene()
     {
+        CharacterNameProvider shockName = new Shock();
         addObject(darkenScreen,640,360);
         showLocation("Tercer celda",true);
 
         if(!party.getPartyFlags(0))
         {
-            dialogChunk("Oye, tú.","No actues como si no te","hubieras dado cuenta.",0);
-            dialogChunk("Oye...","¡Oye!","¡No te vayas!",0);
-            dialogChunk("Por favor...","Sólo escúchame,","¿Sí?",0);
-            dialogChunk("Sabía que no me ibas","a ignorar.","Ahora sácame de aquí.",0);
-            dialogChunk("Estoy muy aburrido.","No he visto a la coneja","en muchos días.",3);
-            dialogChunk("Esta voz...","¿Acaso es mía?","",0);
+            dialogChunk("Oye, tú.","No actues como si no te","hubieras dado cuenta.",unknownName);
+            dialogChunk("Oye...","¡Oye!","¡No te vayas!",unknownName);
+            dialogChunk("Por favor...","Sólo escúchame,","¿Sí?",unknownName);
+            dialogChunk("Sabía que no me ibas","a ignorar.","Ahora sácame de aquí.",unknownName);
+            dialogChunk("Estoy muy aburrido.","No he visto a la coneja","en muchos días.",shockName);
+            dialogChunk("Esta voz...","¿Acaso es mía?","",unknownName);
 
             addObject(noButton = new NoPromptButton(unknown.getX(),unknown.getY()),264,287);
             addObject(yesButtonSelect = new YesButtonSelect(3),1021,287);
@@ -284,12 +288,12 @@ public class PrologueRoom extends World
         }
         else if(!party.getPartyFlags(9) && !party.getPartyFlags(3))
         {
-            dialogChunk("¿Hay alguien ahí?","","",party.getMember1().getId());
-            dialogChunk("¡Buenas!","¡Qué gusto ver a alguien más!","",3);
-            dialogChunk("Ya llevo mucho encerrado aquí.","Ni siquiera sé cómo","terminé en éste lío",3);
-            dialogChunk("pero estoy seguro","que podré ayudarte.","",3);
-            dialogChunk("¿Qué?","¿Que en qué soy bueno?","Vaya que haces preguntas difíciles...",3);
-            dialogChunk("¿Qué ha dicho...?","Mucho texto.","",party.getMember1().getId());
+            dialogChunk("¿Hay alguien ahí?","","",party.getMember1());
+            dialogChunk("¡Buenas!","¡Qué gusto ver a alguien más!","",shockName);
+            dialogChunk("Ya llevo mucho encerrado aquí.","Ni siquiera sé cómo","terminé en éste lío",shockName);
+            dialogChunk("pero estoy seguro","que podré ayudarte.","",shockName);
+            dialogChunk("¿Qué?","¿Que en qué soy bueno?","Vaya que haces preguntas difíciles...",shockName);
+            dialogChunk("¿Qué ha dicho...?","Mucho texto.","",party.getMember1());
 
             addObject(noButton = new NoPromptButton(unknown.getX(),unknown.getY()),264,287);
             addObject(yesButton = new YesPromptButton(9),1021,287);
@@ -302,18 +306,19 @@ public class PrologueRoom extends World
 
     public void mikeRecruitScene()
     {
+        CharacterNameProvider mikeName = new Mike();
         addObject(darkenScreen,640,360);
         showLocation("Cuarta celda",true);
 
         if(!party.getPartyFlags(0))
         {
-            dialogChunk("Al menos así puedo","mantenerme en forma.","[...]",0);
-            dialogChunk("[...]","[...]","Me has observado bastante.",0);
-            dialogChunk("¡Muéstrate!","[...]","[...]",0);
-            dialogChunk("Está bien.","Te ayudaré, pero debes cumplir","tu parte.",0);
-            dialogChunk("Debes ayudarme a recuperar","mis recuerdos.","",0);
-            dialogChunk("Ayúdame a descibrir quién soy.","","",4);
-            dialogChunk("Esta voz...","¿Acaso es mía?","",0);
+            dialogChunk("Al menos así puedo","mantenerme en forma.","[...]",unknownName);
+            dialogChunk("[...]","[...]","Me has observado bastante.",unknownName);
+            dialogChunk("¡Muéstrate!","[...]","[...]",unknownName);
+            dialogChunk("Está bien.","Te ayudaré, pero debes cumplir","tu parte.",unknownName);
+            dialogChunk("Debes ayudarme a recuperar","mis recuerdos.","",unknownName);
+            dialogChunk("Ayúdame a descibrir quién soy.","","",mikeName);
+            dialogChunk("Esta voz...","¿Acaso es mía?","",unknownName);
 
             addObject(noButton = new NoPromptButton(unknown.getX(),unknown.getY()),264,287);
             addObject(yesButtonSelect = new YesButtonSelect(4),1021,287);
@@ -321,13 +326,13 @@ public class PrologueRoom extends World
         }
         else if(!party.getPartyFlags(11) && !party.getPartyFlags(3))
         {
-            dialogChunk("¿Hay alguien ahí?","","",party.getMember1().getId());
-            dialogChunk("Sí, estoy aquí.","","",4);
-            dialogChunk("¿Cómo te llamas?","","",party.getMember1().getId());
-            dialogChunk("No lo sé.","No recuerdo nada de mi pasado.","",4);
-            dialogChunk("Sólo tengo una placa","de la milicia.","",4);
-            dialogChunk("Creo que era...","mi nombre de soldado.","",4);
-            dialogChunk("'M1K3'","¿Te suena de algo?","",4);
+            dialogChunk("¿Hay alguien ahí?","","",party.getMember1());
+            dialogChunk("Sí, estoy aquí.","","",mikeName);
+            dialogChunk("¿Cómo te llamas?","","",party.getMember1());
+            dialogChunk("No lo sé.","No recuerdo nada de mi pasado.","",mikeName);
+            dialogChunk("Sólo tengo una placa","de la milicia.","",mikeName);
+            dialogChunk("Creo que era...","mi nombre de soldado.","",mikeName);
+            dialogChunk("'M1K3'","¿Te suena de algo?","",mikeName);
 
             addObject(noButton = new NoPromptButton(unknown.getX(),unknown.getY()),264,287);
             addObject(yesButton = new YesPromptButton(11),1021,287);
@@ -339,18 +344,19 @@ public class PrologueRoom extends World
 
     public void rengokuRecruitScene()
     {
+        CharacterNameProvider rengokuName = new Rengoku();
         addObject(darkenScreen,640,360);
         showLocation("Quinta celda",true);
 
         if(!party.getPartyFlags(0))
         {
-            dialogChunk("¿Tienes miedo?","¿Por qué tratabas de esconderte?","[...]",0);
-            dialogChunk("Ah, ya veo.","¿Qué hace alguien como tú aquí?","[...]",0);
-            dialogChunk("[...]","[...]","[...]",0);
-            dialogChunk("Muy bien.","Si también deseas","salvar a los demás...",0);
-            dialogChunk("Haré lo que pueda","para ayudarte.","",0);
-            dialogChunk("No permitiré que nadie muera.","","",5);
-            dialogChunk("Esta voz...","¿Acaso es mía?","",0);
+            dialogChunk("¿Tienes miedo?","¿Por qué tratabas de esconderte?","[...]",unknownName);
+            dialogChunk("Ah, ya veo.","¿Qué hace alguien como tú aquí?","[...]",unknownName);
+            dialogChunk("[...]","[...]","[...]",unknownName);
+            dialogChunk("Muy bien.","Si también deseas","salvar a los demás...",unknownName);
+            dialogChunk("Haré lo que pueda","para ayudarte.","",unknownName);
+            dialogChunk("No permitiré que nadie muera.","","",rengokuName);
+            dialogChunk("Esta voz...","¿Acaso es mía?","",unknownName);
 
             addObject(noButton = new NoPromptButton(unknown.getX(),unknown.getY()),264,287);
             addObject(yesButtonSelect = new YesButtonSelect(5),1021,287);
@@ -358,11 +364,11 @@ public class PrologueRoom extends World
         }
         else if(!party.getPartyFlags(13) && !party.getPartyFlags(3))
         {
-            dialogChunk("¿Hay alguien ahí?","","",party.getMember1().getId());
-            dialogChunk("¿Tú eres quién salió de su celda?","Me imagino tendrás tus motivos","",5);
-            dialogChunk("Pero si lo que dijo quien","nos ha encerrado es cierto,","entonces es peligroso explorar.",5);
-            dialogChunk("Necesitarás alguien que te ayude.","Curar es mi especialidad.","",5);
-            dialogChunk("¿Crees que te sirva de algo?","","",5);
+            dialogChunk("¿Hay alguien ahí?","","",party.getMember1());
+            dialogChunk("¿Tú eres quién salió de su celda?","Me imagino tendrás tus motivos","",rengokuName);
+            dialogChunk("Pero si lo que dijo quien","nos ha encerrado es cierto,","entonces es peligroso explorar.",rengokuName);
+            dialogChunk("Necesitarás alguien que te ayude.","Curar es mi especialidad.","",rengokuName);
+            dialogChunk("¿Crees que te sirva de algo?","","",rengokuName);
 
             addObject(noButton = new NoPromptButton(unknown.getX(),unknown.getY()),264,287);
             addObject(yesButton = new YesPromptButton(13),1021,287);
@@ -374,18 +380,19 @@ public class PrologueRoom extends World
 
     public void kingHermesRecruitScene()
     {
+        CharacterNameProvider kingHermesName = new KingHermes();
         addObject(darkenScreen,640,360);
         showLocation("Sexta celda",true);
 
         if(!party.getPartyFlags(0))
         {
-            dialogChunk("¿Qué es eso?","¿Obo?","¿Qué es obo?",0);
-            dialogChunk("Hmmm...","No.","Simplemente no entiendo.",0);
-            dialogChunk("En fin.","Ya me tiene cansado","esta broma.",0);
-            dialogChunk("¿En qué momento","me dejarán salir?","Es la primera vez",0);
-            dialogChunk("que me hacen algo así.","¡Inaudito!","",0);
-            dialogChunk("Déjame decirte.","Tienes suerte que estoy","de buen humor",6);
-            dialogChunk("Esta voz...","¿Acaso es mía?","",0);
+            dialogChunk("¿Qué es eso?","¿Obo?","¿Qué es obo?",unknownName);
+            dialogChunk("Hmmm...","No.","Simplemente no entiendo.",unknownName);
+            dialogChunk("En fin.","Ya me tiene cansado","esta broma.",unknownName);
+            dialogChunk("¿En qué momento","me dejarán salir?","Es la primera vez",unknownName);
+            dialogChunk("que me hacen algo así.","¡Inaudito!","",unknownName);
+            dialogChunk("Déjame decirte.","Tienes suerte que estoy","de buen humor",kingHermesName);
+            dialogChunk("Esta voz...","¿Acaso es mía?","",unknownName);
 
             addObject(noButton = new NoPromptButton(unknown.getX(),unknown.getY()),264,287);
             addObject(yesButtonSelect = new YesButtonSelect(6),1021,287);
@@ -393,14 +400,14 @@ public class PrologueRoom extends World
         }
         else if(!party.getPartyFlags(15) && !party.getPartyFlags(3))
         {
-            dialogChunk("¿Hay alguien ahí?","","",party.getMember1().getId());
-            dialogChunk("¿Qué no me reconoces?","","",6);
-            dialogChunk("No.","","",party.getMember1().getId());
-            dialogChunk("¡Pero qué imbécil!","","",6);
-            dialogChunk("[...]","[...]","[...]",party.getMember1().getId());
-            dialogChunk("Vaya, quizá debí permitir que","los campesinos fueran a la escuela.","",6);
-            dialogChunk("En fin...","Soy tu rey, Hermes LXIX","",6);
-            dialogChunk("¡Libérame en éste instante!","","",6);
+            dialogChunk("¿Hay alguien ahí?","","",party.getMember1());
+            dialogChunk("¿Qué no me reconoces?","","",kingHermesName);
+            dialogChunk("No.","","",party.getMember1());
+            dialogChunk("¡Pero qué imbécil!","","",kingHermesName);
+            dialogChunk("[...]","[...]","[...]",party.getMember1());
+            dialogChunk("Vaya, quizá debí permitir que","los campesinos fueran a la escuela.","",kingHermesName);
+            dialogChunk("En fin...","Soy tu rey, Hermes LXIX","",kingHermesName);
+            dialogChunk("¡Libérame en éste instante!","","",kingHermesName);
 
             addObject(noButton = new NoPromptButton(unknown.getX(),unknown.getY()),264,287);
             addObject(yesButton = new YesPromptButton(15),1021,287);
@@ -412,19 +419,20 @@ public class PrologueRoom extends World
 
     public void luisRecruitScene()
     {
+        CharacterNameProvider luisName = new Luis();
         addObject(darkenScreen,640,360);
         showLocation("Séptima celda",true);
 
         if(!party.getPartyFlags(0))
         {
-            dialogChunk("¿Haz venido con la intención","de comprar?","Es una lástima.",0);
-            dialogChunk("No traigo nada conmigo.","[...]","Ah...",0);
-            dialogChunk("¿No has venido a eso?","Entonces no tengo","nada que decirte.",0);
-            dialogChunk("[...]","[...]","[...]",0);
-            dialogChunk("Eres bastante insistente.","Vamos, te escucho.","[...]",0);
-            dialogChunk("Así que sólo fue mala suerte...","Tendrás que compensarme","de algún modo.",0);
-            dialogChunk("Puedes empezar","por dejarme salir.","[...]",7);
-            dialogChunk("Esta voz...","¿Acaso es mía?","",0);
+            dialogChunk("¿Haz venido con la intención","de comprar?","Es una lástima.",unknownName);
+            dialogChunk("No traigo nada conmigo.","[...]","Ah...",unknownName);
+            dialogChunk("¿No has venido a eso?","Entonces no tengo","nada que decirte.",unknownName);
+            dialogChunk("[...]","[...]","[...]",unknownName);
+            dialogChunk("Eres bastante insistente.","Vamos, te escucho.","[...]",unknownName);
+            dialogChunk("Así que sólo fue mala suerte...","Tendrás que compensarme","de algún modo.",unknownName);
+            dialogChunk("Puedes empezar","por dejarme salir.","[...]",luisName);
+            dialogChunk("Esta voz...","¿Acaso es mía?","",unknownName);
 
             addObject(noButton = new NoPromptButton(unknown.getX(),unknown.getY()),264,287);
             addObject(yesButtonSelect = new YesButtonSelect(7),1021,287);
@@ -432,12 +440,12 @@ public class PrologueRoom extends World
         }
         else if(!party.getPartyFlags(17) && !party.getPartyFlags(3))
         {
-            dialogChunk("¿Hay alguien ahí?","","",party.getMember1().getId());
-            dialogChunk("Sólo un mercader desafortunado.","","",7);
-            dialogChunk("Tenía tantos pedidos por entregar","y termino en una celda miserable","en quién sabe dónde.",7);
-            dialogChunk("Ya discutiremos después","los detalles del pago.","",7);
-            dialogChunk("Sé que eres","quién puede sacarme de aquí.","Dime tu precio.",7);
-            dialogChunk("Estoy dispuesto a pagar lo necesario.","¡Sólo sácame de aquí!","",7);
+            dialogChunk("¿Hay alguien ahí?","","",party.getMember1());
+            dialogChunk("Sólo un mercader desafortunado.","","",luisName);
+            dialogChunk("Tenía tantos pedidos por entregar","y termino en una celda miserable","en quién sabe dónde.",luisName);
+            dialogChunk("Ya discutiremos después","los detalles del pago.","",luisName);
+            dialogChunk("Sé que eres","quién puede sacarme de aquí.","Dime tu precio.",luisName);
+            dialogChunk("Estoy dispuesto a pagar lo necesario.","¡Sólo sácame de aquí!","",luisName);
 
             addObject(noButton = new NoPromptButton(unknown.getX(),unknown.getY()),264,287);
             addObject(yesButton = new YesPromptButton(17),1021,287);
@@ -450,43 +458,44 @@ public class PrologueRoom extends World
 
     public void nagitoRecruitScene()
     {
+        CharacterNameProvider nagitoName = new Nagito();
         addObject(darkenScreen,640,360);
         showLocation("Novena celda",true);
 
         if(!party.getPartyFlags(0))
         {
-            dialogChunk("Está bien.","","",0);
-            dialogChunk("Esperaré lo más que pueda.","","",0);
-            dialogChunk("Qué suerte tener tiempo,","¿no crees?","",0);
-            dialogChunk("Sí.","Me aseguraré que así sea.","",0);
-            dialogChunk("pero tú también debes","tener cuidado.","",0);
+            dialogChunk("Está bien.","","",unknownName);
+            dialogChunk("Esperaré lo más que pueda.","","",unknownName);
+            dialogChunk("Qué suerte tener tiempo,","¿no crees?","",unknownName);
+            dialogChunk("Sí.","Me aseguraré que así sea.","",unknownName);
+            dialogChunk("pero tú también debes","tener cuidado.","",unknownName);
 
-            quickDialogChunk("Está bien.","","",0);
-            quickDialogChunk("Esperaré lo más que pueda.","","",0);
-            quickDialogChunk("Qué suerte tener tiempo,","¿no crees?","",0);
-            quickDialogChunk("Sí.","Me aseguraré que así sea.","",0);
-            quickDialogChunk("pero tú también debes","tener cuidado.","",0);
+            quickDialogChunk("Está bien.","","",unknownName);
+            quickDialogChunk("Esperaré lo más que pueda.","","",unknownName);
+            quickDialogChunk("Qué suerte tener tiempo,","¿no crees?","",unknownName);
+            quickDialogChunk("Sí.","Me aseguraré que así sea.","",unknownName);
+            quickDialogChunk("pero tú también debes","tener cuidado.","",unknownName);
 
-            quickDialogChunk("Está bien.","","",0);
-            quickDialogChunk("Esperaré lo más que pueda.","","",0);
-            quickDialogChunk("Qué suerte tener tiempo,","¿no crees?","",0);
-            quickDialogChunk("Sí.","Me aseguraré que así sea.","",0);
-            quickDialogChunk("pero tú también debes","tener cuidado.","",0);
+            quickDialogChunk("Está bien.","","",unknownName);
+            quickDialogChunk("Esperaré lo más que pueda.","","",unknownName);
+            quickDialogChunk("Qué suerte tener tiempo,","¿no crees?","",unknownName);
+            quickDialogChunk("Sí.","Me aseguraré que así sea.","",unknownName);
+            quickDialogChunk("pero tú también debes","tener cuidado.","",unknownName);
 
-            quickDialogChunk("Está bien.","","",0);
-            quickDialogChunk("Esperaré lo más que pueda.","","",0);
-            quickDialogChunk("Qué suerte tener tiempo,","¿no crees?","",0);
-            quickDialogChunk("Sí.","Me aseguraré que así sea.","",0);
-            quickDialogChunk("pero tú también debes","tener cuidado.","",0);
+            quickDialogChunk("Está bien.","","",unknownName);
+            quickDialogChunk("Esperaré lo más que pueda.","","",unknownName);
+            quickDialogChunk("Qué suerte tener tiempo,","¿no crees?","",unknownName);
+            quickDialogChunk("Sí.","Me aseguraré que así sea.","",unknownName);
+            quickDialogChunk("pero tú también debes","tener cuidado.","",unknownName);
 
-            quickDialogChunk("Está bien.","","",0);
-            quickDialogChunk("Esperaré lo más que pueda.","","",0);
-            quickDialogChunk("Qué suerte tener tiempo,","¿no crees?","",0);
-            quickDialogChunk("Sí.","Me aseguraré que así sea.","",0);
-            quickDialogChunk("pero tú también debes","tener cuidado.","",0);
+            quickDialogChunk("Está bien.","","",unknownName);
+            quickDialogChunk("Esperaré lo más que pueda.","","",unknownName);
+            quickDialogChunk("Qué suerte tener tiempo,","¿no crees?","",unknownName);
+            quickDialogChunk("Sí.","Me aseguraré que así sea.","",unknownName);
+            quickDialogChunk("pero tú también debes","tener cuidado.","",unknownName);
 
-            dialogChunk("No puedo perder.","","",8);
-            dialogChunk("Esta voz...","¿Acaso es mía?","",0);
+            dialogChunk("No puedo perder.","","",nagitoName);
+            dialogChunk("Esta voz...","¿Acaso es mía?","",unknownName);
 
             addObject(noButton = new NoPromptButton(unknown.getX(),unknown.getY()),264,287);
             addObject(yesButtonSelect = new YesButtonSelect(8),1021,287);
@@ -494,14 +503,14 @@ public class PrologueRoom extends World
         }
         else if(!party.getPartyFlags(19) && !party.getPartyFlags(3))
         {
-            dialogChunk("¿Hay alguien ahí?","","",party.getMember1().getId());
-            dialogChunk("No lo hagas.","","",8);
-            dialogChunk("¿De qué hablas?","","",party.getMember1().getId());
-            dialogChunk("No abras la celda.","","",8);
-            dialogChunk("¿Por qué?","¿No quieres salir?","",party.getMember1().getId());
-            dialogChunk("Aunque...","No creo que sobrevivas solo.","",8);
-            dialogChunk("No quiero que mueras.","","",8);
-            dialogChunk("[¿Debería dejarlo salir?]","","",party.getMember1().getId());
+            dialogChunk("¿Hay alguien ahí?","","",party.getMember1());
+            dialogChunk("No lo hagas.","","",nagitoName);
+            dialogChunk("¿De qué hablas?","","",party.getMember1());
+            dialogChunk("No abras la celda.","","",nagitoName);
+            dialogChunk("¿Por qué?","¿No quieres salir?","",party.getMember1());
+            dialogChunk("Aunque...","No creo que sobrevivas solo.","",nagitoName);
+            dialogChunk("No quiero que mueras.","","",nagitoName);
+            dialogChunk("[¿Debería dejarlo salir?]","","",party.getMember1());
 
             addObject(noButton = new NoPromptButton(unknown.getX(),unknown.getY()),264,287);
             addObject(yesButton = new YesPromptButton(19),1021,287);
@@ -688,45 +697,42 @@ public class PrologueRoom extends World
         Greenfoot.delay(50);
     }
 
-    public void quickDialogChunk(String line1, String line2, String line3, int character)
+    public void quickDialogChunk(String line1, String line2, String line3, CharacterNameProvider character)
     {
         addObject(textBox,644,549);
         addObject(portrait = new DialogPortrait(character),380,558);
         addObject(header = new DialogHeader(character),350,460);
 
         addObject(this.line1 = new DialogLine(line1,1),350,460);
-        if(line2=="")
+        if(line2.isEmpty())
         {
             addObject(icon,973,634);
             quickWait();
         }
-        else if(line2!="")
+        else
         {
             quickWait();
             addObject(this.line2 = new DialogLine(line2,2),350,460);
-            if(line3=="")
+            if(line3.isEmpty())
             {
                 addObject(icon,973,634);
                 quickWait();
             }else
             {
                 quickWait();
+                addObject(this.line3 = new DialogLine(line3,3),350,460);
+                addObject(icon,973,634);
+                quickWait();
             }
-        }
-        if(line3!="")
-        {
-            addObject(this.line3 = new DialogLine(line3,3),350,460);
-            addObject(icon,973,634);
-            quickWait();
         }
 
         removeObject(this.line1);
 
-        if(line2!="")
+        if(!line2.isEmpty())
         {
             removeObject(this.line2);
         }
-        if(line3!="")
+        if(!line3.isEmpty())
         {
             removeObject(this.line3);
         }
@@ -736,45 +742,42 @@ public class PrologueRoom extends World
         removeObject(icon);
     }
 
-    public void dialogChunk(String line1, String line2, String line3, int character)
+    public void dialogChunk(String line1, String line2, String line3, CharacterNameProvider character)
     {
         addObject(textBox,644,549);
         addObject(portrait = new DialogPortrait(character),380,558);
         addObject(header = new DialogHeader(character),350,460);
 
         addObject(this.line1 = new DialogLine(line1,1),350,460);
-        if(line2=="")
+        if(line2.isEmpty())
         {
             addObject(icon,973,634);
             waitForInput();
         }
-        else if(line2!="")
+        else
         {
             waitForInput();
             addObject(this.line2 = new DialogLine(line2,2),350,460);
-            if(line3=="")
+            if(line3.isEmpty())
             {
                 addObject(icon,973,634);
                 waitForInput();
             }else
             {
                 waitForInput();
+                addObject(this.line3 = new DialogLine(line3,3),350,460);
+                addObject(icon,973,634);
+                waitForInput();
             }
-        }
-        if(line3!="")
-        {
-            addObject(this.line3 = new DialogLine(line3,3),350,460);
-            addObject(icon,973,634);
-            waitForInput();
         }
 
         removeObject(this.line1);
 
-        if(line2!="")
+        if(!line2.isEmpty())
         {
             removeObject(this.line2);
         }
-        if(line3!="")
+        if(!line3.isEmpty())
         {
             removeObject(this.line3);
         }

@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class CharacterSelectMenu extends World
 {
-
+    public static final int HELP_MENU = 0;
     /**
      * Constructor for objects of class CharacterMenu.
      * 
@@ -28,6 +28,6 @@ public class CharacterSelectMenu extends World
         addObject(new CharacterSelectedButton("images/menu_help_characters/button_menu_help_characters_06.png",416, 365,6),640,360);
         addObject(new CharacterSelectedButton("images/menu_help_characters/button_menu_help_characters_07.png",706, 365,7),640,360);
         addObject(new CharacterSelectedButton("images/menu_help_characters/button_menu_help_characters_08.png",996, 365,8),640,360);
-        addObject(new LilReturnButton(0),640,360);
+        addObject(new LilReturnButton(HELP_MENU),640,360);
     }
 }

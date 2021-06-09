@@ -8,10 +8,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class DialogIcon extends Actor
 {
-    GreenfootImage img = new GreenfootImage("images/dialog/advance_icon.png");;
-    int counter=0;
-    int currentImage=0;
-    int transparency=255;
+    private GreenfootImage img = new GreenfootImage("images/dialog/advance_icon.png");;
+    private int counter=0;
+    private int currentImage=0;
+    private int transparency=255;
     
     public DialogIcon()
     {
