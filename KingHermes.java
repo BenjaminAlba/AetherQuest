@@ -8,6 +8,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class KingHermes extends Character
 {
+    private int headerX = 265;
+    private int headerY = 90;
+    
     private double acquiredExpMultiplier;
     
     private final String skill1Name="Royal Bloodline";
@@ -248,6 +251,18 @@ public class KingHermes extends Character
         if(skill4 == 0)
             return "Mejora esta habilidad para poder usarla";
         return "Activation rate: " + skill4ActivationRate + "%";
+    }
+
+    public String getName(){
+        return "King Hermes";
+    }
+    
+    public int getHeaderX(){
+        return headerX;
+    }
+    
+    public int getHeaderY(){
+        return headerY;
     }
     
     public void act() 

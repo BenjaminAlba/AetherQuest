@@ -8,6 +8,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Sokudo extends Character
 {
+    private int headerX = 295;
+    private int headerY = 90;
+    
     private double defIgnorePercent;
 
     private final String skill1Name="Temporal Void";
@@ -264,6 +267,18 @@ public class Sokudo extends Character
         if(skill4 == 0)
             return "Mejora esta habilidad para poder usarla";
         return "Damage multiplier: +" + (skill4DamageMultiplier*100) + "%";
+    }
+    
+    public String getName(){
+        return "Sokudo";
+    }
+    
+    public int getHeaderX(){
+        return headerX;
+    }
+    
+    public int getHeaderY(){
+        return headerY;
     }
     
     public void act() 

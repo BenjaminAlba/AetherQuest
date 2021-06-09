@@ -8,6 +8,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Rengoku extends Character
 {
+    private int headerX = 290;
+    private int headerY = 90;
+    
     private double holyFlameHpDamagePercent;
     
     private final String skill1Name="Holy Flame";
@@ -248,6 +251,18 @@ public class Rengoku extends Character
         if(skill4 == 0)
             return "Mejora esta habilidad para poder usarla";
         return "Defense multiplier: " + (skill4DefMultiplier*100) + "%";
+    }
+    
+    public String getName(){
+        return "Rengoku";
+    }
+    
+    public int getHeaderX(){
+        return headerX;
+    }
+    
+    public int getHeaderY(){
+        return headerY;
     }
     
     public void act() 

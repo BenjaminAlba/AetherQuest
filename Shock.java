@@ -8,6 +8,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Shock extends Character
 {
+    private int headerX = 305;
+    private int headerY = 90;
+    
     private int gutsActivationRate;
     private int evadeRate;
     private double counterHpDamageScalingPercent;
@@ -270,6 +273,18 @@ public class Shock extends Character
         if(skill4 == 0)
             return "Mejora esta habilidad para poder usarla";
         return "Damage mitigation %:" + (skill4DamageMitigationPercent*100) + "%";
+    }
+    
+    public String getName(){
+        return "Shock";
+    }
+    
+    public int getHeaderX(){
+        return headerX;
+    }
+    
+    public int getHeaderY(){
+        return headerY;
     }
     
     public void act() 

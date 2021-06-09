@@ -10,9 +10,9 @@ public class DialogPortrait extends Actor
 {
     private GreenfootImage portrait;
 
-    public DialogPortrait(int characterId)
+    public DialogPortrait(CharacterNameProvider character)
     {
-        portrait = new GreenfootImage("images/character_portraits/0"+characterId+".gif");
+        portrait = new GreenfootImage("images/character_portraits/0"+character.getId()+".gif");
         portrait.scale(portrait.getWidth()-367,portrait.getHeight()-367);
         setImage(portrait);
     }

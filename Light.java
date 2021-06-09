@@ -8,6 +8,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Light extends Character
 {
+    private int headerX = 310;
+    private int headerY = 90;
+    
     private int poisonActivationRate;
     private int poisonActiveTurns;
     private double poisonHpPercentDamage;
@@ -279,6 +282,18 @@ public class Light extends Character
         if(skill4 == 0)
             return "Mejora esta habilidad para poder usarla";
         return "Ally Sp recovery %: " + skill4AllySpRecoveryPercent + "%";
+    }
+
+    public String getName(){
+        return "Light";
+    }
+    
+    public int getHeaderX(){
+        return headerX;
+    }
+    
+    public int getHeaderY(){
+        return headerY;
     }
     
     public void act() 

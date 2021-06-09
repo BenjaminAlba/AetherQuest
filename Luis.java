@@ -8,6 +8,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Luis extends Character
 {
+    private int headerX = 320;
+    private int headerY = 90;
+    
     private double acquiredMoneyMultiplier;
     private double itemDamageMultiplier;
     private int negateItemConsumptionRate;
@@ -246,6 +249,18 @@ public class Luis extends Character
         if(skill4 == 0)
             return "Mejora esta habilidad para poder usarla";
         return "Self damage %: " + (skill4SelfHpDamagePercent*100) + "%";
+    }
+
+    public String getName(){
+        return "Luis";
+    }
+    
+    public int getHeaderX(){
+        return headerX;
+    }
+    
+    public int getHeaderY(){
+        return headerY;
     }
     
     public void act() 
