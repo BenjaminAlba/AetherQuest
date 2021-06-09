@@ -22,7 +22,6 @@ public class PrologueIntro extends World
     private DialogLocation locationDisplay;
     private CharacterNameProvider unknownName = new UnknownNameProvider();
     private CharacterNameProvider emptyName = new EmptyNameProvider();
-    int flag=1;
     public PrologueIntro()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
@@ -42,41 +41,37 @@ public class PrologueIntro extends World
 
     public void prologueIntroScene()
     {
-        if(flag==1)
-        {
-            setBackground("images/scenes/prologue.jpg");
-            prologueIntro.play();
+        setBackground("images/scenes/prologue.jpg");
+        prologueIntro.play();
 
-            Greenfoot.delay(540);
+        Greenfoot.delay(540);
 
-            setBackground("images/menu/background.png");
+        setBackground("images/menu/background.png");
 
-            dialogChunk("Finalmente te despiertas.","Presta atención.","Te he encerrado en una Mazmorra",emptyName);
-            dialogChunk("bajo tierra, en un lugar desconocido.","Quizá algún día logres entender mis","razones, pero por ahora espero entiendas",emptyName);
-            dialogChunk("que no puedo dejarte salir.","Al menos no ahora.","Esta Mazmorra es un lugar especial,",emptyName);
-            dialogChunk("está plagada de monstruos y peligros.","No te aconsejo que te adentres en ella.","Te he dejado suficientes proviciones",emptyName);
-            dialogChunk("para que al menos no mueras de hambre.","No sé cuándo podré dejarte salir, pero","si eres sensato te resignarás a esperar.",emptyName);
-            dialogChunk("Ahora duerme.","Sólo así puedo ayudarte.","",emptyName);
+        dialogChunk("Finalmente te despiertas.","Presta atención.","Te he encerrado en una Mazmorra",emptyName);
+        dialogChunk("bajo tierra, en un lugar desconocido.","Quizá algún día logres entender mis","razones, pero por ahora espero entiendas",emptyName);
+        dialogChunk("que no puedo dejarte salir.","Al menos no ahora.","Esta Mazmorra es un lugar especial,",emptyName);
+        dialogChunk("está plagada de monstruos y peligros.","No te aconsejo que te adentres en ella.","Te he dejado suficientes proviciones",emptyName);
+        dialogChunk("para que al menos no mueras de hambre.","No sé cuándo podré dejarte salir, pero","si eres sensato te resignarás a esperar.",emptyName);
+        dialogChunk("Ahora duerme.","Sólo así puedo ayudarte.","",emptyName);
 
-            showLocation("Tiempo después...",true);
+        showLocation("Tiempo después...",true);
 
-            dialogChunk("He esperado demasiado.","Si sigo así moriré de viejo.","O probablemente muera antes de inanición.",unknownName);
-            dialogChunk("Tengo...","Tengo que moverme.","Tengo que salir de aquí.",unknownName);
+        dialogChunk("He esperado demasiado.","Si sigo así moriré de viejo.","O probablemente muera antes de inanición.",unknownName);
+        dialogChunk("Tengo...","Tengo que moverme.","Tengo que salir de aquí.",unknownName);
 
-            openSfx.play();
-            showLocation("",false);
-            showLocation("Fuera de la celda",true);
+        openSfx.play();
+        showLocation("",false);
+        showLocation("Fuera de la celda",true);
 
-            staticSfx.play();
-            dialogChunk("¿Se es....a?","¿Siguen t....s ...os?","Veo que alguien ha decidido salir de la celda.",emptyName);
-            dialogChunk("Ya que no puedo evitar que exploren la","Mazmorra, permítanme dejar algo tan claro","como pueda.",emptyName);
-            dialogChunk("No saldrán todos con vida.","","",emptyName);
-            dialogChunk("Tú, quien abandonó su celda...","¿Fuiste tú quien robó las llaves de las demás?","Entonces te habrás dado cuenta.",emptyName);
-            dialogChunk("No puedes salvarlos a todos.","Has interferido con mis planes,","y ahora lidiarás con tu castigo.",emptyName);
-            dialogChunk("Quienes no elijas morirán.","¿Aún así deseas seguir explorando","la Mazmorra?",emptyName);
-            Greenfoot.setWorld(new PrologueRoom("01",640,360));
-        }
-        flag=0;
+        staticSfx.play();
+        dialogChunk("¿Se es....a?","¿Siguen t....s ...os?","Veo que alguien ha decidido salir de la celda.",emptyName);
+        dialogChunk("Ya que no puedo evitar que exploren la","Mazmorra, permítanme dejar algo tan claro","como pueda.",emptyName);
+        dialogChunk("No saldrán todos con vida.","","",emptyName);
+        dialogChunk("Tú, quien abandonó su celda...","¿Fuiste tú quien robó las llaves de las demás?","Entonces te habrás dado cuenta.",emptyName);
+        dialogChunk("No puedes salvarlos a todos.","Has interferido con mis planes,","y ahora lidiarás con tu castigo.",emptyName);
+        dialogChunk("Quienes no elijas morirán.","¿Aún así deseas seguir explorando","la Mazmorra?",emptyName);
+        Greenfoot.setWorld(new PrologueRoom("01",640,360));
     }
 
     public void waitForInput()
