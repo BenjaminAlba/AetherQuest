@@ -72,6 +72,7 @@ public class PrologueIntro extends World
             dialogChunk("Tú, quien abandonó su celda...","¿Fuiste tú quien robó las llaves de las demás?","Entonces te habrás dado cuenta.",9);
             dialogChunk("No puedes salvarlos a todos.","Has interferido con mis planes,","y ahora lidiarás con tu castigo.",9);
             dialogChunk("Quienes no elijas morirán.","¿Aún así deseas seguir explorando","la Mazmorra?",9);
+            PrologueRoom.playMusic();
             Greenfoot.setWorld(new PrologueRoom("01",640,360));
         }
         flag=0;

@@ -12,7 +12,7 @@ public class MovingCharacter extends Actor
      * Act - do whatever the Sokudo wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    private int speed = 5;
+    private int speed;
     private int verticalCurrentImage;
     private int horizontalCurrentImage;
     private int counter;
@@ -286,7 +286,7 @@ public class MovingCharacter extends Actor
             setImage(upWalk.get(verticalCurrentImage));
             verticalCurrentImage = (verticalCurrentImage + 1) % upWalk.size();            
         }
-        counter = (counter + 1)%6;
+        counter = (counter + 1)%5;
     }
 
     public void downWalk(){
@@ -294,6 +294,6 @@ public class MovingCharacter extends Actor
             setImage(downWalk.get(verticalCurrentImage));
             verticalCurrentImage = (verticalCurrentImage + 1) % downWalk.size();            
         }
-        counter = (counter + 1)%6;
+        counter = (counter + 1)%5;
     }
 }
