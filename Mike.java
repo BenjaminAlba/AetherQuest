@@ -227,6 +227,30 @@ public class Mike extends Character
         return skill4Name;
     }
     
+    public String getSkill1Stats(){
+        if(skill1 == 0)
+            return "Mejora esta habilidad para poder usarla";
+        return "Damage taken multiplier: " + (skill1DamageTakenMultiplier*100) + "%";
+    }
+    
+    public String getSkill2Stats(){
+        if(skill2 == 0)
+            return "Mejora esta habilidad para poder usarla";
+        return "Active turns: " + skill2ActiveTurns;
+    }
+    
+    public String getSkill3Stats(){
+        if(skill3 == 0)
+            return "Mejora esta habilidad para poder usarla";
+        return "Defense scaling %: " + (defScalingPercent) + "%";
+    }
+    
+    public String getSkill4Stats(){
+        if(skill4 == 0)
+            return "Mejora esta habilidad para poder usarla";
+        return "Speed increase: +" + baseSpeed;
+    }
+    
     public void act() 
     {
         // Add your action code here.

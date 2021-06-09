@@ -21,10 +21,12 @@ public class PrologueHorizontalDoor extends Door
     public void changeRoom(){
         if(getX()>640){
             PrologueRoom.addMapIconX(1);
+            getWorld().removeObjects(getWorld().getObjects(null));
             Greenfoot.setWorld(new PrologueRoom(destination,165,360));
         }
         else{
             PrologueRoom.addMapIconX(-1);
+            getWorld().removeObjects(getWorld().getObjects(null));
             Greenfoot.setWorld(new PrologueRoom(destination,1115,360));
         }
     }

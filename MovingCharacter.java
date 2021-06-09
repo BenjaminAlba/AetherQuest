@@ -189,12 +189,12 @@ public class MovingCharacter extends Actor
     }
     
     public void checkCollision(int x, int y){
+        if(getOneObjectAtOffset(x,y,CharacterImage.class) != null){
+            speed = 0;
+        }
         if(getOneObjectAtOffset(x,y,Door.class) != null){
             Door door = (Door)getOneObjectAtOffset(x,y,Door.class);
             door.changeRoom();
-        }
-        if(getOneObjectAtOffset(x,y,CharacterImage.class) != null){
-            speed = 0;
         }
     }
 

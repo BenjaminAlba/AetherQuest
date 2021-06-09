@@ -11,7 +11,7 @@ public class PrologueTrapDoor extends TrapDoor
     public static final int OPEN = 1;
     private GreenfootImage open = new GreenfootImage("images/trap_door/trap_door_open.png");
     private GreenfootImage closed = new GreenfootImage("images/trap_door/trap_door_closed.png");
-    
+
     public PrologueTrapDoor(int state){
         open.scale(open.getWidth()+60,open.getHeight()+60);
         closed.scale(closed.getWidth()+60,closed.getHeight()+60);
@@ -20,12 +20,14 @@ public class PrologueTrapDoor extends TrapDoor
         else
             setImage(closed);
     }
+
     public void act() 
     {
-        // Add your action code here.
+        if(Greenfoot.isKeyDown("enter"))
+            changeFloor();
     }    
-    
-    public void changeRoom(){
-        
+
+    public void changeFloor(){
+        Greenfoot.setWorld(new FirstFloorRoom());
     }
 }

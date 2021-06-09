@@ -224,6 +224,30 @@ public class Luis extends Character
         return skill4Name;
     }
     
+    public String getSkill1Stats(){
+        if(skill1 == 0)
+            return "Mejora esta habilidad para poder usarla";
+        return "Money multiplier: " + (acquiredMoneyMultiplier*100) + "%";
+    }
+    
+    public String getSkill2Stats(){
+        if(skill2 == 0)
+            return "Mejora esta habilidad para poder usarla";
+        return "Item damage multiplier: " + (itemDamageMultiplier*100) + "%";
+    }
+    
+    public String getSkill3Stats(){
+        if(skill3 == 0)
+            return "Mejora esta habilidad para poder usarla";
+        return "Preserve item rate: " + (negateItemConsumptionRate*100) + "%";
+    }
+    
+    public String getSkill4Stats(){
+        if(skill4 == 0)
+            return "Mejora esta habilidad para poder usarla";
+        return "Self damage %: " + (skill4SelfHpDamagePercent*100) + "%";
+    }
+    
     public void act() 
     {
         // Add your action code here.

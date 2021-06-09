@@ -226,6 +226,30 @@ public class Rengoku extends Character
         return skill4Name;
     }
     
+    public String getSkill1Stats(){
+        if(skill1 == 0)
+            return "Mejora esta habilidad para poder usarla";
+        return "Hp damage %: " + (holyFlameHpDamagePercent*100) + "%";
+    }
+    
+    public String getSkill2Stats(){
+        if(skill2 == 0)
+            return "Mejora esta habilidad para poder usarla";
+        return "Ally Hp recovery %: " + (skill2AllyHpRecoveryPercent*100) + "%";
+    }
+    
+    public String getSkill3Stats(){
+        if(skill3 == 0)
+            return "Mejora esta habilidad para poder usarla";
+        return "Attack Multiplier: " + (skill3AtkMultiplier*100) + "%";
+    }
+    
+    public String getSkill4Stats(){
+        if(skill4 == 0)
+            return "Mejora esta habilidad para poder usarla";
+        return "Defense multiplier: " + (skill4DefMultiplier*100) + "%";
+    }
+    
     public void act() 
     {
         // Add your action code here.

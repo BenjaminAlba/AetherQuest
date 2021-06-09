@@ -38,6 +38,10 @@ public class SkillUpgradeMenu extends World
             skillsInfo.drawString(String.valueOf(character.getSkill2Lvl()),740,279);
             skillsInfo.drawString(String.valueOf(character.getSkill3Lvl()),100,639);
             skillsInfo.drawString(String.valueOf(character.getSkill4Lvl()),740,639);
+            skillsInfo.drawString(character.getSkill1Stats(),35,320);
+            skillsInfo.drawString(character.getSkill2Stats(),675,320);
+            skillsInfo.drawString(character.getSkill3Stats(),35,680);
+            skillsInfo.drawString(character.getSkill4Stats(),675,680);
             addObject(new Image(skillsInfo),640,360);
             addObject(new UpgradeSkillButton(1,character),580,320);
             addObject(new UpgradeSkillButton(2,character),1220,320);

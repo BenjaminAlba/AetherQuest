@@ -20,7 +20,7 @@ public class NewGameButton extends Button
     {
         mouseClicked = checkMouse(state0,state1,955,340,325,120);
         if(mouseClicked == true){
-            checkClick(new PrologueIntro());
+            checkClick(new PrologueRoom("01",640,360));
         }
     }    
 }
