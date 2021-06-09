@@ -8,6 +8,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Luis extends Character
 {
+    private int headerX = 320;
+    private int headerY = 90;
+    
     private double acquiredMoneyMultiplier;
     private double itemDamageMultiplier;
     private int negateItemConsumptionRate;
@@ -209,6 +212,31 @@ public class Luis extends Character
             }
             skillPoints-=1;
         }
+    }
+    
+    public String getSkill1Name(){
+        return skill1Name;
+    }
+    public String getSkill2Name(){
+        return skill2Name;
+    }
+    public String getSkill3Name(){
+        return skill3Name;
+    }
+    public String getSkill4Name(){
+        return skill4Name;
+    }
+    
+    public String getName(){
+        return "Luis";
+    }
+    
+    public int getHeaderX(){
+        return headerX;
+    }
+    
+    public int getHeaderY(){
+        return headerY;
     }
     
     public void act() 

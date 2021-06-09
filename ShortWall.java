@@ -8,13 +8,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class ShortWall extends Wall
 {
-    
+    public static final int RIGHT = 0;
     private GreenfootImage shortWall;
     
     public ShortWall(int orientation)
     {
         shortWall = new GreenfootImage("images/prologue_rf/shortwall.png");
-        if(orientation==1)
+        if(orientation==RIGHT)
         {
             shortWall.mirrorHorizontally();
         }

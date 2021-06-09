@@ -8,6 +8,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Nagito extends Character
 {
+    private int headerX = 305;
+    private int headerY = 90;
+    
     private int furyStack;
     private int cooldownTurns;
     private int gutsActivationRate;
@@ -31,7 +34,7 @@ public class Nagito extends Character
     
     public Nagito()
     {
-        id=7;
+        id=8;
         lvl=1;
         currentExp=0;
         skillPoints=0;
@@ -65,6 +68,31 @@ public class Nagito extends Character
         skill3SpCost=0;
         skill4HpRecoveryMultiplier=0.1;
         skill4SpCost=0;
+    }
+    
+    public String getSkill1Name(){
+        return skill1Name;
+    }
+    public String getSkill2Name(){
+        return skill2Name;
+    }
+    public String getSkill3Name(){
+        return skill3Name;
+    }
+    public String getSkill4Name(){
+        return skill4Name;
+    }
+    
+    public String getName(){
+        return "Nagito";
+    }
+    
+    public int getHeaderX(){
+        return headerX;
+    }
+    
+    public int getHeaderY(){
+        return headerY;
     }
     
     public void act() 

@@ -8,6 +8,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Light extends Character
 {
+    private int headerX = 310;
+    private int headerY = 90;
+    
     private int poisonActivationRate;
     private int poisonActiveTurns;
     private double poisonHpPercentDamage;
@@ -244,6 +247,31 @@ public class Light extends Character
         }
     }
 
+    public String getSkill1Name(){
+        return skill1Name;
+    }
+    public String getSkill2Name(){
+        return skill2Name;
+    }
+    public String getSkill3Name(){
+        return skill3Name;
+    }
+    public String getSkill4Name(){
+        return skill4Name;
+    }
+    
+    public String getName(){
+        return "Light";
+    }
+    
+    public int getHeaderX(){
+        return headerX;
+    }
+    
+    public int getHeaderY(){
+        return headerY;
+    }
+    
     public void act() 
     {
         // Add your action code here.

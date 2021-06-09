@@ -1,18 +1,28 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.util.*;
 /**
  * Write a description of class Button here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Button extends Actor
+public abstract class Button extends Actor
 {
     private Image image;
-    private GreenfootImage buttons = new GreenfootImage("images/menu/menu_02.png");
     private GreenfootSound buttonClick = new GreenfootSound("sounds/button_click.mp3");
+    private List<Observer> observers = new LinkedList();
+
     public Button(){
-        setImage(buttons);
+    }
+
+    protected Button(Observer ... observers){
+        for(Observer observer: observers){
+            this.observers.add(observer);
+        }
+    }
+
+    public void addObserver(Observer observer){
+        observers.add(observer);
     }
 
     protected boolean checkMouse(GreenfootImage state0, GreenfootImage state1, int x1, int y1, int width, int height){
@@ -29,11 +39,15 @@ public class Button extends Actor
         }
         else
             setImage(state0);
+
         return false;
     }
 
     protected void checkClick(World world){
-            buttonClick.play();
-            Greenfoot.setWorld(world);
+        buttonClick.play();
+        for(Observer observer: observers){
+            observer.eventOcurred();
+        }
+        Greenfoot.setWorld(world);
     }
 }

@@ -8,6 +8,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Rengoku extends Character
 {
+    private int headerX = 290;
+    private int headerY = 90;
+    
     private double holyFlameHpDamagePercent;
     
     private final String skill1Name="Holy Flame";
@@ -211,6 +214,31 @@ public class Rengoku extends Character
             }
             skillPoints-=1;
         }
+    }
+    
+    public String getSkill1Name(){
+        return skill1Name;
+    }
+    public String getSkill2Name(){
+        return skill2Name;
+    }
+    public String getSkill3Name(){
+        return skill3Name;
+    }
+    public String getSkill4Name(){
+        return skill4Name;
+    }
+    
+    public String getName(){
+        return "Rengoku";
+    }
+    
+    public int getHeaderX(){
+        return headerX;
+    }
+    
+    public int getHeaderY(){
+        return headerY;
     }
     
     public void act() 

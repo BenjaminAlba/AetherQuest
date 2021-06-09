@@ -7,9 +7,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class MainMenu extends World
+public class MainMenu extends World implements Observer
 {
-    private GreenfootSound menuMusic = new GreenfootSound("sounds/menu.mp3");
+    private static GreenfootSound menuMusic = new GreenfootSound("sounds/menu.mp3");
     private Image[] gears = new Image[8];
     private GreenfootSound gearTurn = new GreenfootSound("sounds/ticking_clock.mp3");
     private int counter = 0;
@@ -24,10 +24,14 @@ public class MainMenu extends World
         setBackground("images/menu/background.png");
         addGears();
         addObject(new Image("images/menu/menu_01.png"),640,360);
-        addObject(new Button(),640,360);
-        addObject(new Continue(),640,360);
-        addObject(new NewGame(),640,360);
-        addObject(new Help(),640,360);
+        addObject(new Image("images/menu/menu_02.png"),640,360);
+        addObject(new ContinueButton(),640,360);
+        addObject(new NewGameButton(this),640,360);
+        addObject(new HelpButton(),640,360);
+    }
+    
+    public void eventOcurred(){
+        MainMenu.menuMusic.stop();
     }
 
     public void addGears(){

@@ -1,12 +1,18 @@
 #BlueJ class context
 comment0.target=Image
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ Image\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=image
-comment1.target=Image(java.lang.String)
-comment2.params=width\ height
-comment2.target=void\ scale(int,\ int)
-comment3.params=degrees
-comment3.target=void\ rotate(int)
-comment4.params=
-comment4.target=void\ act()
-numComments=5
+comment1.params=
+comment1.target=Image()
+comment2.params=image
+comment2.target=Image(greenfoot.GreenfootImage)
+comment3.params=image
+comment3.target=Image(java.lang.String)
+comment4.params=width\ height
+comment4.target=void\ scale(int,\ int)
+comment5.params=degrees
+comment5.target=void\ rotate(int)
+comment6.params=transparency
+comment6.target=void\ setTransparency(int)
+comment7.params=
+comment7.target=void\ act()
+numComments=8
