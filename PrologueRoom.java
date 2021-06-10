@@ -9,7 +9,7 @@ import java.io.*;
  */
 public class PrologueRoom extends World 
 {
-    private static GreenfootSound prologueMusic = new GreenfootSound("sounds/prologueOWS.mp3");
+    private static GreenfootSound music = new GreenfootSound("sounds/prologueOWS.mp3");
     public static final int OPEN = 1;
     public static final int CLOSED = 0;
     
@@ -794,10 +794,10 @@ public class PrologueRoom extends World
     }
 
     public static void playMusic(){
-        prologueMusic.playLoop();
+        music.playLoop();
     }
 
     public static void stopMusic(){
-        prologueMusic.stop();
+        music.stop();
     }
 }

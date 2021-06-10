@@ -186,6 +186,10 @@ public class MovingCharacter extends Actor
             CharacterImage character = (CharacterImage)getOneIntersectingObject(CharacterImage.class);
             character.recruitScene();
         }
+        else if(Greenfoot.isKeyDown("enter") && isTouching(TrapDoor.class)){
+            TrapDoor trapDoor = (TrapDoor)getOneIntersectingObject(TrapDoor.class);
+            trapDoor.changeFloor();
+        }
     }
     
     public void checkCollision(int x, int y){

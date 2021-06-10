@@ -15,8 +15,10 @@ public class EscCharacterButton extends Button
     private String currentRoom;
     private int characterX;
     private int characterY;
-    public EscCharacterButton(String currentRoom, int characterX,int characterY){
+    private int floor;
+    public EscCharacterButton(String currentRoom, int floor, int characterX,int characterY){
         this.currentRoom = currentRoom;
+        this.floor = floor;
         this.characterX = characterX;
         this.characterY = characterY;
     }
@@ -26,7 +28,7 @@ public class EscCharacterButton extends Button
         changeState();   
         if(Greenfoot.mousePressed(this)){
             buttonClick.play();
-            Greenfoot.setWorld(new CharacterSkillMenu(currentRoom,characterX,characterY));
+            Greenfoot.setWorld(new CharacterSkillMenu(currentRoom,floor,characterX,characterY));
         }
     }
 

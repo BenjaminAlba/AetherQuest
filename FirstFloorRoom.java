@@ -8,6 +8,9 @@ import java.io.*;
  */
 public class FirstFloorRoom extends World
 {
+    public static final int CURRENT_FLOOR = 1;
+    private static GreenfootSound music = new GreenfootSound("sounds/Act1OWS.mp3");
+    public static final int OPEN = 1;
     public static final int LEFT = 1;
     public static final int RIGHT = 0;
     public static final int UP = 0;
@@ -29,7 +32,6 @@ public class FirstFloorRoom extends World
     private LongWall bottomWall = new LongWall(DOWN, "floor1");
     private Image map = new Image("images/maps/map_floor1.png");
     private Image mapIcon = new Image("images/maps/map_icon.png");
-    //private Image darkenScreen = new Image("images/menu/background.png");
     private Image textBox;
     private GreenfootSound buttonPress;
     private DialogPortrait portrait;
@@ -93,7 +95,7 @@ public class FirstFloorRoom extends World
                     addObject(new FirstFloorHorizontalDoor(RIGHT,linea),rightDoorX,horizontalDoorY);
                     break;
                     case "trapDoor":
-                    addObject(new FirstFloorTrapDoor(0),640,360);
+                    addObject(new FirstFloorTrapDoor(OPEN),640,360);
                     linea = bufferedRoomReader.readLine();
                     break;
                     default:
@@ -124,7 +126,15 @@ public class FirstFloorRoom extends World
     public void act(){
         if(Greenfoot.isKeyDown("escape")){
             Greenfoot.delay(20);
-            Greenfoot.setWorld(new EscMenu(id,protagonist.getX(),protagonist.getY()));
+            Greenfoot.setWorld(new EscMenu(id,CURRENT_FLOOR,protagonist.getX(),protagonist.getY()));
         }
+    }
+    
+    public static void playMusic(){
+        music.playLoop();
+    }
+
+    public static void stopMusic(){
+        music.stop();
     }
 }

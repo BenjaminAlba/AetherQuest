@@ -14,9 +14,11 @@ public class CharacterSkillButton extends Button
     private String currentRoom;
     private int characterX;
     private int characterY;
-    public CharacterSkillButton(Character character, String currentRoom, int characterX, int characterY){
+    private int floor;
+    public CharacterSkillButton(Character character, String currentRoom, int floor, int characterX, int characterY){
         this.character = character;
         this.currentRoom = currentRoom;
+        this.floor = floor;
         this.characterX = characterX;
         this.characterY = characterY;
         characterSkillButton = new GreenfootImage("images/ESC_menu_characters/0"+this.character.getId()+".png");
@@ -46,7 +48,7 @@ public class CharacterSkillButton extends Button
     {  
         if(Greenfoot.mousePressed(this)){
             buttonClick.play();
-            Greenfoot.setWorld(new SkillUpgradeMenu(character,currentRoom,characterX,characterY));
+            Greenfoot.setWorld(new SkillUpgradeMenu(character,currentRoom,floor,characterX,characterY));
         }
     }    
 }

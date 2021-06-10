@@ -25,10 +25,6 @@ public class EscShopButton extends Button
     public void act() 
     {
         changeState();   
-        if(Greenfoot.mousePressed(this)){
-            buttonClick.play();
-            Greenfoot.setWorld(new ShopMenu());
-        }
     }
 
     public void changeState(){

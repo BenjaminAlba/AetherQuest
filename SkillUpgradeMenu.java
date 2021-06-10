@@ -15,12 +15,14 @@ public class SkillUpgradeMenu extends World
     private int characterY;
     private GreenfootImage skillsInfo;
     private Character character;
-    public SkillUpgradeMenu(Character character, String currentRoom, int characterX, int characterY)
+    private int floor;
+    public SkillUpgradeMenu(Character character, String currentRoom, int floor, int characterX, int characterY)
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1280, 720, 1);
         this.character = character;
         this.currentRoom = currentRoom;
+        this.floor = floor;
         this.characterX = characterX;
         this.characterY = characterY;
         setBackground("images/ESC_menu/esc_menu_background.png");
@@ -57,7 +59,7 @@ public class SkillUpgradeMenu extends World
     public void act(){
         if(Greenfoot.isKeyDown("escape")){
             Greenfoot.delay(20);
-            Greenfoot.setWorld(new CharacterSkillMenu(currentRoom,characterX, characterY));
+            Greenfoot.setWorld(new CharacterSkillMenu(currentRoom,floor,characterX, characterY));
         }
     }
 }

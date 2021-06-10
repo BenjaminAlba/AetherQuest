@@ -16,7 +16,8 @@ public class EscMenu extends World
     private Image portrait3;
     private Image portrait4;
     private Party party = Party.getInstance();
-    public EscMenu(String currentRoom, int characterX, int characterY)
+    private int floor;
+    public EscMenu(String currentRoom, int floor, int characterX, int characterY)
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1280, 720, 1);
@@ -34,8 +35,9 @@ public class EscMenu extends World
         addObject(portrait3,815,485);
         addObject(portrait4,1065,485);
         addObject(new EscShopButton(currentRoom,characterX,characterY),341,360);
-        addObject(new EscCharacterButton(currentRoom,characterX,characterY),940, 360);
+        addObject(new EscCharacterButton(currentRoom,floor,characterX,characterY),940, 360);
         this.currentRoom = currentRoom;
+        this.floor = floor;
         this.characterX = characterX;
         this.characterY = characterY;
     }
@@ -43,7 +45,12 @@ public class EscMenu extends World
     public void act(){
         if(Greenfoot.isKeyDown("escape")){
             Greenfoot.delay(20);
-            Greenfoot.setWorld(new PrologueRoom(currentRoom,characterX, characterY));
+            if(floor == 1)
+                Greenfoot.setWorld(new FirstFloorRoom(currentRoom,characterX, characterY));
+            else if(floor == 2)
+                Greenfoot.setWorld(new SecondFloorRoom(currentRoom,characterX, characterY));
+            else 
+                Greenfoot.setWorld(new ThirdFloorRoom(currentRoom,characterX, characterY));
         }
     }
 }
