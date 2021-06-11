@@ -99,6 +99,10 @@ public abstract class Character extends Actor implements CharacterNameProvider
         return skillPoints;
     }
     
+    public int getHitCount(){
+        return hitCount;
+    }
+    
     public abstract String getSkill1Stats();
     
     public abstract String getSkill2Stats();

@@ -6,24 +6,13 @@ import java.io.*;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class ThirdFloorRoom extends World
+public class ThirdFloorRoom extends FloorWorld
 {
     public static final int CURRENT_FLOOR = 3;
     private static GreenfootSound music = new GreenfootSound("sounds/Act3OWS.mp3");
-    public static final int OPEN = 1;
-    public static final int LEFT = 1;
-    public static final int RIGHT = 0;
-    public static final int UP = 0;
-    public static final int DOWN = 1;
     private static int mapIconX = 0;
     private static int mapIconY = 0;
     private String id;
-    private int upDoorY = 70;
-    private int downDoorY = 650;
-    private int verticalDoorX = 640;
-    private int leftDoorX = 90;
-    private int rightDoorX = 1190;
-    private int horizontalDoorY = 360;
     private String characterId;
     private MovingCharacter protagonist;
     private ShortWall leftWall = new ShortWall(LEFT, "floor3");
@@ -52,7 +41,7 @@ public class ThirdFloorRoom extends World
     public ThirdFloorRoom(String id, int characterX, int characterY)
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(1280, 720, 1); 
+        super(); 
         File room = new File("rooms/floor3/"+id+".room");
         characterId="0"+party.getMember1().getId();
 
@@ -70,44 +59,7 @@ public class ThirdFloorRoom extends World
             mapIconX = 0;
             mapIconY = 0;
         }
-        try{
-            FileReader roomReader = new FileReader(room);
-            BufferedReader bufferedRoomReader= new BufferedReader(roomReader);
-
-            String linea = bufferedRoomReader.readLine();
-
-            while(linea != null){
-                switch(linea){
-                    case "upDoor":
-                    linea = bufferedRoomReader.readLine();
-                    addObject(new ThirdFloorVerticalDoor(UP,linea),verticalDoorX,upDoorY);
-                    break;
-                    case "downDoor":
-                    linea = bufferedRoomReader.readLine();
-                    addObject(new ThirdFloorVerticalDoor(DOWN,linea),verticalDoorX,downDoorY);
-                    break;
-                    case "leftDoor":
-                    linea = bufferedRoomReader.readLine();
-                    addObject(new ThirdFloorHorizontalDoor(LEFT,linea),leftDoorX,horizontalDoorY);
-                    break;
-                    case "rightDoor":
-                    linea = bufferedRoomReader.readLine();
-                    addObject(new ThirdFloorHorizontalDoor(RIGHT,linea),rightDoorX,horizontalDoorY);
-                    break;
-                    case "trapDoor":
-                    addObject(new ThirdFloorTrapDoor(OPEN),640,360);
-                    linea = bufferedRoomReader.readLine();
-                    break;
-                    default:
-                    linea = bufferedRoomReader.readLine();
-                    break;
-                }
-            }
-
-        }
-        catch(IOException exception){
-            exception.printStackTrace();
-        }
+        buildWorld(room);
         addObject(protagonist, characterX, characterY);
         map.setTransparency(100);
         addObject(map,145,135);
@@ -136,5 +88,25 @@ public class ThirdFloorRoom extends World
 
     public static void stopMusic(){
         music.stop();
+    }
+    
+    public Door getUpDoor(String linea){
+        return new ThirdFloorVerticalDoor(UP,linea);
+    }
+    
+    public Door getDownDoor(String linea){
+        return new ThirdFloorVerticalDoor(DOWN,linea);
+    }
+    
+    public Door getLeftDoor(String linea){
+        return new ThirdFloorHorizontalDoor(LEFT,linea);
+    }
+    
+    public Door getRightDoor(String linea){
+        return new ThirdFloorHorizontalDoor(RIGHT,linea);
+    }
+    
+    public TrapDoor getTrapDoor(String linea){
+        return new ThirdFloorTrapDoor(OPEN);
     }
 }
