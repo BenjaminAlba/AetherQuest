@@ -12,7 +12,7 @@ public class MovingCharacter extends Actor
      * Act - do whatever the Sokudo wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    private int speed = 5;
+    private int speed;
     private int verticalCurrentImage;
     private int horizontalCurrentImage;
     private int counter;
@@ -186,15 +186,19 @@ public class MovingCharacter extends Actor
             CharacterImage character = (CharacterImage)getOneIntersectingObject(CharacterImage.class);
             character.recruitScene();
         }
+        else if(Greenfoot.isKeyDown("enter") && isTouching(TrapDoor.class)){
+            TrapDoor trapDoor = (TrapDoor)getOneIntersectingObject(TrapDoor.class);
+            trapDoor.changeFloor();
+        }
     }
     
     public void checkCollision(int x, int y){
+        if(getOneObjectAtOffset(x,y,CharacterImage.class) != null){
+            speed = 0;
+        }
         if(getOneObjectAtOffset(x,y,Door.class) != null){
             Door door = (Door)getOneObjectAtOffset(x,y,Door.class);
             door.changeRoom();
-        }
-        if(getOneObjectAtOffset(x,y,CharacterImage.class) != null){
-            speed = 0;
         }
     }
 
@@ -286,7 +290,7 @@ public class MovingCharacter extends Actor
             setImage(upWalk.get(verticalCurrentImage));
             verticalCurrentImage = (verticalCurrentImage + 1) % upWalk.size();            
         }
-        counter = (counter + 1)%6;
+        counter = (counter + 1)%5;
     }
 
     public void downWalk(){
@@ -294,6 +298,6 @@ public class MovingCharacter extends Actor
             setImage(downWalk.get(verticalCurrentImage));
             verticalCurrentImage = (verticalCurrentImage + 1) % downWalk.size();            
         }
-        counter = (counter + 1)%6;
+        counter = (counter + 1)%5;
     }
 }

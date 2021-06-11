@@ -21,10 +21,12 @@ public class PrologueVerticalDoor extends Door
     public void changeRoom(){
         if(getY()<360){
             PrologueRoom.addMapIconY(-1);
+            getWorld().removeObjects(getWorld().getObjects(null));
             Greenfoot.setWorld(new PrologueRoom(destination,640,540));
         }
         else{
             PrologueRoom.addMapIconY(1);
+            getWorld().removeObjects(getWorld().getObjects(null));
             Greenfoot.setWorld(new PrologueRoom(destination,640,110));
         }
     }

@@ -9,6 +9,10 @@ import java.io.*;
  */
 public class PrologueRoom extends World 
 {
+    private static GreenfootSound music = new GreenfootSound("sounds/prologueOWS.mp3");
+    public static final int OPEN = 1;
+    public static final int CLOSED = 0;
+    
     private CharacterNameProvider unknownName = new UnknownNameProvider();
     public static final int LEFT = 1;
     public static final int RIGHT = 0;
@@ -25,17 +29,14 @@ public class PrologueRoom extends World
     private int horizontalDoorY = 360;
     private String characterId = "00";
     private MovingCharacter unknown;
-    private ShortWall sh1 = new ShortWall(LEFT);
-    private ShortWall sh2 = new ShortWall(RIGHT);
-    private LongWall lh1 = new LongWall(UP);
-    private LongWall lh2 = new LongWall(DOWN);
+    private ShortWall leftWall = new ShortWall(LEFT, "prologue");
+    private ShortWall rightWall = new ShortWall(RIGHT, "prologue");
+    private LongWall topWall = new LongWall(UP, "prologue");
+    private LongWall bottomWall = new LongWall(DOWN, "prologue");
     private Image map = new Image("images/maps/map_prologue.png");
     private Image mapIcon = new Image("images/maps/map_icon.png");
     private Image darkenScreen = new Image("images/menu/background.png");
     private Image textBox;
-    private GreenfootSound prologueIntro;
-    private GreenfootSound openSfx;
-    private GreenfootSound staticSfx;
     private GreenfootSound buttonPress;
     private DialogPortrait portrait;
     private DialogHeader header;
@@ -61,20 +62,17 @@ public class PrologueRoom extends World
 
         unknown = new MovingCharacter(characterId);
         setBackground("images/prologue_rf/floor.png");
-        addObject(lh1, 640, 60);
-        addObject(lh2, 640, 660);
-        addObject(sh1, 70, 360);
-        addObject(sh2, 1210, 360);
+        addObject(topWall, 640, 60);
+        addObject(bottomWall, 640, 660);
+        addObject(leftWall, 70, 360);
+        addObject(rightWall, 1210, 360);
         textBox = new Image("images/dialog/dialog_box.png");
         icon = new DialogIcon();
-        prologueIntro = new GreenfootSound("sounds/chapterStart.mp3");
         buttonPress = new GreenfootSound("sounds/button_click.mp3");
-        openSfx = new GreenfootSound("sounds/open_sfx.mp3");
-        staticSfx = new GreenfootSound("sounds/static_sfx.mp3");
         this.id = id;
         if(id.equals("01")){
-            PrologueRoom.mapIconX = 0;
-            PrologueRoom.mapIconY = 0;
+            mapIconX = 0;
+            mapIconY = 0;
         }
         try{
             FileReader roomReader = new FileReader(room);
@@ -158,9 +156,9 @@ public class PrologueRoom extends World
                     break;
                     case "trapDoor":
                     if(party.getPartyFlags(3) == false)
-                        addObject(new PrologueTrapDoor(0),640,360);
+                        addObject(new PrologueTrapDoor(CLOSED),640,360);
                     else
-                        addObject(new PrologueTrapDoor(1),640,360);
+                        addObject(new PrologueTrapDoor(OPEN),640,360);
                     linea = bufferedRoomReader.readLine();
                     break;
                     default:
@@ -189,10 +187,7 @@ public class PrologueRoom extends World
     }
 
     public void act(){
-        if(Greenfoot.isKeyDown("escape")){
-            Greenfoot.delay(20);
-            Greenfoot.setWorld(new EscMenu(id,unknown.getX(),unknown.getY()));
-        }
+        
     }
 
     public void sokudoRecruitScene()
@@ -796,5 +791,13 @@ public class PrologueRoom extends World
         {
             removeObject(locationDisplay);
         }
+    }
+
+    public static void playMusic(){
+        music.playLoop();
+    }
+
+    public static void stopMusic(){
+        music.stop();
     }
 }

@@ -11,9 +11,9 @@ public class ShortWall extends Wall
     public static final int RIGHT = 0;
     private GreenfootImage shortWall;
     
-    public ShortWall(int orientation)
+    public ShortWall(int orientation, String floor)
     {
-        shortWall = new GreenfootImage("images/prologue_rf/shortwall.png");
+        shortWall = new GreenfootImage("images/" + floor + "_rf/shortwall.png");
         if(orientation==RIGHT)
         {
             shortWall.mirrorHorizontally();

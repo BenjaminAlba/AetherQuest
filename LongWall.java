@@ -10,9 +10,9 @@ public class LongWall extends Wall
 {
     public static final int DOWN = 1;
     private GreenfootImage longWall;
-    public LongWall(int orientation)
+    public LongWall(int orientation, String floor)
     {
-        longWall = new GreenfootImage("images/prologue_rf/longwall.png");
+        longWall = new GreenfootImage("images/" + floor + "_rf/longwall.png");
         if(orientation==DOWN)
         {
             longWall.mirrorVertically();

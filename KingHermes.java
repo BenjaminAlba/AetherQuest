@@ -229,6 +229,30 @@ public class KingHermes extends Character
         return skill4Name;
     }
     
+    public String getSkill1Stats(){
+        if(skill1 == 0)
+            return "Mejora esta habilidad para poder usarla";
+        return "Exp multiplier:" + (acquiredExpMultiplier*100) + "%";
+    }
+    
+    public String getSkill2Stats(){
+        if(skill2 == 0)
+            return "Mejora esta habilidad para poder usarla";
+        return "Ally Sp recovery %: " + (skill2AllySpRecoveryPercent*100) + "%";
+    }
+    
+    public String getSkill3Stats(){
+        if(skill3 == 0)
+            return "Mejora esta habilidad para poder usarla";
+        return "Run rate: " + skill3RunRate + "%";
+    }
+    
+    public String getSkill4Stats(){
+        if(skill4 == 0)
+            return "Mejora esta habilidad para poder usarla";
+        return "Activation rate: " + skill4ActivationRate + "%";
+    }
+
     public String getName(){
         return "King Hermes";
     }

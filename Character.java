@@ -95,37 +95,21 @@ public abstract class Character extends Actor implements CharacterNameProvider
         return skill4;
     }
     
-    public void upgradeSkill1(){
-        if(skill1<7 && skillPoints>0){
-            skill1++;
-            skillPoints--;
-        }
-    }
-    
-    public void upgradeSkill2(){
-        if(skill2<7 && skillPoints>0){
-            skill2++;
-            skillPoints--;
-        }
-    }
-    
-    public void upgradeSkill3(){
-        if(skill3<7 && skillPoints>0){
-            skill3++;
-            skillPoints--;
-        }
-    }
-    
-    public void upgradeSkill4(){
-        if(skill4<7 && skillPoints>0){
-            skill4++;
-            skillPoints--;
-        }
-    }
-    
     public int getSkillPoints(){
         return skillPoints;
     }
+    
+    public int getHitCount(){
+        return hitCount;
+    }
+    
+    public abstract String getSkill1Stats();
+    
+    public abstract String getSkill2Stats();
+    
+    public abstract String getSkill3Stats();
+    
+    public abstract String getSkill4Stats();
     
     public abstract String getSkill1Name();
 
@@ -134,4 +118,13 @@ public abstract class Character extends Actor implements CharacterNameProvider
     public abstract String getSkill3Name();
 
     public abstract String getSkill4Name();
+    
+    public abstract void upgradeS1();
+    
+    public abstract void upgradeS2();
+    
+    public abstract void upgradeS3();
+    
+    public abstract void upgradeS4();
+    
 }

@@ -1,0 +1,18 @@
+#BlueJ class context
+comment0.target=FloorWorld
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ FloorWorld\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=FloorWorld()
+comment2.params=room
+comment2.target=void\ buildWorld(java.io.File)
+comment3.params=linea
+comment3.target=Door\ getUpDoor(java.lang.String)
+comment4.params=linea
+comment4.target=Door\ getDownDoor(java.lang.String)
+comment5.params=linea
+comment5.target=Door\ getLeftDoor(java.lang.String)
+comment6.params=linea
+comment6.target=Door\ getRightDoor(java.lang.String)
+comment7.params=linea
+comment7.target=TrapDoor\ getTrapDoor(java.lang.String)
+numComments=8

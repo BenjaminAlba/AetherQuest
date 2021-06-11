@@ -251,6 +251,30 @@ public class Shock extends Character
         return skill4Name;
     }
     
+    public String getSkill1Stats(){
+        if(skill1 == 0)
+            return "Mejora esta habilidad para poder usarla";
+        return "Guts activation rate: " + gutsActivationRate + "%";
+    }
+    
+    public String getSkill2Stats(){
+        if(skill2 == 0)
+            return "Mejora esta habilidad para poder usarla";
+        return "Hp recovery %: " + (skill2HpRecoveryPercent*100) + "%";
+    }
+    
+    public String getSkill3Stats(){
+        if(skill3 == 0)
+            return "Mejora esta habilidad para poder usarla";
+        return "Evade rate: " + evadeRate + "%";
+    }
+    
+    public String getSkill4Stats(){
+        if(skill4 == 0)
+            return "Mejora esta habilidad para poder usarla";
+        return "Damage mitigation %:" + (skill4DamageMitigationPercent*100) + "%";
+    }
+    
     public String getName(){
         return "Shock";
     }

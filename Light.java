@@ -260,6 +260,30 @@ public class Light extends Character
         return skill4Name;
     }
     
+    public String getSkill1Stats(){
+        if(skill1 == 0)
+            return "Mejora esta habilidad para poder usarla";
+        return "Poison activation rate increase: +" + skill1PoisonActivationRateIncrease + "%";
+    }
+    
+    public String getSkill2Stats(){
+        if(skill2 == 0)
+            return "Mejora esta habilidad para poder usarla";
+        return "Poison % Hp dmg: " + poisonHpPercentDamage + "%";
+    }
+    
+    public String getSkill3Stats(){
+        if(skill3 == 0)
+            return "Mejora esta habilidad para poder usarla";
+        return "Sp recovery: " + (skill3SpRecoveryRate*100) + "%";
+    }
+    
+    public String getSkill4Stats(){
+        if(skill4 == 0)
+            return "Mejora esta habilidad para poder usarla";
+        return "Ally Sp recovery %: " + skill4AllySpRecoveryPercent + "%";
+    }
+
     public String getName(){
         return "Light";
     }
