@@ -27,7 +27,7 @@ public class BattleEnvironment extends World
     private StatDisplay member2Name;
     private StatDisplay member3Name;
     private StatDisplay member4Name;
-    
+
     private StatDisplay enemy1Name;
     private StatDisplay enemy2Name;
     private StatDisplay enemy3Name;
@@ -37,7 +37,7 @@ public class BattleEnvironment extends World
     private Bar member2Bar;
     private Bar member3Bar;
     private Bar member4Bar;
-    
+
     private Bar enemy1Bar;
     private Bar enemy2Bar;
     private Bar enemy3Bar;
@@ -52,7 +52,7 @@ public class BattleEnvironment extends World
     private GreenfootSound attackSfx = new GreenfootSound("sounds/attack.mp3");
 
     private AttackAnimation attackAnimation = new AttackAnimation();
-    
+
     public BattleEnvironment()
     {
         super(1280, 720, 1);
@@ -73,7 +73,7 @@ public class BattleEnvironment extends World
         member2Sprite = new Image("images/character_sprites/0"+party.getMember2().getId()+"/0"+party.getMember2().getId()+"_sideidle.png");
         member3Sprite = new Image("images/character_sprites/0"+party.getMember3().getId()+"/0"+party.getMember3().getId()+"_sideidle.png");
         member4Sprite = new Image("images/character_sprites/0"+party.getMember4().getId()+"/0"+party.getMember4().getId()+"_sideidle.png");
-        
+
         member1Sprite.scale(100,100);
         member2Sprite.scale(100,100);
         member3Sprite.scale(100,100);
@@ -106,8 +106,8 @@ public class BattleEnvironment extends World
 
         displayCharacterSprites();
         displayPartyInfo();
-        displayEnemySprites();
         displayEnemyInfo();
+        displayEnemySprites();
         addObject(attackButton, 640, 360);
 
         attackButton.setAgressor(party.getMember1());
@@ -115,7 +115,12 @@ public class BattleEnvironment extends World
     }
 
     public void updateBattle(){
-        removeObjects(getObjects(null));
+        removeObjects(getObjects(Image.class));
+        removeObjects(getObjects(StatDisplay.class));
+        removeObjects(getObjects(Button.class));
+        removeObjects(getObjects(Enemy.class));
+        removeObjects(getObjects(Bar.class));
+
         addObject(member1, 135, 104);
         addObject(member2, 135, 273);
         addObject(member3, 135, 442);
@@ -126,8 +131,8 @@ public class BattleEnvironment extends World
         addObject(enemy4Image, 1145, 611);
         displayCharacterSprites();
         displayPartyInfo();
-        displayEnemySprites();
         displayEnemyInfo();
+        displayEnemySprites();
         addObject(attackButton, 640, 360);
     }
 
@@ -140,11 +145,7 @@ public class BattleEnvironment extends World
     public void attack(Character agressor, Enemy target){
         //addObject(attackAnimation,640,360);
         attackSfx.play();
-        addObject(attackAnimation,640,360);
-        while(attackSfx.isPlaying())
-        {
-            //addObject(attackAnimation,640,360);
-        }
+        addObject(attackAnimation,target.getX(),target.getY());
         int damage = (int)((agressor.getAtk()-target.getDef())*agressor.getHitCount());
         target.setHp(target.getHp()-damage);
         if(target.getHp() < 0)
@@ -182,6 +183,7 @@ public class BattleEnvironment extends World
     public void enemyAttack(Enemy enemy){
         int drawRate = (int)(Math.random()*100+1);
         if((drawRate <= 25)){
+            addObject(new AttackAnimation(),member1Sprite.getX(),member1.getY());
             party.getMember1().setHp(party.getMember1().getHp()-(int)(enemy.getAtk()-party.getMember1().getDefense())*enemy.getHitCount());
             if(party.getMember1().getHp()<0)
             {
@@ -189,6 +191,7 @@ public class BattleEnvironment extends World
             }
         }
         else if(drawRate <= 50){
+            addObject(new AttackAnimation(),member1Sprite.getX(),member2.getY());
             party.getMember2().setHp(party.getMember2().getHp()-(int)(enemy.getAtk()-party.getMember2().getDefense())*enemy.getHitCount());
             if(party.getMember2().getHp()<0)
             {
@@ -196,6 +199,7 @@ public class BattleEnvironment extends World
             }
         }
         else if(drawRate <= 75){
+            addObject(new AttackAnimation(),member1Sprite.getX(),member3.getY());
             party.getMember3().setHp(party.getMember3().getHp()-(int)(enemy.getAtk()-party.getMember3().getDefense())*enemy.getHitCount());
             if(party.getMember3().getHp()<0)
             {
@@ -203,6 +207,7 @@ public class BattleEnvironment extends World
             }
         }
         else{
+            addObject(new AttackAnimation(),member1Sprite.getX(),member4.getY());
             party.getMember4().setHp(party.getMember4().getHp()-(int)(enemy.getAtk()-party.getMember4().getDefense())*enemy.getHitCount());
             if(party.getMember4().getHp()<0)
             {
@@ -238,7 +243,7 @@ public class BattleEnvironment extends World
             member4Bar.setBarWidth(80);
         }
     }
-    
+
     public void displayEnemyInfo()
     {
         if(enemy1.getHp()>0)
@@ -289,7 +294,7 @@ public class BattleEnvironment extends World
             addObject(member4Sprite,308,547);
         }
     }
-    
+
     public void displayEnemySprites(){
         if(enemy1.getHp() > 0)
             addObject(enemy1, 1000, 148);
@@ -314,9 +319,9 @@ public class BattleEnvironment extends World
 
     public void chingazoAnimation()
     {
-        
+
     }
-    
+
     public void changeToTargetAlive(){
         if(enemy1.getHp() > 0)
             attackButton.setTarget(enemy1);
