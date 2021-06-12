@@ -103,6 +103,10 @@ public abstract class Character extends Actor implements CharacterNameProvider
         return hitCount;
     }
     
+    public void setHp(int hp){
+        this.hp = hp;
+    }
+    
     public abstract String getSkill1Stats();
     
     public abstract String getSkill2Stats();

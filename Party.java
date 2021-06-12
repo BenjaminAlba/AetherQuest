@@ -10,10 +10,10 @@ public class Party extends Actor
 {
     private static Party uniqueInstance;
     
-    private Character member1;
-    private Character member2;
-    private Character member3;
-    private Character member4;
+    private Character member1 = new Sokudo();
+    private Character member2 = new Light();
+    private Character member3 = new KingHermes();
+    private Character member4 = new Nagito();
     private int money;
     private int[] inventory = new int[12];
     private int [] flags = new int[250];
