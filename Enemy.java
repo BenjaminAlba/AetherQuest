@@ -61,57 +61,53 @@ public class Enemy extends Actor
         return hasDarkSigil;
     }
     
-    public int setId(int id)
+    public void setId(int id)
     {
         this.id=id;
-        return id;
     }
     
-    public int setHp(int hp)
+    public void setHp(int hp)
     {
         this.hp=hp;
-        return hp;
     }
     
-    public int setMaxHp(int maxHp)
+    public void setMaxHp(int maxHp)
     {
         this.maxHp=maxHp;
-        return maxHp;
     }
     
-    public double setAtk(double atk)
+    public void setAtk(double atk)
     {
         this.atk=atk;
-        return atk;
     }
     
-    public double setDef(double def)
+    public void setDef(double def)
     {
         this.def=def;
-        return def;
     }
     
-    public int setYieldXp(int yieldXp)
+    public void setYieldXp(int yieldXp)
     {
         this.yieldXp=yieldXp;
-        return yieldXp;
     }
     
-    public int setYieldMoney(int yieldMoney)
+    public void setYieldMoney(int yieldMoney)
     {
         this.yieldMoney=yieldMoney;
-        return yieldMoney;
     }
     
-    public double setSpeed(double speed)
+    public void setSpeed(double speed)
     {
         this.speed = speed;
-        return speed;
     }
     
-    public int setHitCount(int hitCount)
+    public void setHitCount(int hitCount)
     {
         this.hitCount = hitCount;
+    }
+    
+    public int getHitCount()
+    {
         return hitCount;
     }
     

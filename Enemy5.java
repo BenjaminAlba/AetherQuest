@@ -10,7 +10,7 @@ public class Enemy5 extends Enemy
     public Enemy5()
     {
         id = 5;
-        name = "Mk leo";
+        name = "Mk Leo";
         hp = 100;
         maxHp = 100;
         atk = Math.floor(Math.random()*(12-8+1)+8);

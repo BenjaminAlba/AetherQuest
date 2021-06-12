@@ -16,7 +16,7 @@ public class Enemy1 extends Enemy
         name = "Goblin";
         hp = 12;
         maxHp = 12;
-        atk = Math.floor(Math.random()*(4-2+1)+2);
+        atk = Math.floor(Math.random()*(4-3+1)+3);
         def = Math.floor(Math.random()*(1-0+1)+0);
         yieldXp = 2;
         yieldMoney = 5;

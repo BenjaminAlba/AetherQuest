@@ -10,7 +10,7 @@ public class Enemy6 extends Enemy
     public Enemy6()
     {
         id = 6;
-        name = "Mr President";
+        name = "President";
         hp = 160;
         maxHp = 160;
         atk = Math.floor(Math.random()*(16-10+1)+10);

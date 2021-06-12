@@ -12,10 +12,10 @@ public class Enemy3 extends Enemy
     public Enemy3()
     {
         id = 3;
-        name = "John Salchichon";
+        name = "John Salch.";
         hp = 30;
         maxHp = 30;
-        atk = Math.floor(Math.random()*(8-6+1)+6);
+        atk = Math.floor(Math.random()*(8-5+1)+5);
         def = Math.floor(Math.random()*(3-2+1)+2);
         yieldXp = 6;
         yieldMoney = 10;

@@ -15,7 +15,7 @@ public class Enemy2 extends Enemy
         name = "Lil' Pump";
         hp = 20;
         maxHp = 20;
-        atk = Math.floor(Math.random()*(7-5+1)+5);
+        atk = Math.floor(Math.random()*(6-4+1)+4);
         def = Math.floor(Math.random()*(2-1+1)+1);
         yieldXp = 4;
         yieldMoney = 7;
