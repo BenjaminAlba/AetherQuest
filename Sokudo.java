@@ -37,7 +37,7 @@ public class Sokudo extends Character
     public Sokudo()
     {
         id=1;
-        lvl=4;
+        lvl=1;
         currentExp=0;
         skillPoints=1;
         ultCharges=0;

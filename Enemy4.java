@@ -1,3 +1,4 @@
+import greenfoot.*;
 /**
  * Write a description of class Enemy4 here.
  * 
@@ -6,7 +7,7 @@
  */
 public class Enemy4 extends Enemy
 {
-    //private GreenfootImage sprite = new GreenfootImage("images/enemy_sprites/enemy_04.png");
+    private GreenfootImage sprite = new GreenfootImage("images/enemy_sprites/enemy_04.png");
     public Enemy4()
     {
         id = 4;
@@ -29,9 +30,9 @@ public class Enemy4 extends Enemy
         aggroActiveTurns=0;
         hasDarkSigil=false;
         
-        /*sprite.scale(sprite.getWidth()+100, sprite.getHeight()+100);
+        sprite.scale(sprite.getWidth()+100, sprite.getHeight()+100);
         sprite.mirrorHorizontally();
-        setImage(sprite);*/
+        setImage(sprite);
     }
     
     public void act(){

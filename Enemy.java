@@ -91,6 +91,11 @@ public class Enemy extends Actor
         this.yieldXp=yieldXp;
     }
     
+    public int getXp()
+    {
+        return yieldXp;
+    }
+    
     public void setYieldMoney(int yieldMoney)
     {
         this.yieldMoney=yieldMoney;

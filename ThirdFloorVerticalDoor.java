@@ -19,6 +19,7 @@ public class ThirdFloorVerticalDoor extends Door
     }
 
     public void changeRoom(){
+        ((ThirdFloorRoom)getWorld()).generateBattle();
         if(getY()<360){
             ThirdFloorRoom.addMapIconY(-1);
             getWorld().removeObjects(getWorld().getObjects(null));

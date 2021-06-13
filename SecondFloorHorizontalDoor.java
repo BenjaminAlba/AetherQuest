@@ -19,6 +19,7 @@ public class SecondFloorHorizontalDoor extends Door
     }
 
     public void changeRoom(){
+        ((SecondFloorRoom)getWorld()).generateBattle();
         if(getX()>640){
             SecondFloorRoom.addMapIconX(1);
             getWorld().removeObjects(getWorld().getObjects(null));

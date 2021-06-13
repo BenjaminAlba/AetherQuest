@@ -12,7 +12,9 @@ public class BattleEnvironment extends World
     private Image member2;
     private Image member3; 
     private Image member4;
-
+    
+    private GreenfootSound music;
+    
     private Image enemy1Image;
     private Image enemy2Image;
     private Image enemy3Image;
@@ -52,18 +54,27 @@ public class BattleEnvironment extends World
     private GreenfootSound attackSfx = new GreenfootSound("sounds/attack.mp3");
 
     private AttackAnimation attackAnimation = new AttackAnimation();
+    
+    private EnemyFactory floorFactory;
+    
+    private int characterX;
+    private int characterY;
+    private int floor;
+    private String id;
 
-    public BattleEnvironment()
+    public BattleEnvironment(String id, int characterX, int characterY, int floor)
     {
         super(1280, 720, 1);
-        setBackground("images/battle_backgrounds/battle_background_03.png");
 
-        FirstFloorEnemyFactory firstFloorFactory = new FirstFloorEnemyFactory();
-        enemy1 = firstFloorFactory.createEnemy();
-        enemy2 = firstFloorFactory.createEnemy();
-        enemy3 = firstFloorFactory.createEnemy();
-        enemy4 = firstFloorFactory.createEnemy();
-
+        this.characterX=characterX;
+        this.characterY=characterY;
+        this.floor=floor;
+        this.id=id;
+        setBackground("images/battle_backgrounds/battle_background_0"+floor+".png");
+        
+        generateEnemies();
+        music = new GreenfootSound("sounds/0"+party.getMember1().getId()+"_battle.mp3");
+        
         enemy1Image = new Image("images/enemy_portraits/0"+enemy1.getId()+".gif");
         enemy2Image = new Image("images/enemy_portraits/0"+enemy2.getId()+".gif");
         enemy3Image = new Image("images/enemy_portraits/0"+enemy3.getId()+".gif");
@@ -109,11 +120,33 @@ public class BattleEnvironment extends World
         displayEnemyInfo();
         displayEnemySprites();
         addObject(attackButton, 640, 360);
-
+        
         attackButton.setAgressor(party.getMember1());
         attackButton.setTarget(enemy1);
+        //music.playLoop(); wtf
     }
-
+    
+    public void generateEnemies()
+    {
+        switch(floor)
+        {
+            case 1:
+            floorFactory = new FirstFloorEnemyFactory();
+            break;
+            case 2:
+            floorFactory = new SecondFloorEnemyFactory();
+            break;
+            case 3:
+            floorFactory = new ThirdFloorEnemyFactory();
+            break;
+        }
+        enemy1 = floorFactory.createEnemy();
+        enemy2 = floorFactory.createEnemy();
+        enemy3 = floorFactory.createEnemy();
+        enemy4 = floorFactory.createEnemy();
+    }
+    
+    
     public void updateBattle(){
         removeObjects(getObjects(Image.class));
         removeObjects(getObjects(StatDisplay.class));
@@ -137,13 +170,10 @@ public class BattleEnvironment extends World
     }
 
     public void act(){
-        showText("Hp: " + attackButton.getTarget().getHp(), 640, 200);
-        showText("ID: " + attackButton.getAgressor().getId(), 640, 300);
         checkBattle();
     }
 
     public void attack(Character agressor, Enemy target){
-        //addObject(attackAnimation,640,360);
         attackSfx.play();
         addObject(attackAnimation,target.getX(),target.getY());
         int damage = (int)((agressor.getAtk()-target.getDef())*agressor.getHitCount());
@@ -248,27 +278,27 @@ public class BattleEnvironment extends World
     {
         if(enemy1.getHp()>0)
         {
-            addObject(enemy1Name = new StatDisplay(enemy1.getName(),785,148),640,360);
+            addObject(enemy1Name = new StatDisplay(enemy1.getName(),795,148),640,360);
             addObject(enemy1Bar = new Bar("HP","",enemy1.getHp(),enemy1.getMaxHp()), 860, 168);
-            member1Bar.setBarWidth(80);
+            enemy1Bar.setBarWidth(80);
         }
         if(enemy2.getHp()>0)
         {
-            addObject(enemy2Name = new StatDisplay(enemy2.getName(),785,281),640,360);
+            addObject(enemy2Name = new StatDisplay(enemy2.getName(),795,281),640,360);
             addObject(enemy2Bar = new Bar("HP","",enemy2.getHp(),enemy2.getMaxHp()), 860, 301);
-            member2Bar.setBarWidth(80);
+            enemy2Bar.setBarWidth(80);
         }
         if(enemy3.getHp()>0)
         {
-            addObject(enemy3Name = new StatDisplay(enemy3.getName(),785,414),640,360);
+            addObject(enemy3Name = new StatDisplay(enemy3.getName(),795,414),640,360);
             addObject(enemy3Bar = new Bar("HP","",enemy3.getHp(),enemy3.getMaxHp()), 860, 434);
-            member3Bar.setBarWidth(80);
+            enemy3Bar.setBarWidth(80);
         }
         if(enemy4.getHp()>0)
         {
-            addObject(enemy4Name = new StatDisplay(enemy4.getName(),785,547),640,360);
+            addObject(enemy4Name = new StatDisplay(enemy4.getName(),795,547),640,360);
             addObject(enemy4Bar = new Bar("HP","",enemy4.getHp(),enemy4.getMaxHp()), 860, 567);
-            member4Bar.setBarWidth(80);
+            enemy4Bar.setBarWidth(80);
         }
     }
 
@@ -308,18 +338,38 @@ public class BattleEnvironment extends World
 
     public void checkBattle(){
         if(party.getMember1().getHp() <= 0){
-            //GameOver
             removeObjects(getObjects(null));
-            Greenfoot.stop();
+            party.setMember1(null);
+            party.setMember2(null);
+            party.setMember3(null);
+            party.setMember4(null);
+            //music.stop();//? wtf wtf
+            Greenfoot.setWorld(new MainMenu());//gameOver
         }
-        else if(enemy1.getHp() == 0 && enemy2.getHp() == 0 && enemy3.getHp() == 0 && enemy4.getHp() == 0){
-            //Return to world
+        else if(enemy1.getHp() <= 0 && enemy2.getHp() <= 0 && enemy3.getHp() <= 0 && enemy4.getHp() <= 0){
+            int xp = enemy1.getXp()+enemy2.getXp()+enemy3.getXp()+enemy4.getXp();
+            party.getMember1().setXp(party.getMember1().getXp()+xp);
+            party.getMember2().setXp(party.getMember2().getXp()+xp);
+            party.getMember3().setXp(party.getMember3().getXp()+xp);
+            party.getMember4().setXp(party.getMember4().getXp()+xp);
+            party.getMember1().levelUp();
+            party.getMember2().levelUp();
+            party.getMember3().levelUp();
+            party.getMember4().levelUp();
+            //music.stop();//? wtf wtf
+            switch(floor)
+            {
+                case 1:
+                Greenfoot.setWorld(new FirstFloorRoom(id,characterX,characterY));
+                break;
+                case 2:
+                Greenfoot.setWorld(new SecondFloorRoom(id,characterX,characterY));
+                break;
+                case 3:
+                Greenfoot.setWorld(new ThirdFloorRoom(id,characterX,characterY));
+                break;
+            }
         }
-    }
-
-    public void chingazoAnimation()
-    {
-
     }
 
     public void changeToTargetAlive(){
