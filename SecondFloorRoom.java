@@ -69,7 +69,7 @@ public class SecondFloorRoom extends FloorWorld
 
     public void generateBattle(String destination, int x, int y)
     {
-        if((Math.floor(Math.random()*(100)+1))<=20){
+        if((Math.floor(Math.random()*(100)+1))<=40){
             music.stop();
             Greenfoot.setWorld(new BattleEnvironment(destination,x,y,CURRENT_FLOOR));
         }
