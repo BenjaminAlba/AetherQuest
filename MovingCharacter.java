@@ -199,7 +199,6 @@ public class MovingCharacter extends Actor
         if(getOneObjectAtOffset(x,y,Door.class) != null){
             Door door = (Door)getOneObjectAtOffset(x,y,Door.class);
             door.changeRoom();
-            ((FirstFloorRoom)getWorld()).generateBattle();
         }
     }
 

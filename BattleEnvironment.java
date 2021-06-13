@@ -123,7 +123,7 @@ public class BattleEnvironment extends World
         
         attackButton.setAgressor(party.getMember1());
         attackButton.setTarget(enemy1);
-        //music.playLoop(); wtf
+        music.playLoop();
     }
     
     public void generateEnemies()
@@ -343,8 +343,9 @@ public class BattleEnvironment extends World
             party.setMember2(null);
             party.setMember3(null);
             party.setMember4(null);
-            //music.stop();//? wtf wtf
-            Greenfoot.setWorld(new MainMenu());//gameOver
+            music.stop();
+            MainMenu.playMusic();
+            Greenfoot.setWorld(new MainMenu());
         }
         else if(enemy1.getHp() <= 0 && enemy2.getHp() <= 0 && enemy3.getHp() <= 0 && enemy4.getHp() <= 0){
             int xp = enemy1.getXp()+enemy2.getXp()+enemy3.getXp()+enemy4.getXp();
@@ -356,16 +357,19 @@ public class BattleEnvironment extends World
             party.getMember2().levelUp();
             party.getMember3().levelUp();
             party.getMember4().levelUp();
-            //music.stop();//? wtf wtf
+            music.stop();            
             switch(floor)
             {
                 case 1:
+                FirstFloorRoom.playMusic();
                 Greenfoot.setWorld(new FirstFloorRoom(id,characterX,characterY));
                 break;
                 case 2:
+                SecondFloorRoom.playMusic();
                 Greenfoot.setWorld(new SecondFloorRoom(id,characterX,characterY));
                 break;
                 case 3:
+                SecondFloorRoom.playMusic();
                 Greenfoot.setWorld(new ThirdFloorRoom(id,characterX,characterY));
                 break;
             }

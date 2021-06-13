@@ -59,6 +59,7 @@ public class FirstFloorRoom extends FloorWorld
             mapIconX = 0;
             mapIconY = 0;
         }
+
         buildWorld(room);
         addObject(protagonist, characterX, characterY);
         map.setTransparency(100);
@@ -66,13 +67,15 @@ public class FirstFloorRoom extends FloorWorld
         mapIcon.setTransparency(200);
         addObject(mapIcon,85 + 10 * mapIconX,135 + 10 * mapIconY);
     }
-    
-    public void generateBattle()
+
+    public void generateBattle(String destination, int x, int y)
     {
-        //if((Math.floor(Math.random()*(100)+1))<=20)
-        Greenfoot.setWorld(new BattleEnvironment(id,protagonist.getX(),protagonist.getY(),CURRENT_FLOOR));
+        if((Math.floor(Math.random()*(100)+1))<=20){
+            music.stop();
+            Greenfoot.setWorld(new BattleEnvironment(destination,x,y,CURRENT_FLOOR));
+        }
     }
-    
+
     public static void addMapIconX(int number){
         mapIconX+=number;
     }
@@ -87,7 +90,7 @@ public class FirstFloorRoom extends FloorWorld
             Greenfoot.setWorld(new EscMenu(id,CURRENT_FLOOR,protagonist.getX(),protagonist.getY()));
         }
     }
-    
+
     public static void playMusic(){
         music.playLoop();
     }
@@ -95,23 +98,23 @@ public class FirstFloorRoom extends FloorWorld
     public static void stopMusic(){
         music.stop();
     }
-    
+
     public Door getUpDoor(String linea){
         return new FirstFloorVerticalDoor(UP,linea);
     }
-    
+
     public Door getDownDoor(String linea){
         return new FirstFloorVerticalDoor(DOWN,linea);
     }
-    
+
     public Door getLeftDoor(String linea){
         return new FirstFloorHorizontalDoor(LEFT,linea);
     }
-    
+
     public Door getRightDoor(String linea){
         return new FirstFloorHorizontalDoor(RIGHT,linea);
     }
-    
+
     public TrapDoor getTrapDoor(String linea){
         return new FirstFloorTrapDoor(OPEN);
     }

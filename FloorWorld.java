@@ -61,7 +61,7 @@ public abstract class FloorWorld extends World
             exception.printStackTrace();
         }
     }
-
+    
     public abstract Door getUpDoor(String linea);
 
     public abstract Door getDownDoor(String linea);
