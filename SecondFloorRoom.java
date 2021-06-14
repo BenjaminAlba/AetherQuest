@@ -67,6 +67,14 @@ public class SecondFloorRoom extends FloorWorld
         addObject(mapIcon,85 + 10 * mapIconX,135 + 10 * mapIconY);
     }
 
+    public void generateBattle(String destination, int x, int y)
+    {
+        if((Math.floor(Math.random()*(100)+1))<=40){
+            music.stop();
+            Greenfoot.setWorld(new BattleEnvironment(destination,x,y,CURRENT_FLOOR));
+        }
+    }
+    
     public static void addMapIconX(int number){
         mapIconX+=number;
     }

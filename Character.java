@@ -14,7 +14,7 @@ public abstract class Character extends Actor implements CharacterNameProvider
      */
 
     protected int id;
-    protected static final int REQUIRED_EXP = 20;
+    protected int requiredExp = 20;
     protected int currentExp;
     protected int lvl;
     protected int skillPoints;
@@ -101,6 +101,91 @@ public abstract class Character extends Actor implements CharacterNameProvider
     
     public int getHitCount(){
         return hitCount;
+    }
+    
+    public void setHp(int hp){
+        this.hp = hp;
+    }
+    
+    public void setXp(int xp)
+    {
+        this.currentExp = xp;
+    }
+    
+    public int getXp()
+    {
+        return currentExp;
+    }
+    
+    public void levelUp()
+    {
+        if(currentExp>=requiredExp)
+        {
+            lvl+=1;
+            requiredExp=(int)Math.floor(20*Math.pow((double)lvl,1.5));
+            def=(int)Math.ceil(((baseDef*(lvl-1))/2)+2);
+            if(hp>0)
+            {
+                hp=maxHP=(int)Math.ceil((baseHp*(lvl-1))+8);
+            }else
+                maxHP=(int)Math.ceil((baseHp*(lvl-1))+8);
+            speed=(int)Math.floor(baseSpeed+(((baseSpeed*(lvl-1)))/(((baseSpeed)+lvl)/2))+3);
+            atk=(int)Math.ceil((baseAtk*lvl)-(((baseAtk+1)*(lvl/2))/2));
+            switch(id)
+            {
+                case 1:
+                if(lvl<8)
+                {
+                    hitCount=2;
+                }else if(lvl>=8 && lvl<16)
+                {
+                    hitCount=3;
+                }else
+                    hitCount=4;
+                break;
+                case 2:
+                if(lvl<18)
+                {
+                    hitCount=1;
+                }else
+                    hitCount=2;
+                break;
+                case 3:
+                if(lvl<18)
+                {
+                    hitCount=1;
+                }else
+                    hitCount=2;
+                break;
+                case 4:
+                if(lvl<18)
+                {
+                    hitCount=1;
+                }else
+                    hitCount=2;
+                break;
+                case 5:
+                if(lvl<18)
+                {
+                    hitCount=1;
+                }else
+                    hitCount=2;
+                break;
+                case 6:
+                hitCount=1;
+                break;
+                case 7:
+                hitCount=1;
+                break;
+                case 8:
+                if(lvl<14)
+                {
+                    hitCount=1;
+                }else
+                    hitCount=2;
+                break;
+            }
+        }
     }
     
     public abstract String getSkill1Stats();

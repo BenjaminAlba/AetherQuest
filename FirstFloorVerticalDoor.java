@@ -11,6 +11,8 @@ public class FirstFloorVerticalDoor extends Door
     public static final int DOWN = 1;
     private GreenfootImage verticalDoor = new GreenfootImage("images/floor1_rf/vertical_door.png");
     private String destination;
+    private int positionX;
+    private int positionY;
     public FirstFloorVerticalDoor(int orientation, String destination){
         this.destination = destination;
         if(orientation == DOWN)
@@ -21,13 +23,15 @@ public class FirstFloorVerticalDoor extends Door
     public void changeRoom(){
         if(getY()<360){
             FirstFloorRoom.addMapIconY(-1);
-            getWorld().removeObjects(getWorld().getObjects(null));
-            Greenfoot.setWorld(new FirstFloorRoom(destination,640,540));
+            positionX = 640;
+            positionY = 540; 
         }
         else{
             FirstFloorRoom.addMapIconY(1);
-            getWorld().removeObjects(getWorld().getObjects(null));
-            Greenfoot.setWorld(new FirstFloorRoom(destination,640,110));
+            positionX = 640;
+            positionY = 110;
         }
+        Greenfoot.setWorld(new FirstFloorRoom(destination,positionX,positionY));
+        ((FirstFloorRoom)getWorld()).generateBattle(destination,positionX,positionY);
     }
 }

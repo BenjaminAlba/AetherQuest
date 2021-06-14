@@ -69,7 +69,11 @@ public class MainMenu extends World implements Observer
         }
         counter = (counter + 1)%60;
     }
-
+    
+    public static void playMusic(){
+        menuMusic.play();
+    }
+    
     public void act(){
         rotateGears();
     }
