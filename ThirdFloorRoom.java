@@ -71,7 +71,7 @@ public class ThirdFloorRoom extends FloorWorld
     {
         if((Math.floor(Math.random()*(100)+1))<=40){
             music.stop();
-            Greenfoot.setWorld(new BattleEnvironment(destination,x,y,CURRENT_FLOOR));
+            Greenfoot.setWorld(new BattleEnvironment2(destination,x,y,CURRENT_FLOOR));
         }
     }
     

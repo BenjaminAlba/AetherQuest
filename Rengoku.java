@@ -32,6 +32,8 @@ public class Rengoku extends Character
     private double skill4DefMultiplier;
     private int skill4SpCost;
     
+    private GreenfootImage sprite = new GreenfootImage("images/character_sprites/05/05_sideidle.png");
+
     public Rengoku()
     {
         id=5;
@@ -60,6 +62,11 @@ public class Rengoku extends Character
         speed=8;
         
         holyFlameHpDamagePercent=0;
+        
+        sprite.mirrorHorizontally();
+        sprite.scale(sprite.getWidth()+100, sprite.getHeight()+100);
+        
+        setImage(sprite);
     }
     
     public void upgradeS1()
@@ -251,6 +258,22 @@ public class Rengoku extends Character
         if(skill4 == 0)
             return "Mejora esta habilidad para poder usarla";
         return "Defense multiplier: " + (skill4DefMultiplier*100) + "%";
+    }
+    
+    public void activateSkill1(){
+        
+    }
+    
+    public void activateSkill2(){
+        
+    }
+    
+    public void activateSkill3(){
+        
+    }
+    
+    public void activateSkill4(){
+        
     }
     
     public String getName(){

@@ -10,10 +10,10 @@ public class Party extends Actor
 {
     private static Party uniqueInstance;
     
-    private Character member1;
-    private Character member2;
-    private Character member3;
-    private Character member4;
+    private Character member1 = new Sokudo();
+    private Character member2 = new Light();
+    private Character member3 = new Shock();
+    private Character member4 = new Mike();
     private int money;
     private int[] inventory = new int[12];
     private int [] flags = new int[250];
@@ -25,6 +25,17 @@ public class Party extends Actor
         if(uniqueInstance == null)
             uniqueInstance = new Party();
         return uniqueInstance;
+    }
+    
+    public boolean isPartyTurnOver(){
+        if(member1.getAttackStatus() == false && member2.getAttackStatus() == false && member3.getAttackStatus() == false && member4.getAttackStatus() == false){
+            member1.setAttackStatus(true);
+            member2.setAttackStatus(true);
+            member3.setAttackStatus(true);
+            member4.setAttackStatus(true);
+            return true;
+        }
+        return false;
     }
     
     public Character getMember1(){

@@ -33,12 +33,7 @@ public class Enemy1 extends Enemy
         hasDarkSigil=false;
         
         sprite.scale(sprite.getWidth()+100, sprite.getHeight()+100);
-        sprite.mirrorHorizontally();
         setImage(sprite);
     }
-    
-    public void act() 
-    {
-        super.act();
-    }    
+       
 }

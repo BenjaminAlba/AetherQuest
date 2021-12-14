@@ -41,14 +41,26 @@ public class Enemy extends Actor
         return temporalVoidStack;
     }
     
-    public boolean getIsParalyzed()
+    public void setTemporalVoidStack(int stack){
+        temporalVoidStack = stack;
+    }
+    
+    public void setParalysisStatus(boolean status){
+        isParalyzed = status;
+    }
+    
+    public boolean isParalyzed()
     {
         return isParalyzed;
     }
     
-    public boolean getIsPoisoned()
+    public boolean isPoisoned()
     {
         return isPoisoned;
+    }
+    
+    public void setPoisonStatus(boolean status){
+        isPoisoned = status;
     }
     
     public int getPoisonActiveTurns()
@@ -56,9 +68,25 @@ public class Enemy extends Actor
         return poisonActiveTurns;
     }
     
-    public boolean getHasDarkSigil()
+    public void setPoisonActiveTurns(int poisonTurns){
+        poisonActiveTurns = poisonTurns;
+    }
+    
+    public boolean hasDarkSigil()
     {
         return hasDarkSigil;
+    }
+    
+    public void setAggroState(boolean state){
+        isAggroed = state;
+    }
+    
+    public boolean isAggroed(){
+        return isAggroed();
+    }
+    
+    public int getAggroActiveTurns(){
+        return aggroActiveTurns;
     }
     
     public void setId(int id)
@@ -156,11 +184,15 @@ public class Enemy extends Actor
         return yieldMoney;
     }
     
+    public Enemy checkClick(){
+        if(Greenfoot.mousePressed(this)){
+            return this;
+        }
+        return null;
+    }
+    
     public void act() 
     {
-        if(Greenfoot.mousePressed(this)){
-            BattleEnvironment battleWorld = (BattleEnvironment)getWorld();
-            battleWorld.changeTarget(this);
-        }
+
     }    
 }

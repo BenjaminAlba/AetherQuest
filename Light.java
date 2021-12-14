@@ -24,7 +24,7 @@ public class Light extends Character
     private int skill2PoisonActivationRateIncrease;
     private double skill2PoisonHpPercentDamageIncrease;
     private int skill2PoisonActiveTurnsIncrease;
-    private int skill2SpCost;
+    private int skill2SpCost = 15;
 
     private final String skill3Name="Dark Path";
     private final int skill3Type=1;
@@ -32,10 +32,13 @@ public class Light extends Character
 
     private final String skill4Name="Transfusion";
     private final int skill4Type=2;
-    private double skill4SelfHpDamagePercent;
-    private int skill4AllySpRecoveryPercent;
-    private int skill4SelfSpRecovertPercent;
-    private int skill4SpCost;
+    //Quitar numeros
+    private double skill4SelfHpDamagePercent = .2;
+    private int skill4AllySpRecoveryPercent = 20;
+    private int skill4SelfSpRecovertPercent = 10;
+    private int skill4SpCost = 20;
+    
+    private GreenfootImage sprite = new GreenfootImage("images/character_sprites/02/02_sideidle.png");
 
     public Light()
     {
@@ -63,10 +66,15 @@ public class Light extends Character
         sp=100;
         baseSpeed=5;
         speed=5;
-
-        poisonActivationRate=0;
-        poisonActiveTurns=0;
-        poisonHpPercentDamage=0;
+        //Quitar esto XD
+        poisonActivationRate=50;
+        poisonActiveTurns=2;
+        poisonHpPercentDamage=10;
+        // Hasta aca, SOLO LOS VALORES EN CERO, NO SEAS PENDEJO
+        sprite.mirrorHorizontally();
+        sprite.scale(sprite.getWidth()+100, sprite.getHeight()+100);
+        
+        setImage(sprite);
     }
 
     public void upgradeS1()
@@ -283,7 +291,56 @@ public class Light extends Character
             return "Mejora esta habilidad para poder usarla";
         return "Ally Sp recovery %: " + skill4AllySpRecoveryPercent + "%";
     }
-
+        
+    public int getPoisonActivationRate(){
+        return poisonActivationRate;
+    }
+    
+    public int getPoisonActiveTurns(){
+        return poisonActiveTurns;
+    }
+    
+    public double getPoisonHpPercentDamage(){
+        return poisonHpPercentDamage;
+    }
+    
+    public int getAllySpRecoveryPercent(){
+        return skill4AllySpRecoveryPercent;
+    }
+    
+    public double getSelfHpDamagePercent(){
+        return skill4SelfHpDamagePercent;
+    }
+    
+    public int getSelfSpRecovery(){
+        return skill4SelfSpRecovertPercent;
+    }
+    
+    public void activateSkill1(){
+        
+    }
+    
+    public void activateSkill2(){
+        BattleEnvironment2 battleWorld = (BattleEnvironment2)getWorld();
+        battleWorld.murderousGaze();
+    }
+    
+    public void activateSkill3(){
+        
+    }
+    
+    public void activateSkill4(){
+        
+    }
+    
+    public int getSkill2SpCost(){
+        return skill2SpCost;
+    }
+    
+    public int getSkill4SpCost(){
+        return skill4SpCost;
+    }
+    
     public String getName(){
         return "Light";
     }

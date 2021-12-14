@@ -32,6 +32,8 @@ public class Nagito extends Character
     private double skill4HpRecoveryMultiplier;
     private int skill4SpCost;
 
+    private GreenfootImage sprite = new GreenfootImage("images/character_sprites/08/08_sideidle.png");
+
     public Nagito()
     {
         id=8;
@@ -68,6 +70,11 @@ public class Nagito extends Character
         skill3SpCost=0;
         skill4HpRecoveryMultiplier=0.1;
         skill4SpCost=0;
+        
+        sprite.mirrorHorizontally();
+        sprite.scale(sprite.getWidth()+100, sprite.getHeight()+100);
+        
+        setImage(sprite);
     }
 
     public String getSkill1Name(){
@@ -109,6 +116,22 @@ public class Nagito extends Character
     public void upgradeS3(){}
     
     public void upgradeS4(){}
+    
+    public void activateSkill1(){
+        
+    }
+    
+    public void activateSkill2(){
+        
+    }
+    
+    public void activateSkill3(){
+        
+    }
+    
+    public void activateSkill4(){
+        
+    }
     
     public String getName(){
         return "Nagito";

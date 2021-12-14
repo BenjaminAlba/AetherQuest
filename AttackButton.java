@@ -44,20 +44,27 @@ public class AttackButton extends Button
         return target;
     }
 
+    public void checkClick(){
+        if(Greenfoot.mousePressed(this)){
+            buttonClick.play();
+            if(agressor != null && target != null){
+                BattleEnvironment2 battleWorld = (BattleEnvironment2)getWorld();
+                battleWorld.attack(agressor, target);
+                //if(target.getHp() == 0)
+                //    battleWorld.changeToTargetAlive();
+            }
+        }
+    }
+
     public void act()
     {
         changeState();
-        if(agressor.getHp() == 0){
-            BattleEnvironment battleWorld = (BattleEnvironment)getWorld();
-            battleWorld.changeAgressor(agressor);
-        }
-        if(Greenfoot.mousePressed(this)){
-            BattleEnvironment battleWorld = (BattleEnvironment)getWorld();
-            buttonClick.play();
-            battleWorld.attack(agressor, target);
-            if(target.getHp() == 0)
-                battleWorld.changeToTargetAlive();
-            battleWorld.updateBattle();
+        checkClick();
+        if(agressor != null && target != null){
+            if(agressor.getHp() == 0){
+                BattleEnvironment2 battleWorld = (BattleEnvironment2)getWorld();
+                //battleWorld.changeAgressor(agressor);
+            }
         }
     }
 }
