@@ -37,12 +37,15 @@ public abstract class Character extends Actor implements CharacterNameProvider
     protected int skill3;
     protected int skill4;
     protected boolean healFlag;
-
-    public void act() 
-    {
-        // Add your action code here.
-    }  
-
+    protected boolean attackStatus;
+    
+    public Character checkClick(){
+        if(Greenfoot.mousePressed(this)){
+            return this;
+        }
+        return null;
+    }
+    
     public int getId(){
         return id;
     }
@@ -54,7 +57,11 @@ public abstract class Character extends Actor implements CharacterNameProvider
     public int getAtk(){
         return atk;
     }
-
+    
+    public void setAtk(int atk){
+        this.atk = atk;
+    }
+    
     public int getHp(){
         return hp;
     }
@@ -112,9 +119,53 @@ public abstract class Character extends Actor implements CharacterNameProvider
         this.currentExp = xp;
     }
     
+    public void setSp(int sp){
+        this.sp = sp;
+    }
+    
     public int getXp()
     {
         return currentExp;
+    }
+    
+    public void setAttackStatus(boolean attackStatus){
+        this.attackStatus = attackStatus;
+    }
+    
+    public boolean getAttackStatus(){
+        return attackStatus;
+    }
+    
+    public boolean getHealFlag(){
+        return healFlag;
+    }
+    
+    public int getSkill1SpCost(){
+        return 0;
+    }
+    
+    public int getSkill2SpCost(){
+        return 0;
+    }
+    
+    public int getSkill3SpCost(){
+        return 0;
+    }
+    
+    public int getSkill4SpCost(){
+        return 0;
+    }
+    
+    public int getUltCharges(){
+        return ultCharges;
+    }
+    
+    public void setUltCharges(int charges){
+        ultCharges = charges;
+    }
+    
+    public int getUltQuantity(){
+        return ultQuantity;
     }
     
     public void levelUp()
@@ -122,6 +173,7 @@ public abstract class Character extends Actor implements CharacterNameProvider
         if(currentExp>=requiredExp)
         {
             lvl+=1;
+            skillPoints++;
             requiredExp=(int)Math.floor(20*Math.pow((double)lvl,1.5));
             def=(int)Math.ceil(((baseDef*(lvl-1))/2)+2);
             if(hp>0)
@@ -212,4 +264,11 @@ public abstract class Character extends Actor implements CharacterNameProvider
     
     public abstract void upgradeS4();
     
+    public abstract void activateSkill1();
+    
+    public abstract void activateSkill2();
+    
+    public abstract void activateSkill3();
+    
+    public abstract void activateSkill4();
 }

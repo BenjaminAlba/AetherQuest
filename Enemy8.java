@@ -14,7 +14,7 @@ public class Enemy8 extends Enemy
         name = "~EGGMG~";
         hp = 250;
         maxHp = 250;
-        atk = Math.floor(Math.random()*(24-20+1)+20);
+        atk = Math.floor(Math.random()*(24-20+1)+60);
         def = Math.floor(Math.random()*(12-8+1)+8);
         yieldXp = 6;
         yieldMoney = 10;
@@ -31,11 +31,6 @@ public class Enemy8 extends Enemy
         hasDarkSigil=false;
 
         sprite.scale(sprite.getWidth()+100, sprite.getHeight()+100);
-        sprite.mirrorHorizontally();
         setImage(sprite);
-    }
-    
-    public void act(){
-        super.act();
     }
 }

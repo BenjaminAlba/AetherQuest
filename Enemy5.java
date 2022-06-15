@@ -14,12 +14,12 @@ public class Enemy5 extends Enemy
         name = "Mk Leo";
         hp = 100;
         maxHp = 100;
-        atk = Math.floor(Math.random()*(12-8+1)+8);
+        atk = Math.floor(Math.random()*(12-8+1)+15);
         def = Math.floor(Math.random()*(7-5+1)+5);
         yieldXp = 6;
         yieldMoney = 10;
         speed = Math.floor(Math.random()*(9-7+1)+7);
-        hitCount = 1;
+        hitCount = 3;
         
         temporalVoidStack=0;
         isParalyzed=false;
@@ -31,11 +31,6 @@ public class Enemy5 extends Enemy
         hasDarkSigil=false;
         
         sprite.scale(sprite.getWidth()+100, sprite.getHeight()+100);
-        sprite.mirrorHorizontally();
         setImage(sprite);
-    }
-    
-    public void act(){
-        super.act();
     }
 }

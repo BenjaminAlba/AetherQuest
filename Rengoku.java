@@ -32,6 +32,8 @@ public class Rengoku extends Character
     private double skill4DefMultiplier;
     private int skill4SpCost;
     
+    private GreenfootImage sprite = new GreenfootImage("images/character_sprites/05/05_sideidle.png");
+
     public Rengoku()
     {
         id=5;
@@ -60,6 +62,11 @@ public class Rengoku extends Character
         speed=8;
         
         holyFlameHpDamagePercent=0;
+        
+        sprite.mirrorHorizontally();
+        sprite.scale(sprite.getWidth()+100, sprite.getHeight()+100);
+        
+        setImage(sprite);
     }
     
     public void upgradeS1()
@@ -108,27 +115,27 @@ public class Rengoku extends Character
                     skill2SpCost=4;
                     break;
                 case 2:
-                    skill2AllyHpRecoveryPercent=0.04;
+                    skill2AllyHpRecoveryPercent=0.14;
                     skill2SpCost=6;
                     break;
                 case 3:
-                    skill2AllyHpRecoveryPercent=0.04;
+                    skill2AllyHpRecoveryPercent=0.18;
                     skill2SpCost=8;
                     break;
                 case 4:
-                    skill2AllyHpRecoveryPercent=0.07;
+                    skill2AllyHpRecoveryPercent=0.25;
                     skill2SpCost=10;
                     break;
                 case 5:
-                    skill2AllyHpRecoveryPercent=0.05;
+                    skill2AllyHpRecoveryPercent=0.30;
                     skill2SpCost=14;
                     break;
                 case 6:
-                    skill2AllyHpRecoveryPercent=0.05;
+                    skill2AllyHpRecoveryPercent=0.35;
                     skill2SpCost=16;
                     break;
                 case 7:
-                    skill2AllyHpRecoveryPercent=0.05;
+                    skill2AllyHpRecoveryPercent=0.40;
                     skill2SpCost=20;
                     break;
             }
@@ -251,6 +258,50 @@ public class Rengoku extends Character
         if(skill4 == 0)
             return "Mejora esta habilidad para poder usarla";
         return "Defense multiplier: " + (skill4DefMultiplier*100) + "%";
+    }
+    
+    public int getSkill2SpCost(){
+        return skill2SpCost;
+    }
+    
+    public int getSkill3SpCost(){
+        return skill3SpCost;
+    }
+    
+    public int getSkill4SpCost(){
+        return skill4SpCost;
+    }
+    
+    public double getHolyFlameHpDamagePercent(){
+        return holyFlameHpDamagePercent;
+    }
+    
+    public double getSkill2AllyHpRecoveryPercent(){
+        return skill2AllyHpRecoveryPercent;
+    }
+    
+    public double getSkill3AtkMultiplier(){
+        return skill3AtkMultiplier;
+    }
+    
+    public double getSkill4DefMultiplier(){
+        return skill4DefMultiplier;
+    }
+    
+    public void activateSkill1(){
+        
+    }
+    
+    public void activateSkill2(){
+        
+    }
+    
+    public void activateSkill3(){
+        
+    }
+    
+    public void activateSkill4(){
+        
     }
     
     public String getName(){

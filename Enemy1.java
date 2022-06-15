@@ -16,7 +16,7 @@ public class Enemy1 extends Enemy
         name = "Goblin";
         hp = 12;
         maxHp = 12;
-        atk = Math.floor(Math.random()*(4-3+1)+3);
+        atk = Math.floor(Math.random()*(4-3+1)+4);
         def = Math.floor(Math.random()*(1-0+1)+0);
         yieldXp = 2;
         yieldMoney = 5;
@@ -33,12 +33,7 @@ public class Enemy1 extends Enemy
         hasDarkSigil=false;
         
         sprite.scale(sprite.getWidth()+100, sprite.getHeight()+100);
-        sprite.mirrorHorizontally();
         setImage(sprite);
     }
-    
-    public void act() 
-    {
-        super.act();
-    }    
+       
 }

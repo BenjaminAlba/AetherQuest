@@ -14,12 +14,12 @@ public class Enemy7 extends Enemy
         name = "Girlrilla";
         hp = 200;
         maxHp = 200;
-        atk = Math.floor(Math.random()*(18-10+1)+10);
-        def = Math.floor(Math.random()*(10-8+1)+8);
+        atk = Math.floor(Math.random()*(18-10+1)+35);
+        def = Math.floor(Math.random()*(10-8+1)+35);
         yieldXp = 6;
         yieldMoney = 10;
         speed = Math.floor(Math.random()*(10-9+1)+9);
-        hitCount = 1;
+        hitCount = 6;
         
         temporalVoidStack=0;
         isParalyzed=false;
@@ -31,11 +31,6 @@ public class Enemy7 extends Enemy
         hasDarkSigil=false;
         
         sprite.scale(sprite.getWidth()+100, sprite.getHeight()+100);
-        sprite.mirrorHorizontally();
         setImage(sprite);
-    }
-    
-    public void act(){
-        super.act();
     }
 }

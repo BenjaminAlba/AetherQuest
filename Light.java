@@ -36,6 +36,8 @@ public class Light extends Character
     private int skill4AllySpRecoveryPercent;
     private int skill4SelfSpRecovertPercent;
     private int skill4SpCost;
+    
+    private GreenfootImage sprite = new GreenfootImage("images/character_sprites/02/02_sideidle.png");
 
     public Light()
     {
@@ -67,6 +69,11 @@ public class Light extends Character
         poisonActivationRate=0;
         poisonActiveTurns=0;
         poisonHpPercentDamage=0;
+
+        sprite.mirrorHorizontally();
+        sprite.scale(sprite.getWidth()+100, sprite.getHeight()+100);
+        
+        setImage(sprite);
     }
 
     public void upgradeS1()
@@ -112,43 +119,43 @@ public class Light extends Character
             {
                 case 1:
                     skill2PoisonActivationRateIncrease=20;
-                    skill2PoisonHpPercentDamageIncrease=5;
+                    skill2PoisonHpPercentDamageIncrease=0.05;
                     skill2PoisonActiveTurnsIncrease=2;
                     skill2SpCost=10;
                     break;
                 case 2:
                     skill2PoisonActivationRateIncrease=4;
-                    skill2PoisonHpPercentDamageIncrease=1;
+                    skill2PoisonHpPercentDamageIncrease=0.01;
                     skill2PoisonActiveTurnsIncrease=2;
                     skill2SpCost=10;
                     break;
                 case 3:
                     skill2PoisonActivationRateIncrease=2;
-                    skill2PoisonHpPercentDamageIncrease=2;
+                    skill2PoisonHpPercentDamageIncrease=0.02;
                     skill2PoisonActiveTurnsIncrease=2;
                     skill2SpCost=10;
                     break;
                 case 4:
                     skill2PoisonActivationRateIncrease=2;
-                    skill2PoisonHpPercentDamageIncrease=1;
+                    skill2PoisonHpPercentDamageIncrease=0.01;
                     skill2PoisonActiveTurnsIncrease=2;
                     skill2SpCost=15;
                     break;
                 case 5:
                     skill2PoisonActivationRateIncrease=4;
-                    skill2PoisonHpPercentDamageIncrease=2;
+                    skill2PoisonHpPercentDamageIncrease=0.02;
                     skill2PoisonActiveTurnsIncrease=2;
                     skill2SpCost=20;
                     break;
                 case 6:
                     skill2PoisonActivationRateIncrease=4;
-                    skill2PoisonHpPercentDamageIncrease=2;
+                    skill2PoisonHpPercentDamageIncrease=0.02;
                     skill2PoisonActiveTurnsIncrease=3;
                     skill2SpCost=25;
                     break;
                 case 7:
                     skill2PoisonActivationRateIncrease=4;
-                    skill2PoisonHpPercentDamageIncrease=2;
+                    skill2PoisonHpPercentDamageIncrease=0.02;
                     skill2PoisonActiveTurnsIncrease=3;
                     skill2SpCost=25;
                     break;
@@ -201,43 +208,43 @@ public class Light extends Character
             switch(skill4)
             {
                 case 1:
-                skill4SelfHpDamagePercent=0.2;
+                skill4SelfHpDamagePercent=0.02;
                 skill4AllySpRecoveryPercent=20;
                 skill4SelfSpRecovertPercent=10;
                 skill4SpCost=20;
                 break;
                 case 2:
-                skill4SelfHpDamagePercent=0.2;
+                skill4SelfHpDamagePercent=0.03;
                 skill4AllySpRecoveryPercent=24;
                 skill4SelfSpRecovertPercent=15;
                 skill4SpCost=24;
                 break;
                 case 3:
-                skill4SelfHpDamagePercent=0.2;
+                skill4SelfHpDamagePercent=0.04;
                 skill4AllySpRecoveryPercent=28;
                 skill4SelfSpRecovertPercent=20;
                 skill4SpCost=28;
                 break;
                 case 4:
-                skill4SelfHpDamagePercent=0.2;
+                skill4SelfHpDamagePercent=0.06;
                 skill4AllySpRecoveryPercent=30;
                 skill4SelfSpRecovertPercent=25;
                 skill4SpCost=30;
                 break;
                 case 5:
-                skill4SelfHpDamagePercent=0.2;
+                skill4SelfHpDamagePercent=0.08;
                 skill4AllySpRecoveryPercent=34;
                 skill4SelfSpRecovertPercent=30;
                 skill4SpCost=34;
                 break;
                 case 6:
-                skill4SelfHpDamagePercent=0.2;
+                skill4SelfHpDamagePercent=0.09;
                 skill4AllySpRecoveryPercent=38;
                 skill4SelfSpRecovertPercent=35;
                 skill4SpCost=38;
                 break;
                 case 7:
-                skill4SelfHpDamagePercent=0.2;
+                skill4SelfHpDamagePercent=0.1;
                 skill4AllySpRecoveryPercent=40;
                 skill4SelfSpRecovertPercent=40;
                 skill4SpCost=40;
@@ -283,7 +290,60 @@ public class Light extends Character
             return "Mejora esta habilidad para poder usarla";
         return "Ally Sp recovery %: " + skill4AllySpRecoveryPercent + "%";
     }
-
+        
+    public int getPoisonActivationRate(){
+        return poisonActivationRate;
+    }
+    
+    public int getPoisonActiveTurns(){
+        return poisonActiveTurns;
+    }
+    
+    public double getPoisonHpPercentDamage(){
+        return poisonHpPercentDamage;
+    }
+    
+    public int getAllySpRecoveryPercent(){
+        return skill4AllySpRecoveryPercent;
+    }
+    
+    public double getSelfHpDamagePercent(){
+        return skill4SelfHpDamagePercent;
+    }
+    
+    public int getSelfSpRecovery(){
+        return skill4SelfSpRecovertPercent;
+    }
+    
+    public double getSpRecoveryRate(){
+        return skill3SpRecoveryRate;
+    }
+    
+    public void activateSkill1(){
+        
+    }
+    
+    public void activateSkill2(){
+        BattleEnvironment2 battleWorld = (BattleEnvironment2)getWorld();
+        battleWorld.murderousGaze();
+    }
+    
+    public void activateSkill3(){
+        
+    }
+    
+    public void activateSkill4(){
+        
+    }
+    
+    public int getSkill2SpCost(){
+        return skill2SpCost;
+    }
+    
+    public int getSkill4SpCost(){
+        return skill4SpCost;
+    }
+    
     public String getName(){
         return "Light";
     }

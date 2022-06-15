@@ -14,12 +14,12 @@ public class Enemy6 extends Enemy
         name = "President";
         hp = 160;
         maxHp = 160;
-        atk = Math.floor(Math.random()*(16-10+1)+10);
+        atk = Math.floor(Math.random()*(16-10+1)+35);
         def = Math.floor(Math.random()*(7-4+1)+4);
         yieldXp = 6;
         yieldMoney = 10;
         speed = Math.floor(Math.random()*(9-7+1)+7);
-        hitCount = 1;
+        hitCount = 2;
         
         temporalVoidStack=0;
         isParalyzed=false;
@@ -31,11 +31,6 @@ public class Enemy6 extends Enemy
         hasDarkSigil=false;
         
         sprite.scale(sprite.getWidth()+100, sprite.getHeight()+100);
-        sprite.mirrorHorizontally();
         setImage(sprite);
-    }
-    
-    public void act(){
-        super.act();
     }
 }

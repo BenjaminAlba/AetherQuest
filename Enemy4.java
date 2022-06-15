@@ -14,7 +14,7 @@ public class Enemy4 extends Enemy
         name = "Goblon";
         hp = 56;
         maxHp = 56;
-        atk = Math.floor(Math.random()*(11-9+1)+9);
+        atk = Math.floor(Math.random()*(11-9+1)+18);
         def = Math.floor(Math.random()*(5-4+1)+4);
         yieldXp = 7;
         yieldMoney = 12;
@@ -31,11 +31,6 @@ public class Enemy4 extends Enemy
         hasDarkSigil=false;
         
         sprite.scale(sprite.getWidth()+100, sprite.getHeight()+100);
-        sprite.mirrorHorizontally();
         setImage(sprite);
-    }
-    
-    public void act(){
-        super.act();
     }
 }

@@ -12,15 +12,15 @@ public class Enemy3 extends Enemy
     public Enemy3()
     {
         id = 3;
-        name = "John Salch.";
+        name = "John Salchichon";
         hp = 30;
         maxHp = 30;
-        atk = Math.floor(Math.random()*(8-5+1)+5);
+        atk = Math.floor(Math.random()*(8-5+1)+10);
         def = Math.floor(Math.random()*(3-2+1)+2);
         yieldXp = 6;
         yieldMoney = 10;
         speed = Math.floor(Math.random()*(8-6+1)+6);
-        hitCount = 1;
+        hitCount = 2;
         
         temporalVoidStack=0;
         isParalyzed=false;
@@ -32,11 +32,6 @@ public class Enemy3 extends Enemy
         hasDarkSigil=false;
         
         sprite.scale(sprite.getWidth()+100, sprite.getHeight()+100);
-        sprite.mirrorHorizontally();
         setImage(sprite);
-    }
-    
-    public void act(){
-        super.act();
     }
 }

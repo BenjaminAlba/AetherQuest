@@ -15,12 +15,12 @@ public class Enemy2 extends Enemy
         name = "Lil' Pump";
         hp = 20;
         maxHp = 20;
-        atk = Math.floor(Math.random()*(6-4+1)+4);
+        atk = Math.floor(Math.random()*(6-4+1)+3);
         def = Math.floor(Math.random()*(2-1+1)+1);
         yieldXp = 4;
         yieldMoney = 7;
         speed = Math.floor(Math.random()*(6-5+1)+5);
-        hitCount = 1;
+        hitCount = 2;
         
         temporalVoidStack=0;
         isParalyzed=false;
@@ -32,11 +32,7 @@ public class Enemy2 extends Enemy
         hasDarkSigil=false;
         
         sprite.scale(sprite.getWidth()+100, sprite.getHeight()+100);
-        sprite.mirrorHorizontally();
         setImage(sprite);
     }
     
-    public void act(){
-        super.act();
-    }
 }

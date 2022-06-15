@@ -10,7 +10,7 @@ public class Sokudo extends Character
 {
     private int headerX = 295;
     private int headerY = 90;
-    
+
     private double defIgnorePercent;
 
     private final String skill1Name="Temporal Void";
@@ -34,13 +34,15 @@ public class Sokudo extends Character
     private double skill4DamageMultiplier;
     private int skill4SpCost;
 
+    private GreenfootImage sprite = new GreenfootImage("images/character_sprites/01/01_sideidle.png");
+
     public Sokudo()
     {
         id=1;
         lvl=1;
         currentExp=0;
         skillPoints=1;
-        ultCharges=0;
+        ultCharges=5;
         skill1=0;
         skill2=0;
         skill3=0;
@@ -62,6 +64,11 @@ public class Sokudo extends Character
         speed=10;
 
         defIgnorePercent=0;
+
+        sprite.mirrorHorizontally();
+        sprite.scale(sprite.getWidth()+100, sprite.getHeight()+100);
+
+        setImage(sprite);
     }
 
     public void upgradeS1()
@@ -72,33 +79,33 @@ public class Sokudo extends Character
             switch(skill1)
             {
                 case 1:
-                skill1StacksRequired=8;
-                skill1defIgnorePercentIncrease=0.05;
-                break;
+                    skill1StacksRequired=8;
+                    skill1defIgnorePercentIncrease=0.05;
+                    break;
                 case 2:
-                skill1StacksRequired=7;
-                skill1defIgnorePercentIncrease=0;
-                break;
+                    skill1StacksRequired=7;
+                    skill1defIgnorePercentIncrease=0;
+                    break;
                 case 3:
-                skill1StacksRequired=7;
-                skill1defIgnorePercentIncrease=0.05;
-                break;
+                    skill1StacksRequired=7;
+                    skill1defIgnorePercentIncrease=0.05;
+                    break;
                 case 4:
-                skill1StacksRequired=6;
-                skill1defIgnorePercentIncrease=0.05;
-                break;
+                    skill1StacksRequired=6;
+                    skill1defIgnorePercentIncrease=0.05;
+                    break;
                 case 5:
-                skill1StacksRequired=6;
-                skill1defIgnorePercentIncrease=0;
-                break;
+                    skill1StacksRequired=6;
+                    skill1defIgnorePercentIncrease=0;
+                    break;
                 case 6:
-                skill1StacksRequired=6;
-                skill1defIgnorePercentIncrease=0.05;
-                break;
+                    skill1StacksRequired=6;
+                    skill1defIgnorePercentIncrease=0.05;
+                    break;
                 case 7:
-                skill1StacksRequired=5;
-                skill1defIgnorePercentIncrease=0;
-                break;
+                    skill1StacksRequired=5;
+                    skill1defIgnorePercentIncrease=0;
+                    break;
             }
             defIgnorePercent+=skill1defIgnorePercentIncrease;
             skillPoints-=1;
@@ -113,40 +120,40 @@ public class Sokudo extends Character
             switch(skill2)
             {
                 case 1:
-                skill2HitCount=1;
-                skill2AtkUsedPercent=0.8;
-                skill2SpCost=35;
-                break;
+                    skill2HitCount=1;
+                    skill2AtkUsedPercent=0.8;
+                    skill2SpCost=35;
+                    break;
                 case 2:
-                skill2HitCount=1;
-                skill2AtkUsedPercent=1;
-                skill2SpCost=35;
-                break;
+                    skill2HitCount=1;
+                    skill2AtkUsedPercent=1;
+                    skill2SpCost=35;
+                    break;
                 case 3:
-                skill2HitCount=1;
-                skill2AtkUsedPercent=1.1;
-                skill2SpCost=35;
-                break;
+                    skill2HitCount=1;
+                    skill2AtkUsedPercent=1.1;
+                    skill2SpCost=35;
+                    break;
                 case 4:
-                skill2HitCount=1;
-                skill2AtkUsedPercent=1.2;
-                skill2SpCost=35;
-                break;
+                    skill2HitCount=1;
+                    skill2AtkUsedPercent=1.2;
+                    skill2SpCost=35;
+                    break;
                 case 5:
-                skill2HitCount=2;
-                skill2AtkUsedPercent=1.3;
-                skill2SpCost=30;
-                break;
+                    skill2HitCount=2;
+                    skill2AtkUsedPercent=1.3;
+                    skill2SpCost=30;
+                    break;
                 case 6:
-                skill2HitCount=2;
-                skill2AtkUsedPercent=1.4;
-                skill2SpCost=30;
-                break;
+                    skill2HitCount=2;
+                    skill2AtkUsedPercent=1.4;
+                    skill2SpCost=30;
+                    break;
                 case 7:
-                skill2HitCount=2;
-                skill2AtkUsedPercent=1.5;
-                skill2SpCost=30;
-                break;
+                    skill2HitCount=2;
+                    skill2AtkUsedPercent=1.5;
+                    skill2SpCost=30;
+                    break;
             }
             skillPoints-=1;
         }
@@ -160,33 +167,33 @@ public class Sokudo extends Character
             switch(skill3)
             {
                 case 1:
-                skill3HitCount=1;
-                skill3AtkUsedPercent=0.4;
-                break;
+                    skill3HitCount=1;
+                    skill3AtkUsedPercent=0.4;
+                    break;
                 case 2:
-                skill3HitCount=1;
-                skill3AtkUsedPercent=0.42;
-                break;
+                    skill3HitCount=1;
+                    skill3AtkUsedPercent=0.42;
+                    break;
                 case 3:
-                skill3HitCount=1;
-                skill3AtkUsedPercent=0.43;
-                break;
+                    skill3HitCount=1;
+                    skill3AtkUsedPercent=0.43;
+                    break;
                 case 4:
-                skill3HitCount=1;
-                skill3AtkUsedPercent=0.44;
-                break;
+                    skill3HitCount=1;
+                    skill3AtkUsedPercent=0.44;
+                    break;
                 case 5:
-                skill3HitCount=1;
-                skill3AtkUsedPercent=0.46;
-                break;
+                    skill3HitCount=1;
+                    skill3AtkUsedPercent=0.46;
+                    break;
                 case 6:
-                skill3HitCount=1;
-                skill3AtkUsedPercent=0.48;
-                break;
+                    skill3HitCount=1;
+                    skill3AtkUsedPercent=0.48;
+                    break;
                 case 7:
-                skill3HitCount=2;
-                skill3AtkUsedPercent=0.5;
-                break;
+                    skill3HitCount=2;
+                    skill3AtkUsedPercent=0.5;
+                    break;
             }
             skillPoints-=1;
         }
@@ -200,87 +207,144 @@ public class Sokudo extends Character
             switch(skill4)
             {
                 case 1:
-                skill4DamageMultiplier=0.2;
-                skill4SpCost=5;
-                break;
+                    skill4DamageMultiplier=1.2;
+                    skill4SpCost=5;
+                    break;
                 case 2:
-                skill4DamageMultiplier=0.3;
-                skill4SpCost=5;
-                break;
+                    skill4DamageMultiplier=1.3;
+                    skill4SpCost=5;
+                    break;
                 case 3:
-                skill4DamageMultiplier=0.4;
-                skill4SpCost=5;
-                break;
+                    skill4DamageMultiplier=1.4;
+                    skill4SpCost=5;
+                    break;
                 case 4:
-                skill4DamageMultiplier=0.5;
-                skill4SpCost=10;
-                break;
+                    skill4DamageMultiplier=1.5;
+                    skill4SpCost=10;
+                    break;
                 case 5:
-                skill4DamageMultiplier=1;
-                skill4SpCost=10;
-                break;
+                    skill4DamageMultiplier=2;
+                    skill4SpCost=10;
+                    break;
                 case 6:
-                skill4DamageMultiplier=1.5;
-                skill4SpCost=10;
-                break;
+                    skill4DamageMultiplier=2.5;
+                    skill4SpCost=10;
+                    break;
                 case 7:
-                skill4DamageMultiplier=2;
-                skill4SpCost=10;
-                break;
+                    skill4DamageMultiplier=3;
+                    skill4SpCost=10;
+                    break;
             }
             skillPoints-=1;
         }
     }
-    
+
     public String getSkill1Name(){
         return skill1Name;
     }
+
     public String getSkill2Name(){
         return skill2Name;
     }
+
     public String getSkill3Name(){
         return skill3Name;
     }
+
     public String getSkill4Name(){
         return skill4Name;
     }
-    
+
     public String getSkill1Stats(){
         if(skill1 == 0)
             return "Mejora esta habilidad para poder usarla";
         return "Defense % ignore: " + (defIgnorePercent*100) + "%";
     }
-    
+
     public String getSkill2Stats(){
         if(skill2 == 0)
             return "Mejora esta habilidad para poder usarla";
         return "Attack % used: " + (skill2AtkUsedPercent*100) + "%";
     }
-    
+
     public String getSkill3Stats(){
         if(skill3 == 0)
             return "Mejora esta habilidad para poder usarla";
         return "Attack % used: " + (skill3AtkUsedPercent*100) + "%";
     }
-    
+
     public String getSkill4Stats(){
         if(skill4 == 0)
             return "Mejora esta habilidad para poder usarla";
         return "Damage multiplier: +" + (skill4DamageMultiplier*100) + "%";
     }
-    
+
     public String getName(){
         return "Sokudo";
+    }
+
+    public void activateSkill1(){
+
+    }
+
+    public void activateSkill2(){
+        BattleEnvironment2 battleWorld = (BattleEnvironment2)getWorld();
+        battleWorld.chaosOverlimit();
+    }
+
+    public void activateSkill3(){
+
+    }
+
+    public void activateSkill4(){
+        BattleEnvironment2 battleWorld = (BattleEnvironment2)getWorld();
+        battleWorld.staticCharge();
+    }
+
+    public int getStacksRequired(){
+        return skill1StacksRequired;
+    }
+
+    public int getSkill2HitCount(){
+        return skill2HitCount;
+    }
+
+    public double getSkill2AtkUsedPercent(){
+        return skill2AtkUsedPercent;
+    }
+
+    public int getSkill2SpCost(){
+        return skill2SpCost;
+    }
+
+    public int getSkill3HitCount(){
+        return skill3HitCount;
+    }
+    
+    public double getSkill3AtkPercent(){
+        return skill3AtkUsedPercent;
+    }
+    
+    public double getSkill4DamageMultiplier(){
+        return skill4DamageMultiplier;
+    }
+
+    public int getSkill4SpCost(){
+        return skill4SpCost;
+    }
+    
+    public double getDefIgnorePercent(){
+        return 1 - defIgnorePercent;
     }
     
     public int getHeaderX(){
         return headerX;
     }
-    
+
     public int getHeaderY(){
         return headerY;
     }
-    
+
     public void act() 
     {
         // Add your action code here.

@@ -14,12 +14,12 @@ public class Enemy9 extends Enemy
         name = "El jajas";
         hp = 300;
         maxHp = 300;
-        atk = Math.floor(Math.random()*(28-24+1)+24);
+        atk = Math.floor(Math.random()*(28-24+1)+60);
         def = Math.floor(Math.random()*(15-8+1)+8);
         yieldXp = 6;
         yieldMoney = 10;
         speed = Math.floor(Math.random()*(12-10+1)+10);
-        hitCount = 1;
+        hitCount = 4;
 
         temporalVoidStack=0;
         isParalyzed=false;
@@ -31,11 +31,6 @@ public class Enemy9 extends Enemy
         hasDarkSigil=false;
 
         sprite.scale(sprite.getWidth()+100, sprite.getHeight()+100);
-        sprite.mirrorHorizontally();
         setImage(sprite);
-    }
-    
-    public void act(){
-        super.act();
     }
 }

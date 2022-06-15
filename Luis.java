@@ -33,12 +33,14 @@ public class Luis extends Character
     private double skill4HpDamagePercent;
     private int skill4SpCost;
     
+    private GreenfootImage sprite = new GreenfootImage("images/character_sprites/07/07_sideidle.png");
+
     public Luis()
     {
         id=7;
         lvl=1;
         currentExp=0;
-        skillPoints=1;
+        skillPoints=4;
         ultCharges=0;
         skill1=0;
         skill2=0;
@@ -63,6 +65,11 @@ public class Luis extends Character
         acquiredMoneyMultiplier=0;
         itemDamageMultiplier=0;
         negateItemConsumptionRate=0;
+        
+        sprite.mirrorHorizontally();
+        sprite.scale(sprite.getWidth()+100, sprite.getHeight()+100);
+        
+        setImage(sprite);
     }
     
     public void upgradeS1()
@@ -250,7 +257,23 @@ public class Luis extends Character
             return "Mejora esta habilidad para poder usarla";
         return "Self damage %: " + (skill4SelfHpDamagePercent*100) + "%";
     }
-
+    
+    public void activateSkill1(){
+        
+    }
+    
+    public void activateSkill2(){
+        
+    }
+    
+    public void activateSkill3(){
+        
+    }
+    
+    public void activateSkill4(){
+        
+    }
+    
     public String getName(){
         return "Luis";
     }

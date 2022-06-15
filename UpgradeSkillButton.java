@@ -22,17 +22,21 @@ public class UpgradeSkillButton extends Button
         SkillUpgradeMenu menu = (SkillUpgradeMenu) world;
         switch(skillNumber){
             case 1:
-            character.upgradeS1();
-            break;
+                if(character.getSkill1Lvl() < 7)
+                    character.upgradeS1();
+                break;
             case 2:
-            character.upgradeS2();
-            break;
+                if(character.getSkill2Lvl() < 7)
+                    character.upgradeS2();
+                break;
             case 3:
-            character.upgradeS3();
-            break;
+                if(character.getSkill3Lvl() < 7)
+                    character.upgradeS3();
+                break;
             case 4:
-            character.upgradeS4();
-            break;
+                if(character.getSkill4Lvl() < 7)
+                    character.upgradeS4();
+                break;
         }
         menu.updateText();
     }

@@ -30,6 +30,7 @@ public class PrologueIntro extends World
         icon = new DialogIcon();
         prologueIntro = new GreenfootSound("sounds/chapterStart.mp3");
         buttonPress = new GreenfootSound("sounds/button_click.mp3");
+        buttonPress.setVolume(60);
         openSfx = new GreenfootSound("sounds/open_sfx.mp3");
         staticSfx = new GreenfootSound("sounds/static_sfx.mp3");
     }
@@ -78,8 +79,7 @@ public class PrologueIntro extends World
     public void waitForInput()
     {
         Greenfoot.delay(20);
-        while(!Greenfoot.isKeyDown("enter"));
-        buttonPress.play(); 
+        while(!Greenfoot.isKeyDown("enter")); 
         Greenfoot.delay(20);
     }
 
@@ -112,6 +112,8 @@ public class PrologueIntro extends World
             }
         }
 
+        buttonPress.play();
+        
         removeObject(this.line1);
 
         if(!line2.isEmpty())

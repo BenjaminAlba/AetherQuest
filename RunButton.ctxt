@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=RunButton
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ RunButton\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=RunButton()
+comment2.params=agressor
+comment2.target=void\ setAgressor(Character)
+comment3.params=
+comment3.target=void\ checkClick()
+comment4.params=
+comment4.target=void\ changeState()
+comment5.params=
+comment5.target=void\ act()
+numComments=6

@@ -13,7 +13,7 @@ public class Nagito extends Character
     
     private int furyStack;
     private int cooldownTurns;
-    private int gutsActivationRate;
+    private boolean cooldownHeal;
     private double markedEnemyDamageMultiplier;
 
     private final String skill1Name="Fleeting Moments";
@@ -32,13 +32,15 @@ public class Nagito extends Character
     private double skill4HpRecoveryMultiplier;
     private int skill4SpCost;
 
+    private GreenfootImage sprite = new GreenfootImage("images/character_sprites/08/08_sideidle.png");
+
     public Nagito()
     {
         id=8;
         lvl=1;
         currentExp=0;
         skillPoints=0;
-        ultCharges=0;
+        ultCharges=8;
         skill1=0;
         skill2=0;
         skill3=0;
@@ -61,13 +63,18 @@ public class Nagito extends Character
 
         furyStack=0;
         cooldownTurns=0;
-        gutsActivationRate=0;
         markedEnemyDamageMultiplier=0.6;
-
+        cooldownHeal = false;
+        
         skill3StackReleaseMultiplier=0.2;
         skill3SpCost=0;
         skill4HpRecoveryMultiplier=0.1;
         skill4SpCost=0;
+        
+        sprite.mirrorHorizontally();
+        sprite.scale(sprite.getWidth()+100, sprite.getHeight()+100);
+        
+        setImage(sprite);
     }
 
     public String getSkill1Name(){
@@ -98,6 +105,38 @@ public class Nagito extends Character
         return null;
     }
 
+    public double getSkill3StackReleaseMultiplier(){
+        return skill3StackReleaseMultiplier;
+    }
+    
+    public double getMarkedEnemyDamageMultiplier(){
+        return markedEnemyDamageMultiplier;
+    }
+    
+    public void setFuryStacks(int stacks){
+        furyStack = stacks;
+    }
+    
+    public int getFuryStacks(){
+        return furyStack;
+    }
+    
+    public int getCooldownTurns(){
+        return cooldownTurns;
+    }
+    
+    public void setCooldownTurns(int cooldownTurns){
+        this.cooldownTurns = cooldownTurns;
+    }
+    
+    public boolean getCooldownHeal(){
+        return cooldownHeal;
+    }
+    
+    public void setCooldownHeal(boolean status){
+        cooldownHeal = status;
+    }
+    
     public String getSkill4Stats(){
         return null;
     }
@@ -109,6 +148,24 @@ public class Nagito extends Character
     public void upgradeS3(){}
     
     public void upgradeS4(){}
+    
+    public void activateSkill1(){
+        
+    }
+    
+    public void activateSkill2(){
+        
+    }
+    
+    public void activateSkill3(){
+        BattleEnvironment2 battleWorld = (BattleEnvironment2)getWorld();
+        battleWorld.boilingBlood();
+    }
+    
+    public void activateSkill4(){
+        BattleEnvironment2 battleWorld = (BattleEnvironment2)getWorld();
+        battleWorld.deepBreath();
+    }
     
     public String getName(){
         return "Nagito";
