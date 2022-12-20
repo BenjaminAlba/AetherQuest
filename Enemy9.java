@@ -14,12 +14,15 @@ public class Enemy9 extends Enemy
         name = "El jajas";
         hp = 300;
         maxHp = 300;
+        hpBarrier = 0;
         atk = Math.floor(Math.random()*(28-24+1)+60);
         def = Math.floor(Math.random()*(15-8+1)+8);
+        spr = Math.floor(Math.random()*(15-8+1)+7);
         yieldXp = 6;
         yieldMoney = 10;
         speed = Math.floor(Math.random()*(12-10+1)+10);
         hitCount = 4;
+        damageType = 2;
 
         temporalVoidStack=0;
         isParalyzed=false;

@@ -14,12 +14,15 @@ public class Enemy4 extends Enemy
         name = "Goblon";
         hp = 56;
         maxHp = 56;
+        hpBarrier = 0;
         atk = Math.floor(Math.random()*(11-9+1)+18);
         def = Math.floor(Math.random()*(5-4+1)+4);
+        spr = Math.floor(Math.random()*(5-4+1)+3);
         yieldXp = 7;
         yieldMoney = 12;
         speed = Math.floor(Math.random()*(8-6+1)+6);
         hitCount = 1;
+        damageType = 1;
         
         temporalVoidStack=0;
         isParalyzed=false;

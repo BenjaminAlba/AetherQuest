@@ -55,17 +55,21 @@ public class Light extends Character
         baseHp=12;
         hp=12;
         maxHP=12;
+        hpBarrier = 0;
         baseAtk=3;
         atk=3;
         hitCount=1;
         baseDef=2;
         def=2;
+        baseSpr=3;
+        spr=3;
         ultQuantity=6;
         maxSP=100;
         sp=100;
         baseSpeed=5;
         speed=5;
-
+        damageType = 1;
+        
         poisonActivationRate=0;
         poisonActiveTurns=0;
         poisonHpPercentDamage=0;

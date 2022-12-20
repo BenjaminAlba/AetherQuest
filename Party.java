@@ -10,26 +10,15 @@ public class Party extends Actor
 {
     private static Party uniqueInstance;
 
-    private Character member1 = new KingHermes();
-    private Character member2 = new Sokudo();
-    private Character member3 = new Mike();
+    private Character member1 = new Sokudo();
+    private Character member2 = new Light();
+    private Character member3 = new KingHermes();
     private Character member4 = new Nagito();
     private int money;
     private int[] inventory = new int[12];
     private int [] flags = new int[250];
 
     private Party(){
-        member1.setXp(20000);
-        member2.setXp(20000);
-        member3.setXp(20000);
-        member4.setXp(20000);
-        
-        for(int i=0; i < 17; i++){
-            member1.levelUp();
-            member2.levelUp();
-            member3.levelUp();
-            member4.levelUp();
-        }
     }
 
     public static Party getInstance(){

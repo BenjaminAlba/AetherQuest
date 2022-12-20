@@ -52,17 +52,21 @@ public class Sokudo extends Character
         baseHp=10;
         hp=10;
         maxHP=10;
+        hpBarrier = 0;
         baseAtk=4;
         atk=4;
         hitCount=2;
         baseDef=2;
         def=2;
+        baseSpr=4;
+        spr=4;
         ultQuantity=5;
         maxSP=90;
         sp=90;
         baseSpeed=10;
         speed=10;
-
+        damageType = 1;
+        
         defIgnorePercent=0;
 
         sprite.mirrorHorizontally();
@@ -79,7 +83,7 @@ public class Sokudo extends Character
             switch(skill1)
             {
                 case 1:
-                    skill1StacksRequired=8;
+                    skill1StacksRequired=7;
                     skill1defIgnorePercentIncrease=0.05;
                     break;
                 case 2:
@@ -87,7 +91,7 @@ public class Sokudo extends Character
                     skill1defIgnorePercentIncrease=0;
                     break;
                 case 3:
-                    skill1StacksRequired=7;
+                    skill1StacksRequired=6;
                     skill1defIgnorePercentIncrease=0.05;
                     break;
                 case 4:
@@ -95,15 +99,15 @@ public class Sokudo extends Character
                     skill1defIgnorePercentIncrease=0.05;
                     break;
                 case 5:
-                    skill1StacksRequired=6;
+                    skill1StacksRequired=5;
                     skill1defIgnorePercentIncrease=0;
                     break;
                 case 6:
-                    skill1StacksRequired=6;
+                    skill1StacksRequired=5;
                     skill1defIgnorePercentIncrease=0.05;
                     break;
                 case 7:
-                    skill1StacksRequired=5;
+                    skill1StacksRequired=4;
                     skill1defIgnorePercentIncrease=0;
                     break;
             }
@@ -168,31 +172,31 @@ public class Sokudo extends Character
             {
                 case 1:
                     skill3HitCount=1;
-                    skill3AtkUsedPercent=0.4;
+                    skill3AtkUsedPercent=0.36;
                     break;
                 case 2:
                     skill3HitCount=1;
-                    skill3AtkUsedPercent=0.42;
+                    skill3AtkUsedPercent=0.35;
                     break;
                 case 3:
                     skill3HitCount=1;
-                    skill3AtkUsedPercent=0.43;
+                    skill3AtkUsedPercent=0.4;
                     break;
                 case 4:
                     skill3HitCount=1;
-                    skill3AtkUsedPercent=0.44;
+                    skill3AtkUsedPercent=0.45;
                     break;
                 case 5:
                     skill3HitCount=1;
-                    skill3AtkUsedPercent=0.46;
+                    skill3AtkUsedPercent=0.5;
                     break;
                 case 6:
                     skill3HitCount=1;
-                    skill3AtkUsedPercent=0.48;
+                    skill3AtkUsedPercent=0.55;
                     break;
                 case 7:
                     skill3HitCount=2;
-                    skill3AtkUsedPercent=0.5;
+                    skill3AtkUsedPercent=0.6;
                     break;
             }
             skillPoints-=1;

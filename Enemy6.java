@@ -14,12 +14,15 @@ public class Enemy6 extends Enemy
         name = "President";
         hp = 160;
         maxHp = 160;
+        hpBarrier = 0;
         atk = Math.floor(Math.random()*(16-10+1)+35);
         def = Math.floor(Math.random()*(7-4+1)+4);
+        spr = Math.floor(Math.random()*(7-4+1)+3);
         yieldXp = 6;
         yieldMoney = 10;
         speed = Math.floor(Math.random()*(9-7+1)+7);
         hitCount = 2;
+        damageType = 1;
         
         temporalVoidStack=0;
         isParalyzed=false;

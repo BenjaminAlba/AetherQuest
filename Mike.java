@@ -30,7 +30,8 @@ public class Mike extends Character
 
     private final String skill4Name="Fighters Physique";
     private final int skill4Type=1;
-    private double skill4BaseSpdIncrease;
+    private double skill4BarrierDef;
+    private double skill4BarrierSpr;
 
     private GreenfootImage sprite = new GreenfootImage("images/character_sprites/04/04_sideidle.png");
 
@@ -39,7 +40,7 @@ public class Mike extends Character
         id=4;
         lvl=1;
         currentExp=0;
-        skillPoints=1;
+        skillPoints=4;
         ultCharges=0;
         skill1=0;
         skill2=0;
@@ -50,23 +51,32 @@ public class Mike extends Character
         baseHp=16;
         hp=16;
         maxHP=16;
+        hpBarrier = 0;
         baseAtk=3;
         atk=3;
         hitCount=1;
         baseDef=4;
         def=4;
+        baseSpr=2;
+        spr=2;
         ultQuantity=5;
         maxSP=70;
         sp=70;
         baseSpeed=3;
         speed=3;
-
+        damageType = 0;
+        
         defScalingPercent=0;
 
         sprite.mirrorHorizontally();
         sprite.scale(sprite.getWidth()+100, sprite.getHeight()+100);
 
         setImage(sprite);
+        
+        upgradeS1();
+        upgradeS2();
+        upgradeS3();
+        upgradeS4();
     }
 
     public void upgradeS1()
@@ -77,32 +87,32 @@ public class Mike extends Character
             switch(skill1)
             {
                 case 1:
-                    skill1DamageTakenMultiplier=1.5;
-                    skill1ActiveTurns=1;
-                    skill1SpCost=10;
-                    break;
-                case 2:
-                    skill1DamageTakenMultiplier=1.45;
-                    skill1ActiveTurns=1;
-                    skill1SpCost=10;
-                    break;
-                case 3:
                     skill1DamageTakenMultiplier=1.4;
                     skill1ActiveTurns=1;
                     skill1SpCost=10;
                     break;
-                case 4:
+                case 2:
                     skill1DamageTakenMultiplier=1.35;
+                    skill1ActiveTurns=1;
+                    skill1SpCost=10;
+                    break;
+                case 3:
+                    skill1DamageTakenMultiplier=1.32;
+                    skill1ActiveTurns=1;
+                    skill1SpCost=10;
+                    break;
+                case 4:
+                    skill1DamageTakenMultiplier=1.29;
                     skill1ActiveTurns=1;
                     skill1SpCost=15;
                     break;
                 case 5:
-                    skill1DamageTakenMultiplier=1.3;
+                    skill1DamageTakenMultiplier=1.26;
                     skill1ActiveTurns=1;
                     skill1SpCost=15;
                     break;
                 case 6:
-                    skill1DamageTakenMultiplier=1.25;
+                    skill1DamageTakenMultiplier=1.23;
                     skill1ActiveTurns=1;
                     skill1SpCost=20;
                     break;
@@ -198,28 +208,34 @@ public class Mike extends Character
             switch(skill4)
             {
                 case 1:
-                    skill4BaseSpdIncrease=0.2;
+                    skill4BarrierDef = 0.2;
+                    skill4BarrierSpr = 0.2;
                     break;
                 case 2:
-                    skill4BaseSpdIncrease=0.1;
+                    skill4BarrierDef = 0.22;
+                    skill4BarrierSpr = 0.24;
                     break;
                 case 3:
-                    skill4BaseSpdIncrease=0.1;
+                    skill4BarrierDef = 0.24;
+                    skill4BarrierSpr = 0.28;
                     break;
                 case 4:
-                    skill4BaseSpdIncrease=0.2;
+                    skill4BarrierDef = 0.26;
+                    skill4BarrierSpr = 0.32;
                     break;
                 case 5:
-                    skill4BaseSpdIncrease=0.2;
+                    skill4BarrierDef = 0.27;
+                    skill4BarrierSpr = 0.35;
                     break;
                 case 6:
-                    skill4BaseSpdIncrease=0.2;
+                    skill4BarrierDef = 0.28;
+                    skill4BarrierSpr = 0.38;
                     break;
                 case 7:
-                    skill4BaseSpdIncrease=0.2;
+                    skill4BarrierDef = 0.3;
+                    skill4BarrierSpr = 0.4;
                     break;
             }
-            baseSpeed+=skill4BaseSpdIncrease;
             skillPoints-=1;
         }
     }
@@ -316,6 +332,14 @@ public class Mike extends Character
 
     public double getDefScalingPercent(){
         return defScalingPercent;
+    }
+    
+    public double getSkill4BarrierDef(){
+        return skill4BarrierDef;
+    }
+    
+    public double getSkill4BarrierSpr(){
+        return skill4BarrierSpr;
     }
     
     public void act() 

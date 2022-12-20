@@ -15,12 +15,15 @@ public class Enemy2 extends Enemy
         name = "Lil' Pump";
         hp = 20;
         maxHp = 20;
+        hpBarrier = 0;
         atk = Math.floor(Math.random()*(6-4+1)+3);
         def = Math.floor(Math.random()*(2-1+1)+1);
+        spr = Math.floor(Math.random()*(2-1+1)+0);
         yieldXp = 4;
         yieldMoney = 7;
         speed = Math.floor(Math.random()*(6-5+1)+5);
         hitCount = 2;
+        damageType = 0;
         
         temporalVoidStack=0;
         isParalyzed=false;

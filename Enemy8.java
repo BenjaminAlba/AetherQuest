@@ -14,12 +14,15 @@ public class Enemy8 extends Enemy
         name = "~EGGMG~";
         hp = 250;
         maxHp = 250;
-        atk = Math.floor(Math.random()*(24-20+1)+60);
+        hpBarrier = 0;
+        atk = Math.floor(Math.random()*(24-20+1)+110);
         def = Math.floor(Math.random()*(12-8+1)+8);
+        spr = Math.floor(Math.random()*(12-8+1)+7);
         yieldXp = 6;
         yieldMoney = 10;
         speed = Math.floor(Math.random()*(10-9+1)+9);
         hitCount = 1;
+        damageType = 1;
 
         temporalVoidStack=0;
         isParalyzed=false;

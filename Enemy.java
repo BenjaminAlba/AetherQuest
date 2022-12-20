@@ -13,8 +13,10 @@ public class Enemy extends Actor
     protected String name;
     protected int hp;
     protected int maxHp;
+    protected int hpBarrier;
     protected double atk;
     protected double def;
+    protected double spr;
     protected int yieldXp;
     protected int yieldMoney;
     protected double speed;
@@ -31,6 +33,8 @@ public class Enemy extends Actor
     protected int aggroActiveTurns;
     
     protected boolean hasDarkSigil;
+    
+    protected int damageType;
     
     public Enemy()
     {
@@ -119,6 +123,19 @@ public class Enemy extends Actor
         this.def=def;
     }
     
+    public void setSpr(double spr)
+    {
+        this.spr=spr;
+    }
+    
+    public int getHpBarrier(){
+        return hpBarrier;
+    }
+    
+    public void setHpBarrier(int hpBarrier){
+        this.hpBarrier = hpBarrier;
+    }
+    
     public void setYieldXp(int yieldXp)
     {
         this.yieldXp=yieldXp;
@@ -183,6 +200,11 @@ public class Enemy extends Actor
         return def;
     }
     
+    public double getSpr()
+    {
+        return spr;    
+    }
+    
     public int getYieldXp()
     {
         return yieldXp;
@@ -191,6 +213,14 @@ public class Enemy extends Actor
     public int getYieldMoney()
     {
         return yieldMoney;
+    }
+    
+    public int getDamageType(){
+        return damageType;
+    }
+    
+    public void setDamageType(int damageType){
+        this.damageType = damageType;
     }
     
     public Enemy checkClick(){

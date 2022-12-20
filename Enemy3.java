@@ -15,12 +15,15 @@ public class Enemy3 extends Enemy
         name = "John Salchichon";
         hp = 30;
         maxHp = 30;
+        hpBarrier = 0;
         atk = Math.floor(Math.random()*(8-5+1)+10);
         def = Math.floor(Math.random()*(3-2+1)+2);
+        spr = Math.floor(Math.random()*(3-2+1)+1);
         yieldXp = 6;
         yieldMoney = 10;
         speed = Math.floor(Math.random()*(8-6+1)+6);
         hitCount = 2;
+        damageType = 1;
         
         temporalVoidStack=0;
         isParalyzed=false;

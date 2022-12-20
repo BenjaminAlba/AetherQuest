@@ -21,11 +21,14 @@ public abstract class Character extends Actor implements CharacterNameProvider
     protected int baseHp;
     protected int maxHP;
     protected int hp;
+    protected int hpBarrier;
     protected int baseAtk;
     protected int atk;
     protected int hitCount;
     protected int baseDef;
     protected int def;
+    protected int baseSpr;
+    protected int spr;
     protected int ultCharges;
     protected int ultQuantity;
     protected int maxSP;
@@ -38,6 +41,7 @@ public abstract class Character extends Actor implements CharacterNameProvider
     protected int skill4;
     protected boolean healFlag;
     protected boolean attackStatus;
+    protected int damageType;
     
     public Character checkClick(){
         if(Greenfoot.mousePressed(this)){
@@ -82,6 +86,22 @@ public abstract class Character extends Actor implements CharacterNameProvider
         return def;
     }
 
+    public int getSpr(){
+        return spr;
+    }
+    
+    public void setSpr(int spr){
+        this.spr = spr;
+    }
+    
+    public int getHpBarrier(){
+        return hpBarrier;
+    }
+    
+    public void setHpBarrier(int hpBarrier){
+        this.hpBarrier = hpBarrier;
+    }
+    
     public int getSpeed(){
         return speed;
     }
@@ -168,6 +188,14 @@ public abstract class Character extends Actor implements CharacterNameProvider
         return ultQuantity;
     }
     
+    public int getDamageType(){
+        return damageType;
+    }
+    
+    public void setDamageType(int damageType){
+        this.damageType = damageType;
+    }
+    
     public void levelUp()
     {
         if(currentExp>=requiredExp)
@@ -183,6 +211,7 @@ public abstract class Character extends Actor implements CharacterNameProvider
                 maxHP=(int)Math.ceil((baseHp*(lvl-1))+8);
             speed=(int)Math.floor(baseSpeed+(((baseSpeed*(lvl-1)))/(((baseSpeed)+lvl)/2))+3);
             atk=(int)Math.ceil((baseAtk*lvl)-(((baseAtk+1)*(lvl/2))/2));
+            spr=(int)Math.ceil((baseSpr*lvl)-(((baseSpr+1)*(lvl/2))/2));
             switch(id)
             {
                 case 1:

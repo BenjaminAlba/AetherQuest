@@ -50,16 +50,20 @@ public class Nagito extends Character
         baseHp=12;
         hp=12;
         maxHP=12;
+        hpBarrier = 0;
         baseAtk=7;
         atk=7;
         hitCount=1;
         baseDef=2;
         def=2;
+        baseSpr=2;
+        spr=2;
         ultQuantity=8;
         maxSP=0;
         sp=0;
         baseSpeed=5;
         speed=5;
+        damageType = 0;
 
         furyStack=0;
         cooldownTurns=0;

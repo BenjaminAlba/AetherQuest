@@ -54,7 +54,7 @@ public class ThirdFloorEnemyFactory implements EnemyFactory
         }
         else
         {
-            enemy = new Enemy7();
+            enemy = new Enemy8();
         }
         return enemy;
     }

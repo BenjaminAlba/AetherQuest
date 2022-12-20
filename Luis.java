@@ -51,16 +51,20 @@ public class Luis extends Character
         baseHp=10;
         hp=10;
         maxHP=10;
+        hpBarrier = 0;
         baseAtk=2;
         atk=2;
         hitCount=1;
         baseDef=2;
         def=2;
+        baseSpr=3;
+        spr=3;
         ultQuantity=5;
         maxSP=70;
         sp=70;
         baseSpeed=5;
         speed=5;
+        damageType = 0;
         
         acquiredMoneyMultiplier=0;
         itemDamageMultiplier=0;

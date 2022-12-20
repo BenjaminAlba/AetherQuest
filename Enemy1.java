@@ -16,12 +16,15 @@ public class Enemy1 extends Enemy
         name = "Goblin";
         hp = 12;
         maxHp = 12;
+        hpBarrier = 0;
         atk = Math.floor(Math.random()*(4-3+1)+4);
         def = Math.floor(Math.random()*(1-0+1)+0);
+        spr = Math.floor(Math.random()*(1-0+1)+0);
         yieldXp = 2;
         yieldMoney = 5;
         speed = Math.floor(Math.random()*(4-3+1)+3);
         hitCount = 1;
+        damageType = 0;
         
         temporalVoidStack=0;
         isParalyzed=false;

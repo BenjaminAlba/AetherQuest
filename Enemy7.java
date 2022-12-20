@@ -14,12 +14,15 @@ public class Enemy7 extends Enemy
         name = "Girlrilla";
         hp = 200;
         maxHp = 200;
+        hpBarrier = 0;
         atk = Math.floor(Math.random()*(18-10+1)+35);
-        def = Math.floor(Math.random()*(10-8+1)+35);
+        def = Math.floor(Math.random()*(10-8+1)+9);
+        spr = Math.floor(Math.random()*(10-8+1)+8);
         yieldXp = 6;
         yieldMoney = 10;
         speed = Math.floor(Math.random()*(10-9+1)+9);
         hitCount = 6;
+        damageType = 0;
         
         temporalVoidStack=0;
         isParalyzed=false;

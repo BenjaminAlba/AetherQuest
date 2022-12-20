@@ -50,16 +50,20 @@ public class Rengoku extends Character
         baseHp=8;
         hp=8;
         maxHP=8;
+        hpBarrier = 0;
         baseAtk=2;
         atk=2;
         hitCount=1;
         baseDef=2;
         def=2;
+        baseSpr=4;
+        spr=4;
         ultQuantity=3;
         maxSP=100;
         sp=100;
         baseSpeed=8;
         speed=8;
+        damageType = 1;
         
         holyFlameHpDamagePercent=0;
         
@@ -77,16 +81,16 @@ public class Rengoku extends Character
             switch(skill1)
             {
                 case 1:
-                    skill1HolyFlameHpDamagePercentIncrease=0.02;
+                    skill1HolyFlameHpDamagePercentIncrease=0.05;
                     break;
                 case 2:
-                    skill1HolyFlameHpDamagePercentIncrease=0.01;
+                    skill1HolyFlameHpDamagePercentIncrease=0.02;
                     break;
                 case 3:
                     skill1HolyFlameHpDamagePercentIncrease=0.01;
                     break;
                 case 4:
-                    skill1HolyFlameHpDamagePercentIncrease=0.01;
+                    skill1HolyFlameHpDamagePercentIncrease=0.02;
                     break;
                 case 5:
                     skill1HolyFlameHpDamagePercentIncrease=0.02;
@@ -151,31 +155,31 @@ public class Rengoku extends Character
             switch(skill3)
             {
                 case 1:
-                    skill3AtkMultiplier=0.1;
+                    skill3AtkMultiplier=0.2;
                     skill3SpCost=4;
                     break;
                 case 2:
-                    skill3AtkMultiplier=0.12;
+                    skill3AtkMultiplier=0.22;
                     skill3SpCost=6;
                     break;
                 case 3:
-                    skill3AtkMultiplier=0.14;
+                    skill3AtkMultiplier=0.24;
                     skill3SpCost=8;
                     break;
                 case 4:
-                    skill3AtkMultiplier=0.16;
+                    skill3AtkMultiplier=0.26;
                     skill3SpCost=10;
                     break;
                 case 5:
-                    skill3AtkMultiplier=0.2;
+                    skill3AtkMultiplier=0.3;
                     skill3SpCost=12;
                     break;
                 case 6:
-                    skill3AtkMultiplier=0.25;
+                    skill3AtkMultiplier=0.35;
                     skill3SpCost=12;
                     break;
                 case 7:
-                    skill3AtkMultiplier=0.3;
+                    skill3AtkMultiplier=0.4;
                     skill3SpCost=15;
                     break;
             }
@@ -191,31 +195,31 @@ public class Rengoku extends Character
             switch(skill4)
             {
                 case 1:
-                    skill4DefMultiplier=0.1;
+                    skill4DefMultiplier=0.2;
                     skill4SpCost=4;
                     break;
                 case 2:
-                    skill4DefMultiplier=0.12;
+                    skill4DefMultiplier=0.22;
                     skill4SpCost=6;
                     break;
                 case 3:
-                    skill4DefMultiplier=0.14;
+                    skill4DefMultiplier=0.24;
                     skill4SpCost=8;
                     break;
                 case 4:
-                    skill4DefMultiplier=0.16;
+                    skill4DefMultiplier=0.26;
                     skill4SpCost=10;
                     break;
                 case 5:
-                    skill4DefMultiplier=0.2;
+                    skill4DefMultiplier=0.3;
                     skill4SpCost=12;
                     break;
                 case 6:
-                    skill4DefMultiplier=0.25;
+                    skill4DefMultiplier=0.35;
                     skill4SpCost=12;
                     break;
                 case 7:
-                    skill4DefMultiplier=0.3;
+                    skill4DefMultiplier=0.4;
                     skill4SpCost=15;
                     break;
             }

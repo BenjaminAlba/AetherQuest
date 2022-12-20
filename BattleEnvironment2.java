@@ -14,9 +14,9 @@ public class BattleEnvironment2 extends World
     private int partySpeed;
     private boolean firstTurn;
 
-    Character rengokux = party.getMember1();
-    Character hermes = party.getMember2();
-    Character luis = party.getMember3();
+    Character sonic = party.getMember1();
+    Character luz = party.getMember2();
+    Character cum = party.getMember3();
     Character nacriko = party.getMember4();
 
     private GreenfootSound music = new GreenfootSound("sounds/0" + party.getMember1().getId() + "_battle.mp3");
@@ -88,6 +88,8 @@ public class BattleEnvironment2 extends World
     private int mikeDamage = 0;
 
     private Rengoku rengoku = (Rengoku) findCharacter(5);
+    private int holyFlameExtraDef = 0;
+    private int holyFlameExtraSpr = 0;
     private boolean entreatIsActive = false;
     private boolean cheerIsActive = false;
 
@@ -193,6 +195,9 @@ public class BattleEnvironment2 extends World
         partySpeed = party.getMember1().getSpeed() + party.getMember2().getSpeed() + party.getMember3().getSpeed() + party.getMember4().getSpeed() + (int)(((Math.random() * 20) + 1) - 10);
         enemySpeed = enemy[0].getSpeed() + enemy[1].getSpeed() + enemy[2].getSpeed() + enemy[3].getSpeed() + (int)(((Math.random() * 20) + 1) - 10);
         music.playLoop();
+        
+        
+        
     }
 
     public void generateEnemies(){
@@ -263,6 +268,12 @@ public class BattleEnvironment2 extends World
             party.getMember2().levelUp();
             party.getMember3().levelUp();
             party.getMember4().levelUp();
+
+            if(staticCharge){
+                agressor.setAtk((int)(agressor.getAtk() / ((Sokudo)agressor).getSkill4DamageMultiplier()));
+                staticCharge = false;
+            }
+
             music.stop();
             burstMusic.stop();
             switch(floor)
@@ -362,6 +373,10 @@ public class BattleEnvironment2 extends World
 
             if(nagito.getCooldownTurns() == 0)
                 nagito.setCooldownHeal(false);
+        }
+
+        if(findCharacter(4) != null && findCharacter(4).getHp() > 0 && mike.getSkill4Lvl() > 0){
+            fightersPhysique();
         }
 
         if(party.getMember1().getUltCharges() < party.getMember1().getUltQuantity()){
@@ -573,11 +588,17 @@ public class BattleEnvironment2 extends World
 
         if(target != null){
             showText(target.getName(), 300, 570);
-            addObject(enemyBar = new Bar("HP","",target.getHp(),target.getMaxHp()), 300, 612);
+            if(target.getHpBarrier() > 0){
+                addObject(enemyBar = new Bar("HP","",target.getHp() + target.getHpBarrier(),target.getMaxHp() + target.getHpBarrier()), 300, 612);
+                enemyBar.setTextColor(new Color(0, 0, 255));
+            }
+            else{
+                addObject(enemyBar = new Bar("HP","",target.getHp() ,target.getMaxHp()), 300, 612);
+            }
             enemyBar.setBarWidth(150);
             showText("Atk: " + (int)target.getAtk(), 230, 650);
             showText("Def: " + (int)target.getDef(), 350, 650);
-            showText("XP: " + target.getYieldXp(), 230, 690);
+            showText("Spr: " + (int)target.getSpr(), 230, 690);
             showText("Money: " + target.getYieldMoney(), 350, 690);
         }
     }
@@ -593,10 +614,37 @@ public class BattleEnvironment2 extends World
         showText(party.getMember3().getName(), 1170, 290);
         showText(party.getMember4().getName(), 1170, 420);
 
-        addObject(member1HpBar = new Bar("HP","",party.getMember1().getHp(),party.getMember1().getMaxHp()), 1190, 70);
-        addObject(member2HpBar = new Bar("HP","",party.getMember2().getHp(),party.getMember2().getMaxHp()), 1190, 200);
-        addObject(member3HpBar = new Bar("HP","",party.getMember3().getHp(),party.getMember3().getMaxHp()), 1190, 330);
-        addObject(member4HpBar = new Bar("HP","",party.getMember4().getHp(),party.getMember4().getMaxHp()), 1190, 460);
+        if(party.getMember1().getHpBarrier() > 0){
+            addObject(member1HpBar = new Bar("HP","",party.getMember1().getHp() + party.getMember1().getHpBarrier(),party.getMember1().getMaxHp() + party.getMember1().getHpBarrier()), 1190, 70);
+            member1HpBar.setTextColor(new Color(0, 0, 255));
+        }
+        else{
+            addObject(member1HpBar = new Bar("HP","",party.getMember1().getHp(),party.getMember1().getMaxHp()), 1190, 70);
+        }
+
+        if(party.getMember2().getHpBarrier() > 0){
+            addObject(member2HpBar = new Bar("HP","",party.getMember2().getHp() + party.getMember2().getHpBarrier(),party.getMember2().getMaxHp() + party.getMember2().getHpBarrier()), 1190, 200);
+            member2HpBar.setTextColor(new Color(0, 0, 255));
+        }
+        else{
+            addObject(member2HpBar = new Bar("HP","",party.getMember2().getHp(),party.getMember2().getMaxHp()), 1190, 200);
+        }
+
+        if(party.getMember3().getHpBarrier() > 0){
+            addObject(member3HpBar = new Bar("HP","",party.getMember3().getHp() + party.getMember3().getHpBarrier(),party.getMember3().getMaxHp() + party.getMember3().getHpBarrier()), 1190, 330);
+            member3HpBar.setTextColor(new Color(0, 0, 255));
+        }
+        else{
+            addObject(member3HpBar = new Bar("HP","",party.getMember3().getHp(),party.getMember3().getMaxHp()), 1190, 330);
+        }
+
+        if(party.getMember4().getHpBarrier() > 0){
+            addObject(member4HpBar = new Bar("HP","",party.getMember4().getHp() + party.getMember4().getHpBarrier(),party.getMember4().getMaxHp() + party.getMember4().getHpBarrier()), 1190, 460);
+            member4HpBar.setTextColor(new Color(0, 0, 255));
+        }
+        else{
+            addObject(member4HpBar = new Bar("HP","",party.getMember4().getHp(),party.getMember4().getMaxHp()), 1190, 460);
+        }
 
         member1HpBar.setBarWidth(80);
         member2HpBar.setBarWidth(80);
@@ -669,6 +717,7 @@ public class BattleEnvironment2 extends World
         int counter = 0;
         int x = agressor.getX();
         int y = agressor.getY();
+        double hybrid;
 
         double entreatMultiplier = 1;
         double padalustroMultiplier = 1;
@@ -695,7 +744,24 @@ public class BattleEnvironment2 extends World
             case 0:
                 for(int i=0;i<agressor.getHitCount();i++){
                     attackSfx[i].play();
-                    int damage = (int)padalustroMultiplier * (int)Math.ceil((((agressor.getAtk() * entreatMultiplier)-target.getDef())));
+                    int damage;
+
+                    if(agressor.getDamageType() == 0){
+                        damage = (int)padalustroMultiplier * (int)Math.ceil((((agressor.getAtk() * entreatMultiplier)-target.getDef())));
+                    }
+                    else if(agressor.getDamageType() == 1){
+                        damage = (int)padalustroMultiplier * (int)Math.ceil((((agressor.getAtk() * entreatMultiplier)-target.getSpr())));
+                    }
+                    else{
+                        if(target.getDef() < target.getSpr()){
+                            hybrid = 0.8 * target.getDef() + 0.2 * target.getSpr();
+                        }
+                        else{
+                            hybrid = 0.2 * target.getDef() + 0.8 * target.getSpr();
+                        }
+
+                        damage = (int)padalustroMultiplier * (int)Math.ceil((((agressor.getAtk() * entreatMultiplier)-hybrid)));
+                    }
                     if(agressor.getId() == 1){
                         if(!target.isParalyzed() && agressor.getSkill1Lvl() > 0){
                             target.setTemporalVoidStack(target.getTemporalVoidStack() + 1);
@@ -703,7 +769,22 @@ public class BattleEnvironment2 extends World
                                 target.setParalysisStatus(true);
                             }
                         }
-                        damage = (int)padalustroMultiplier * (int)Math.ceil(((agressor.getAtk() * entreatMultiplier)-(target.getDef() * ((Sokudo) agressor).getDefIgnorePercent())));
+                        if(agressor.getDamageType() == 0){
+                            damage = (int)padalustroMultiplier * (int)Math.ceil(((agressor.getAtk() * entreatMultiplier)-(target.getDef() * ((Sokudo) agressor).getDefIgnorePercent())));
+                        }
+                        else if(agressor.getDamageType() == 1){
+                            damage = (int)padalustroMultiplier * (int)Math.ceil(((agressor.getAtk() * entreatMultiplier)-(target.getSpr() * ((Sokudo) agressor).getDefIgnorePercent())));
+                        }
+                        else{
+                            if(target.getDef() < target.getSpr()){
+                                hybrid = 0.8 * target.getDef() + 0.2 * target.getSpr();
+                            }
+                            else{
+                                hybrid = 0.2 * target.getDef() + 0.8 * target.getSpr();
+                            }
+
+                            damage = (int)padalustroMultiplier * (int)Math.ceil(((agressor.getAtk() * entreatMultiplier)-(hybrid * ((Sokudo) agressor).getDefIgnorePercent())));
+                        }
                     }
                     else if(agressor.getId() == 2){
                         if(target.isPoisoned() && agressor.getSkill3Lvl() > 0){
@@ -714,7 +795,22 @@ public class BattleEnvironment2 extends World
                     }
                     else if(agressor.getId() == 4){
                         if(agressor.getSkill3Lvl() > 0){
-                            damage = (int)padalustroMultiplier * (int)Math.ceil(((((agressor.getAtk() * entreatMultiplier) + Math.ceil(agressor.getDefense() * mike.getDefScalingPercent())) - target.getDef())));
+                            if(agressor.getDamageType() == 0){
+                                damage = (int)padalustroMultiplier * (int)Math.ceil(((((agressor.getAtk() * entreatMultiplier) + Math.ceil(agressor.getDefense() * mike.getDefScalingPercent())) - target.getDef())));
+                            }
+                            else if(agressor.getDamageType() == 1){
+                                damage = (int)padalustroMultiplier * (int)Math.ceil(((((agressor.getAtk() * entreatMultiplier) + Math.ceil(agressor.getDefense() * mike.getDefScalingPercent())) - target.getSpr())));
+                            }
+                            else{
+                                if(target.getDef() < target.getSpr()){
+                                    hybrid = 0.8 * target.getDef() + 0.2 * target.getSpr();
+                                }
+                                else{
+                                    hybrid = 0.2 * target.getDef() + 0.8 * target.getSpr();
+                                }
+
+                                damage = (int)padalustroMultiplier * (int)Math.ceil(((((agressor.getAtk() * entreatMultiplier) + Math.ceil(agressor.getDefense() * mike.getDefScalingPercent())) - hybrid)));
+                            }
                         }
                     }
 
@@ -756,7 +852,18 @@ public class BattleEnvironment2 extends World
                     if(damage < 0)
                         damage = 0;
 
-                    target.setHp(target.getHp()-damage);
+                    if(target.getHpBarrier() > 0)
+                    {
+                        int result = target.getHpBarrier() - damage;
+                        target.setHpBarrier(target.getHpBarrier() - damage);
+                        if(target.getHpBarrier() < 0)
+                            target.setHpBarrier(0);
+                        if(result < 0)
+                        {
+                            target.setHp(target.getHp()-(int)(-1 * result));
+                        }
+                    }else
+                        target.setHp(target.getHp()-damage);
 
                     if(target.getHp() < 0)
                         target.setHp(0);
@@ -778,9 +885,37 @@ public class BattleEnvironment2 extends World
                             target.setParalysisStatus(true);
                         }
                     }
-                    damage = (int)padalustroMultiplier * (int)Math.ceil((((agressor.getAtk() * entreatMultiplier) * ((Sokudo) agressor).getSkill3AtkPercent())-(target.getDef() * ((Sokudo) agressor).getDefIgnorePercent())));
+                    damage = (int)padalustroMultiplier * (int)Math.ceil((((agressor.getSpr() * entreatMultiplier) * ((Sokudo) agressor).getSkill3AtkPercent())-(target.getDef() * ((Sokudo) agressor).getDefIgnorePercent())));
 
-                    target.setHp(target.getHp()-damage);
+                    if(agressor.getDamageType() == 0){
+                        damage = (int)padalustroMultiplier * (int)Math.ceil((((agressor.getSpr() * entreatMultiplier) * ((Sokudo) agressor).getSkill3AtkPercent())-(target.getDef() * ((Sokudo) agressor).getDefIgnorePercent())));
+                    }
+                    else if(agressor.getDamageType() == 1){
+                        damage = (int)padalustroMultiplier * (int)Math.ceil((((agressor.getSpr() * entreatMultiplier) * ((Sokudo) agressor).getSkill3AtkPercent())-(target.getSpr() * ((Sokudo) agressor).getDefIgnorePercent())));
+                    }
+                    else{
+                        if(target.getDef() < target.getSpr()){
+                            hybrid = 0.8 * target.getDef() + 0.2 * target.getSpr();
+                        }
+                        else{
+                            hybrid = 0.2 * target.getDef() + 0.8 * target.getSpr();
+                        }
+
+                        damage = (int)padalustroMultiplier * (int)Math.ceil((((agressor.getSpr() * entreatMultiplier) * ((Sokudo) agressor).getSkill3AtkPercent())-(hybrid * ((Sokudo) agressor).getDefIgnorePercent())));
+                    }
+
+                    if(target.getHpBarrier() > 0)
+                    {
+                        int result = target.getHpBarrier() - damage;
+                        target.setHpBarrier(target.getHpBarrier() - damage);
+                        if(target.getHpBarrier() < 0)
+                            target.setHpBarrier(0);
+                        if(result < 0)
+                        {
+                            target.setHp(target.getHp()-(int)(-1 * result));
+                        }
+                    }else
+                        target.setHp(target.getHp()-damage);
 
                     if(damage < 0)
                         damage = 0;
@@ -800,7 +935,18 @@ public class BattleEnvironment2 extends World
                 int damage = (int)padalustroMultiplier * (int)Math.ceil((target.getMaxHp() * shock.getCounterDamage()));
                 if(shockBurst)
                     damage *= 2;
-                target.setHp(target.getHp() - damage);
+                if(target.getHpBarrier() > 0)
+                {
+                    int result = target.getHpBarrier() - damage;
+                    target.setHpBarrier(target.getHpBarrier() - damage);
+                    if(target.getHpBarrier() < 0)
+                        target.setHpBarrier(0);
+                    if(result < 0)
+                    {
+                        target.setHp(target.getHp()-(int)(-1 * result));
+                    }
+                }else
+                    target.setHp(target.getHp()-damage);
 
                 if(target.getHp() < 0)
                     target.setHp(0);
@@ -886,7 +1032,25 @@ public class BattleEnvironment2 extends World
         int counter = 0;
         int x = enemy.getX();
         int y = enemy.getY();
-        int damage = (int)(enemy.getAtk() - (target.getDefense() * cheerMultiplier));
+        int damage;
+        double hybrid;
+
+        if(enemy.getDamageType() == 0){
+            damage = (int)(enemy.getAtk() - (target.getDefense() * cheerMultiplier));
+        }
+        else if(enemy.getDamageType() == 1){
+            damage = (int)(enemy.getAtk() - (target.getSpr()));
+        }
+        else{
+            if(target.getDefense() < target.getSpr()){
+                hybrid = 0.8 * target.getDefense() + 0.2 * target.getSpr();
+            }
+            else{
+                hybrid = 0.2 * target.getDefense() + 0.8 * target.getSpr();
+            }
+
+            damage = (int)(enemy.getAtk() - (hybrid * (cheerMultiplier/2)));
+        }
 
         if(damage < 0)
             damage = 0;
@@ -907,45 +1071,23 @@ public class BattleEnvironment2 extends World
             if(enemy.getHp() > 0){
                 attackSfx[i].play();
                 if(shockBurst){
-                    if(Math.random()*(100)+1 <= shock.getEvadeRate() && shock.getSkill3Lvl() > 0){
-                        attackAnimation(shock, enemy, 2);
-                    }
-                    else{
-                        target.setHp(target.getHp() - (int)(2 * (damage * shock.getDamageMitigationPercent())));
-                        if(target.getHp() <= 0 && target.getSkill1Lvl() > 0){
-                            if(Math.random()*(100)+1 <= shock.getGutsActivationRate()){
-                                target.setHp(1);
-                            }
-                        }
-                    }
-                }
-                else if(mikeBurst){
-                    target.setHp(target.getHp()-(int)(damage * mike.getDamageTakenMultiplier()));
-                    mikeDamage += damage * mike.getDamageTakenMultiplier();
-                }
-                else if(target == shock && decoyTacticsActiveTurns > 0){
-                    if(Math.random()*(100)+1 <= shock.getEvadeRate() && shock.getSkill3Lvl() > 0){
-                        attackAnimation(shock, enemy, 2);
-                    }
-                    else{
-                        target.setHp(target.getHp() - (int)(damage * shock.getDamageMitigationPercent()));
-                        if(target.getHp() <= 0 && target.getSkill1Lvl() > 0){
-                            if(Math.random()*(100)+1 <= shock.getGutsActivationRate()){
-                                target.setHp(1);
-                            }
-                        }
-                    }
-                }
-                else if(target == mike && kingShieldActiveTurns > 0){
-                    target.setHp(target.getHp()-(int)(damage * mike.getDamageTakenMultiplier()));
-                }
-                else{
-                    if(target == shock){
-                        if(Math.random()*(100)+1 <= shock.getEvadeRate() && shock.getSkill3Lvl() > 0){
+                    if(enemy.getDamageType() == 0 || enemy.getDamageType() == 2){
+                        if(Math.random()*(100)+1 <= shock.getEvadeRateP() && shock.getSkill3Lvl() > 0){
                             attackAnimation(shock, enemy, 2);
                         }
                         else{
-                            target.setHp(target.getHp()-(int)(damage));
+                            if(target.getHpBarrier() > 0)
+                            {
+                                int result = target.getHpBarrier() - damage;
+                                target.setHpBarrier(target.getHpBarrier() - damage);
+                                if(target.getHpBarrier() < 0)
+                                    target.setHpBarrier(0);
+                                if(result < 0)
+                                {
+                                    target.setHp(target.getHp() - (int)(2 * ((-1 * result) * shock.getDamageMitigationPercent())));
+                                }
+                            }else
+                                target.setHp(target.getHp() - (int)(2 * (damage * shock.getDamageMitigationPercent())));
                             if(target.getHp() <= 0 && target.getSkill1Lvl() > 0){
                                 if(Math.random()*(100)+1 <= shock.getGutsActivationRate()){
                                     target.setHp(1);
@@ -953,8 +1095,212 @@ public class BattleEnvironment2 extends World
                             }
                         }
                     }
+                    else
+                    {
+                        if(Math.random()*(100)+1 <= shock.getEvadeRateM() && shock.getSkill3Lvl() > 0){
+                            attackAnimation(shock, enemy, 2);
+                        }
+                        else{
+                            if(target.getHpBarrier() > 0)
+                            {
+                                int result = target.getHpBarrier() - damage;
+                                target.setHpBarrier(target.getHpBarrier() - damage);
+                                if(target.getHpBarrier() < 0)
+                                    target.setHpBarrier(0);
+                                if(result < 0)
+                                {
+                                    target.setHp(target.getHp() - (int)(2 * ((-1 * result) * (shock.getDamageMitigationPercent() - 0.1))));
+                                }
+                            }else
+                                target.setHp(target.getHp() - (int)(2 * (damage * (shock.getDamageMitigationPercent() -0.1))));
+                            if(target.getHp() <= 0 && target.getSkill1Lvl() > 0){
+                                if(Math.random()*(100)+1 <= shock.getGutsActivationRate()){
+                                    target.setHp(1);
+                                }
+                            }
+                        }
+                    }
+                }
+                else if(mikeBurst){
+                    if(enemy.getDamageType() == 0 || enemy.getDamageType() == 2)
+                    {
+                        if(target.getHpBarrier() > 0)
+                        {
+                            int result = target.getHpBarrier() - damage;
+                            target.setHpBarrier(target.getHpBarrier() - damage);
+                            if(target.getHpBarrier() < 0)
+                                target.setHpBarrier(0);
+                            if(result < 0)
+                            {
+                                target.setHp(target.getHp()-(int)((-1 * result) * mike.getDamageTakenMultiplier()));
+                            }
+                        }else
+                            target.setHp(target.getHp()-(int)(damage * mike.getDamageTakenMultiplier()));
+                        mikeDamage += (int)(damage * mike.getDamageTakenMultiplier());
+                    }else
+                    {
+                        if(target.getHpBarrier() > 0)
+                        {
+                            int result = target.getHpBarrier() - damage;
+                            target.setHpBarrier(target.getHpBarrier() - damage);
+                            if(target.getHpBarrier() < 0)
+                                target.setHpBarrier(0);
+                            if(result < 0)
+                            {
+                                target.setHp(target.getHp()-(int)((-1 * result) * (mike.getDamageTakenMultiplier() - 0.2)));
+                            }
+                        }else
+                            target.setHp(target.getHp()-(int)(damage * (mike.getDamageTakenMultiplier() - 0.2)));
+                        mikeDamage += (int)(damage * (mike.getDamageTakenMultiplier() - 0.2));
+                    }
+                }
+                else if(target == shock && decoyTacticsActiveTurns > 0){
+                    if(enemy.getDamageType() == 0 || enemy.getDamageType() == 2){
+                        if(Math.random()*(100)+1 <= shock.getEvadeRateP() && shock.getSkill3Lvl() > 0){
+                            attackAnimation(shock, enemy, 2);
+                        }
+                        else{
+                            if(target.getHpBarrier() > 0)
+                            {
+                                int result = target.getHpBarrier() - damage;
+                                target.setHpBarrier(target.getHpBarrier() - damage);
+                                if(target.getHpBarrier() < 0)
+                                    target.setHpBarrier(0);
+                                if(result < 0)
+                                {
+                                    target.setHp(target.getHp() - (int)(((-1 * result) * shock.getDamageMitigationPercent())));
+                                }
+                            }else
+                                target.setHp(target.getHp() - (int)((damage * shock.getDamageMitigationPercent())));
+                            if(target.getHp() <= 0 && target.getSkill1Lvl() > 0){
+                                if(Math.random()*(100)+1 <= shock.getGutsActivationRate()){
+                                    target.setHp(1);
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if(Math.random()*(100)+1 <= shock.getEvadeRateM() && shock.getSkill3Lvl() > 0){
+                            attackAnimation(shock, enemy, 2);
+                        }
+                        else{
+                            if(target.getHpBarrier() > 0)
+                            {
+                                int result = target.getHpBarrier() - damage;
+                                target.setHpBarrier(target.getHpBarrier() - damage);
+                                if(target.getHpBarrier() < 0)
+                                    target.setHpBarrier(0);
+                                if(result < 0)
+                                {
+                                    target.setHp(target.getHp() - (int)(((-1 * result) * (shock.getDamageMitigationPercent() - 0.1))));
+                                }
+                            }else
+                                target.setHp(target.getHp() - (int)((damage * (shock.getDamageMitigationPercent() - 0.1))));
+                            if(target.getHp() <= 0 && target.getSkill1Lvl() > 0){
+                                if(Math.random()*(100)+1 <= shock.getGutsActivationRate()){
+                                    target.setHp(1);
+                                }
+                            }
+                        }
+                    }
+                }
+                else if(target == mike && kingShieldActiveTurns > 0){
+                    if(enemy.getDamageType() == 0 || enemy.getDamageType() == 2)
+                    {
+                        if(target.getHpBarrier() > 0)
+                        {
+                            int result = target.getHpBarrier() - damage;
+                            target.setHpBarrier(target.getHpBarrier() - damage);
+                            if(target.getHpBarrier() < 0)
+                                target.setHpBarrier(0);
+                            if(result < 0)
+                            {
+                                target.setHp(target.getHp()-(int)((-1 * result) * mike.getDamageTakenMultiplier()));
+                            }
+                        }else
+                            target.setHp(target.getHp()-(int)(damage * mike.getDamageTakenMultiplier()));
+                    }else
+                    {
+                        if(target.getHpBarrier() > 0)
+                        {
+                            int result = target.getHpBarrier() - damage;
+                            target.setHpBarrier(target.getHpBarrier() - damage);
+                            if(target.getHpBarrier() < 0)
+                                target.setHpBarrier(0);
+                            if(result < 0)
+                            {
+                                target.setHp(target.getHp()-(int)((-1 * result) * (mike.getDamageTakenMultiplier() - 0.2)));
+                            }
+                        }else
+                            target.setHp(target.getHp()-(int)(damage * (mike.getDamageTakenMultiplier() - 0.2)));
+                    }
+                }
+                else{
+                    if(target == shock){
+                        if(enemy.getDamageType() == 0 || enemy.getDamageType() == 2){
+                            if(Math.random()*(100)+1 <= shock.getEvadeRateP() && shock.getSkill3Lvl() > 0){
+                                attackAnimation(shock, enemy, 2);
+                            }
+                            else{
+                                if(target.getHpBarrier() > 0)
+                                {
+                                    int result = target.getHpBarrier() - damage;
+                                    target.setHpBarrier(target.getHpBarrier() - damage);
+                                    if(target.getHpBarrier() < 0)
+                                        target.setHpBarrier(0);
+                                    if(result < 0)
+                                    {
+                                        target.setHp(target.getHp() - (int)(((-1 * result))));
+                                    }
+                                }else
+                                    target.setHp(target.getHp() - (int)((damage)));
+                                if(target.getHp() <= 0 && target.getSkill1Lvl() > 0){
+                                    if(Math.random()*(100)+1 <= shock.getGutsActivationRate()){
+                                        target.setHp(1);
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            if(Math.random()*(100)+1 <= shock.getEvadeRateM() && shock.getSkill3Lvl() > 0){
+                                attackAnimation(shock, enemy, 2);
+                            }
+                            else{
+                                if(target.getHpBarrier() > 0)
+                                {
+                                    int result = target.getHpBarrier() - damage;
+                                    target.setHpBarrier(target.getHpBarrier() - damage);
+                                    if(target.getHpBarrier() < 0)
+                                        target.setHpBarrier(0);
+                                    if(result < 0)
+                                    {
+                                        target.setHp(target.getHp() - (int)(((-1 * result))));
+                                    }
+                                }else
+                                    target.setHp(target.getHp() - (int)((damage)));
+                                if(target.getHp() <= 0 && target.getSkill1Lvl() > 0){
+                                    if(Math.random()*(100)+1 <= shock.getGutsActivationRate()){
+                                        target.setHp(1);
+                                    }
+                                }
+                            }
+                        }
+                    }
                     else{
-                        target.setHp(target.getHp()-(int)(damage));
+                        if(target.getHpBarrier() > 0)
+                        {
+                            int result = target.getHpBarrier() - damage;
+                            target.setHpBarrier(target.getHpBarrier() - damage);
+                            if(target.getHpBarrier() < 0)
+                                target.setHpBarrier(0);
+                            if(result < 0)
+                            {
+                                target.setHp(target.getHp()-(int)(-1 * result));
+                            }
+                        }else
+                            target.setHp(target.getHp()-(int)(damage));
                         if(target == nagito && target.getHp() <= 0 && nagito.getFuryStacks() >= 6){
                             target.setHp(1);
                             nagito.setCooldownTurns(2);
@@ -990,6 +1336,9 @@ public class BattleEnvironment2 extends World
     }
 
     public void enemyAttack(Enemy enemy){
+        
+        int hermesRate = (int)(Math.random()*100+1);
+        
         Character target = null;
         if(shockBurst && shock.getHp() > 0){
             target = shock;
@@ -997,6 +1346,45 @@ public class BattleEnvironment2 extends World
         else if(mikeBurst && mike.getHp() > 0){
             target = mike;
         }
+        else if(findCharacter(6)!=null && kingHermes.getSkill3Lvl() > 0 && kingHermes.getHp() > 0 && enemy.getDamageType() == 1 && hermesRate <= kingHermes.getSkill3DrawRate()){
+            int barrier = (int)(kingHermes.getSpr() * kingHermes.getSkill3BarrierMultiplier());
+            if(kingHermes.getHpBarrier() > 0){
+                kingHermes.setHpBarrier((int)(Math.ceil(kingHermes.getHpBarrier() + barrier)));
+            }
+            else
+            {
+                kingHermes.setHpBarrier(barrier);
+            }
+            if(party.getMember1().getHpBarrier() > 0){
+                party.getMember1().setHpBarrier((int)(Math.ceil(party.getMember1().getHpBarrier() + barrier / 2)));
+            }
+            else
+            {
+                party.getMember1().setHpBarrier(barrier / 2);
+            }
+            if(party.getMember2().getHpBarrier() > 0){
+                party.getMember2().setHpBarrier((int)(Math.ceil(party.getMember2().getHpBarrier() + barrier / 2)));
+            }
+            else
+            {
+                party.getMember2().setHpBarrier(barrier / 2);
+            }
+            if(party.getMember3().getHpBarrier() > 0){
+                party.getMember3().setHpBarrier((int)(Math.ceil(party.getMember3().getHpBarrier() + barrier / 2)));
+            }
+            else
+            {
+                party.getMember3().setHpBarrier(barrier / 2);
+            }
+            if(party.getMember4().getHpBarrier() > 0){
+                party.getMember4().setHpBarrier((int)(Math.ceil(party.getMember4().getHpBarrier() + barrier / 2)));
+            }
+            else
+            {
+                party.getMember4().setHpBarrier(barrier / 2);
+            }
+            target = kingHermes;
+            }
         else if(enemy == tauntedTarget && mike.getHp() > 0){
             target = mike;
             if(decoyTacticsActiveTurns > 0 && target == characterProtected){
@@ -1180,7 +1568,7 @@ public class BattleEnvironment2 extends World
 
         for(int i=0; i<4; i++){
             for(int j=0; j<agressor.getSkill2HitCount(); j++){
-                int damage = padalustroMultiplier * (int)Math.ceil(((((agressor.getAtk() * entreatMultiplier)*agressor.getSkill2AtkUsedPercent())-(enemy[i].getDef() * ((Sokudo) agressor).getDefIgnorePercent()))));
+                int damage = padalustroMultiplier * (int)Math.ceil(((((agressor.getAtk() * entreatMultiplier)*agressor.getSkill2AtkUsedPercent() + agressor.getSpr() * agressor.getSkill2AtkUsedPercent())-(enemy[i].getDef() * ((Sokudo) agressor).getDefIgnorePercent()))));
                 enemy[i].setHp(enemy[i].getHp()-damage);
                 if(!enemy[i].isParalyzed() && agressor.getSkill1Lvl() > 0){
                     enemy[i].setTemporalVoidStack(enemy[i].getTemporalVoidStack() + 1);
@@ -1350,6 +1738,13 @@ public class BattleEnvironment2 extends World
         showBattleElements();
         if(nagitoBurst)
             attackAnimation(nagito, this.target, 0);
+    }
+
+    public void fightersPhysique(){
+        int barrier = (int)((mike.getSkill4BarrierDef() * mike.getDefense()) + (mike.getSkill4BarrierSpr() * mike.getSpr()));
+        if(mike.getHpBarrier() < barrier){
+            mike.setHpBarrier(mike.getHpBarrier() + barrier);
+        }
     }
 
     public void holyFlameTrigger(){
@@ -1596,42 +1991,27 @@ public class BattleEnvironment2 extends World
     }
 
     public void run(){
-        if(agressor.getId() == 6 && kingHermes.getSkill3Lvl() > 0){
-            if(Math.random()*(100)+1 < ((KingHermes)agressor).getSkill3RunRate()){
-                switch(floor)
-                {
-                    case 1:
-                        FirstFloorRoom.playMusic();
-                        Greenfoot.setWorld(new FirstFloorRoom(id,characterX,characterY));
-                        break;
-                    case 2:
-                        SecondFloorRoom.playMusic();
-                        Greenfoot.setWorld(new SecondFloorRoom(id,characterX,characterY));
-                        break;
-                    case 3:
-                        SecondFloorRoom.playMusic();
-                        Greenfoot.setWorld(new ThirdFloorRoom(id,characterX,characterY));
-                        break;
-                }
+        if(Math.random()*(100)+1 < 25){
+
+            if(staticCharge){
+                agressor.setAtk((int)(agressor.getAtk() / ((Sokudo)agressor).getSkill4DamageMultiplier()));
+                staticCharge = false;
             }
-        }
-        else{
-            if(Math.random()*(100)+1 < 25){
-                switch(floor)
-                {
-                    case 1:
-                        FirstFloorRoom.playMusic();
-                        Greenfoot.setWorld(new FirstFloorRoom(id,characterX,characterY));
-                        break;
-                    case 2:
-                        SecondFloorRoom.playMusic();
-                        Greenfoot.setWorld(new SecondFloorRoom(id,characterX,characterY));
-                        break;
-                    case 3:
-                        SecondFloorRoom.playMusic();
-                        Greenfoot.setWorld(new ThirdFloorRoom(id,characterX,characterY));
-                        break;
-                }
+
+            switch(floor)
+            {
+                case 1:
+                    FirstFloorRoom.playMusic();
+                    Greenfoot.setWorld(new FirstFloorRoom(id,characterX,characterY));
+                    break;
+                case 2:
+                    SecondFloorRoom.playMusic();
+                    Greenfoot.setWorld(new SecondFloorRoom(id,characterX,characterY));
+                    break;
+                case 3:
+                    SecondFloorRoom.playMusic();
+                    Greenfoot.setWorld(new ThirdFloorRoom(id,characterX,characterY));
+                    break;
             }
         }
         agressor.setAttackStatus(false);

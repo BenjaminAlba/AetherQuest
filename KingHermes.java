@@ -24,7 +24,8 @@ public class KingHermes extends Character
 
     private final String skill3Name="PERMATRAGO";
     private final int skill3Type=1;
-    private int skill3RunRate;
+    private int skill3DrawRate;
+    private double skill3BarrierMultiplier=0.8;
 
     private final String skill4Name="PADALUSTRO";
     private final int skill4Type=2;
@@ -49,17 +50,21 @@ public class KingHermes extends Character
         baseHp=10;
         hp=10;
         maxHP=10;
+        hpBarrier = 0;
         baseAtk=2;
         atk=2;
         hitCount=1;
         baseDef=2;
         def=2;
+        baseSpr=4;
+        spr=4;
         ultQuantity=8;
         maxSP=70;
         sp=70;
         baseSpeed=7;
         speed=7;
-
+        damageType = 1;
+        
         acquiredExpMultiplier=0;
 
         sprite.mirrorHorizontally();
@@ -150,25 +155,25 @@ public class KingHermes extends Character
             switch(skill3)
             {
                 case 1:
-                    skill3RunRate=30;
+                    skill3DrawRate=50;
                     break;
                 case 2:
-                    skill3RunRate=33;
+                    skill3DrawRate=55;
                     break;
                 case 3:
-                    skill3RunRate=36;
+                    skill3DrawRate=60;
                     break;
                 case 4:
-                    skill3RunRate=40;
+                    skill3DrawRate=65;
                     break;
                 case 5:
-                    skill3RunRate=43;
+                    skill3DrawRate=70;
                     break;
                 case 6:
-                    skill3RunRate=46;
+                    skill3DrawRate=75;
                     break;
                 case 7:
-                    skill3RunRate=50;
+                    skill3DrawRate=80;
                     break;
             }
             skillPoints-=1;
@@ -246,7 +251,7 @@ public class KingHermes extends Character
     public String getSkill3Stats(){
         if(skill3 == 0)
             return "Mejora esta habilidad para poder usarla";
-        return "Run rate: " + skill3RunRate + "%";
+        return "Draw rate: " + skill3DrawRate + "%";
     }
 
     public String getSkill4Stats(){
@@ -291,8 +296,12 @@ public class KingHermes extends Character
         
     }
     
-    public int getSkill3RunRate(){
-        return skill3RunRate;
+    public int getSkill3DrawRate(){
+        return skill3DrawRate;
+    }
+    
+    public double getSkill3BarrierMultiplier(){
+        return skill3BarrierMultiplier;
     }
     
     public String getName(){

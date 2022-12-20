@@ -12,7 +12,8 @@ public class Shock extends Character
     private int headerY = 90;
 
     private int gutsActivationRate;
-    private int evadeRate;
+    private int evadeRateP;
+    private int evadeRateM;
     private double counterHpDamageScalingPercent;
 
     private final String skill1Name="OK";
@@ -27,7 +28,8 @@ public class Shock extends Character
 
     private final String skill3Name="Sheer Luck";
     private final int skill3Type=1;
-    private int skill3EvadeRateIncrease;
+    private int skill3EvadeRateIncreaseP;
+    private int skill3EvadeRateIncreaseM;
     private double skill3CounterHpDamageScalingPercentIncrease;
 
     private final String skill4Name="Decoy Tactics";
@@ -54,19 +56,24 @@ public class Shock extends Character
         baseHp=18;
         hp=18;
         maxHP=18;
+        hpBarrier = 0;
         baseAtk=3;
         atk=3;
         hitCount=1;
         baseDef=3;
         def=3;
+        baseSpr=3;
+        spr=3;
         ultQuantity=5;
         maxSP=70;
         sp=70;
         baseSpeed=7;
         speed=7;
-
+        damageType = 0;
+        
         gutsActivationRate=0;
-        evadeRate=0;
+        evadeRateP=0;
+        evadeRateM=0;
         counterHpDamageScalingPercent=0;
 
         sprite.mirrorHorizontally();
@@ -83,25 +90,25 @@ public class Shock extends Character
             switch(skill1)
             {
                 case 1:
-                    skill1GutsActivationRateIncrease=3;
+                    skill1GutsActivationRateIncrease=20;
                     break;
                 case 2:
-                    skill1GutsActivationRateIncrease=3;
+                    skill1GutsActivationRateIncrease=5;
                     break;
                 case 3:
-                    skill1GutsActivationRateIncrease=3;
+                    skill1GutsActivationRateIncrease=5;
                     break;
                 case 4:
-                    skill1GutsActivationRateIncrease=3;
+                    skill1GutsActivationRateIncrease=5;
                     break;
                 case 5:
-                    skill1GutsActivationRateIncrease=3;
+                    skill1GutsActivationRateIncrease=5;
                     break;
                 case 6:
-                    skill1GutsActivationRateIncrease=3;
+                    skill1GutsActivationRateIncrease=5;
                     break;
                 case 7:
-                    skill1GutsActivationRateIncrease=3;
+                    skill1GutsActivationRateIncrease=5;
                     break;
             }
             gutsActivationRate+=skill1GutsActivationRateIncrease;
@@ -164,35 +171,43 @@ public class Shock extends Character
             switch(skill3)
             {
                 case 1:
-                    skill3EvadeRateIncrease=5;
+                    skill3EvadeRateIncreaseP=30;
+                    skill3EvadeRateIncreaseM=20;
                     skill3CounterHpDamageScalingPercentIncrease=0.1;
                     break;
                 case 2:
-                    skill3EvadeRateIncrease=2;
+                    skill3EvadeRateIncreaseP=10;
+                    skill3EvadeRateIncreaseM=5;
                     skill3CounterHpDamageScalingPercentIncrease=0.02;
                     break;
                 case 3:
-                    skill3EvadeRateIncrease=3;
+                    skill3EvadeRateIncreaseP=10;
+                    skill3EvadeRateIncreaseM=5;
                     skill3CounterHpDamageScalingPercentIncrease=0.04;
                     break;
                 case 4:
-                    skill3EvadeRateIncrease=5;
+                    skill3EvadeRateIncreaseP=5;
+                    skill3EvadeRateIncreaseM=5;
                     skill3CounterHpDamageScalingPercentIncrease=0.06;
                     break;
                 case 5:
-                    skill3EvadeRateIncrease=3;
+                    skill3EvadeRateIncreaseP=5;
+                    skill3EvadeRateIncreaseM=5;
                     skill3CounterHpDamageScalingPercentIncrease=0.03;
                     break;
                 case 6:
-                    skill3EvadeRateIncrease=4;
+                    skill3EvadeRateIncreaseP=5;
+                    skill3EvadeRateIncreaseM=5;
                     skill3CounterHpDamageScalingPercentIncrease=0.03;
                     break;
                 case 7:
-                    skill3EvadeRateIncrease=3;
+                    skill3EvadeRateIncreaseP=5;
+                    skill3EvadeRateIncreaseM=5;
                     skill3CounterHpDamageScalingPercentIncrease=0.04;
                     break;
             }
-            evadeRate+=skill3EvadeRateIncrease;
+            evadeRateP+=skill3EvadeRateIncreaseP;
+            evadeRateM+=skill3EvadeRateIncreaseM;
             counterHpDamageScalingPercent+=skill3CounterHpDamageScalingPercentIncrease;
             skillPoints-=1;
         }
@@ -206,37 +221,37 @@ public class Shock extends Character
             switch(skill4)
             {
                 case 1:
-                    skill4DamageMitigationPercent=0.03;
+                    skill4DamageMitigationPercent=0.2;
                     skill4ActiveTurns=1;
                     skill4SpCost=10;
                     break;
                 case 2:
-                    skill4DamageMitigationPercent=0.05;
+                    skill4DamageMitigationPercent=0.25;
                     skill4ActiveTurns=1;
                     skill4SpCost=10;
                     break;
                 case 3:
-                    skill4DamageMitigationPercent=0.08;
+                    skill4DamageMitigationPercent=0.28;
                     skill4ActiveTurns=1;
                     skill4SpCost=10;
                     break;
                 case 4:
-                    skill4DamageMitigationPercent=0.11;
+                    skill4DamageMitigationPercent=0.31;
                     skill4ActiveTurns=1;
                     skill4SpCost=10;
                     break;
                 case 5:
-                    skill4DamageMitigationPercent=0.14;
+                    skill4DamageMitigationPercent=0.34;
                     skill4ActiveTurns=2;
                     skill4SpCost=14;
                     break;
                 case 6:
-                    skill4DamageMitigationPercent=0.17;
+                    skill4DamageMitigationPercent=0.37;
                     skill4ActiveTurns=2;
                     skill4SpCost=14;
                     break;
                 case 7:
-                    skill4DamageMitigationPercent=0.2;
+                    skill4DamageMitigationPercent=0.4;
                     skill4ActiveTurns=2;
                     skill4SpCost=14;
                     break;
@@ -276,7 +291,7 @@ public class Shock extends Character
     public String getSkill3Stats(){
         if(skill3 == 0)
             return "Mejora esta habilidad para poder usarla";
-        return "Evade rate: " + evadeRate + "%";
+        return "Evade rate: " + evadeRateP + "%";
     }
 
     public String getSkill4Stats(){
@@ -318,8 +333,12 @@ public class Shock extends Character
         return skill2SpCost;
     }
     
-    public int getEvadeRate(){
-        return evadeRate;
+    public int getEvadeRateP(){
+        return evadeRateP;
+    }
+    
+    public int getEvadeRateM(){
+        return evadeRateM;
     }
     
     public double getDamageMitigationPercent(){
